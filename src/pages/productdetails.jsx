@@ -49,6 +49,12 @@ function ProductDetails() {
           <CompareTable />
         </section>
       </Container>
+      <div className='w-'>
+        <CustomButton
+          BtnText='Add to cart'
+          className='fixed bottom-0 w-[95%] mx-auto left-4 block md:hidden sm:right-6 bg-lightbrown hover:bg-amber-700'
+        />
+      </div>
     </>
   );
 }

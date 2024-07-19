@@ -47,7 +47,7 @@ function ProductSlider() {
       <Carousel
         setApi={setCarouselApi}
         opts={{ loop: true }}
-        className='top-0 lg:sticky mx-auto self-start lg:ml-20 m-0 max-w-[575px]'>
+        className='lg:sticky mx-auto self-start lg:ml-20 m-0 max-w-[575px]'>
         <div className='relative'>
           <CarouselContent>
             {ProductImages.map((image, index) => (

@@ -79,7 +79,7 @@ export function ProductDetailsCard() {
           <div className='w-full relative'>
             <CustomButton
               BtnText='Add to cart'
-              className='bg-lightbrown hover:bg-amber-700 my-2 w-full box-border'
+              className='bg-lightbrown hover:bg-amber-700 my-2 w-full box-border hidden md:block'
             />
           </div>
           <CustomButton
