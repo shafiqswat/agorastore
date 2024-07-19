@@ -1,0 +1,86 @@
+/** @format */
+
+const SimilarProducts = [
+  {
+    id: 1,
+    name: "Mac Duggal",
+    description: "Buckled Maxi Croco Black",
+    price: "698.00",
+    rating: "3.20",
+    image: "images/product1.webp",
+  },
+  {
+    id: 2,
+    name: "Bella Goose Coffee",
+    description: "Peru Norandino",
+    price: "$18.00",
+    rating: "3.70",
+    image: "images/product2.webp",
+  },
+  {
+    id: 3,
+    name: "Modasp3",
+    description: "Alana Floral Skater Skirt W...",
+    price: "$17.45",
+    rating: "3.85",
+    image: "images/product3.webp",
+  },
+  {
+    id: 20,
+    name: "Sugar Lips",
+    description: `Kyrie Puff Sleeve Short Dress | White Multi
+Kyrie Puff Sleeve Short Dress |`,
+    price: "$97.00",
+    rating: "4.20",
+    image: "images/product4.webp",
+  },
+  {
+    id: 4,
+    name: "Juliska",
+    description: "Buckled Maxi Croco Black",
+    price: "698.00",
+    rating: "3.20",
+    image: "images/product5.webp",
+  },
+  {
+    id: 5,
+    name: "Halsey",
+    description: "Bamboo Short",
+    price: "36.50",
+    rating: "4.30",
+    image: "images/product6.webp",
+  },
+  {
+    id: 6,
+    name: "Mac Duggal",
+    description: "Buckled Maxi Croco Black",
+    price: "698.00",
+    rating: "3.20",
+    image: "images/product7.webp",
+  },
+  {
+    id: 7,
+    name: "Halsey",
+    description: "Bamboo Short",
+    price: "36.50",
+    rating: "4.30",
+    image: "images/product8.webp",
+  },
+  {
+    id: 8,
+    name: "Mac Duggal",
+    description: "Buckled Maxi Croco Black",
+    price: "698.00",
+    rating: "3.20",
+    image: "images/product9.webp",
+  },
+  {
+    id: 9,
+    name: "Halsey",
+    description: "Bamboo Short",
+    price: "36.50",
+    rating: "4.30",
+    image: "images/product10.webp",
+  },
+];
+export default SimilarProducts;
