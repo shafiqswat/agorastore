@@ -58,10 +58,9 @@ const AppRoutes = () => (
       element={<PopularProducts />}
     />
     <Route
-      path='/productdetails'
+      path='/product/:productId'
       element={<ProductDetails />}
     />
-
     <Route
       path='/store-crawler'
       element={<StoreCrawler />}

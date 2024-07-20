@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import ProductSlider from "../components/Slider";
 import Header from "../components/Header";
 import { ProductDetailsCard } from "../components/Cards/ProductDetailsCard";
@@ -10,8 +10,18 @@ import CustomButton from "../components/customButton";
 import SimilarProducts from "../components/assets/SimilarProudct";
 import ProductCard from "../components/Cards/productCard";
 import CompareTable from "../components/compareTable";
+import { useParams } from "react-router-dom";
+import { ProductContext } from "../components/Context/productContext";
 
 function ProductDetails() {
+  const { productId } = useParams();
+  const { products } = useContext(ProductContext);
+  const product = products.find((p) => p.id === Number(productId));
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   return (
     <>
       <Header />
