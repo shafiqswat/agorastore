@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
             <div className='bg-black/0 group-hover:bg-black/10 absolute inset-0 transition-colors rounded-lg'></div>
           </div>
           <div className='flex justify-between'>
-            <p className=' font-semibold font-sans text-sm'>
+            <p className=' font-semibold font-sans text-sm hover:underline'>
               <a href='#'>{product.name}</a>
             </p>
             <Hurt />
@@ -29,15 +29,15 @@ const ProductCard = ({ product }) => {
           <p className='line-clamp-1 text-gray-500 capitalize mb-1 group-hover:underline '>
             {product.description}
           </p>
+          <Reviews
+            rating={product.rating}
+            className='w-4 h-4 cursor-pointer'
+          />
           <div className='flex justify-between items-center mb-2'>
             <span className='text-sm font-semibold text-black'>
               ${product.price}
             </span>
           </div>
-          <Reviews
-            rating={product.rating}
-            className='w-4 h-4 cursor-pointer'
-          />
         </div>
       </Link>
     </>

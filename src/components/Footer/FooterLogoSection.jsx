@@ -6,7 +6,7 @@ function FooterLogoSection() {
   return (
     <div>
       <img
-        src='images/logo.png'
+        src='/images/logo.png'
         alt='Logo'
         style={{ width: "100px" }}
       />
@@ -26,7 +26,7 @@ function FooterLogoSection() {
           target='_blank'
           rel='noopener noreferrer'>
           <img
-            src='images/socialIcon1.png'
+            src='/images/socialIcon1.png'
             className='mr-2 w-10 h-10'
             alt='Pinterest'
           />
@@ -36,7 +36,7 @@ function FooterLogoSection() {
           target='_blank'
           rel='noopener noreferrer'>
           <img
-            src='images/socialIcon2.png'
+            src='/images/socialIcon2.png'
             className='mx-2 w-10 h-10'
             alt='Twitter'
           />
@@ -46,7 +46,7 @@ function FooterLogoSection() {
           target='_blank'
           rel='noopener noreferrer'>
           <img
-            src='images/socialIcon3.png'
+            src='/images/socialIcon3.png'
             className='mx-2 w-10 h-10'
             alt='LinkedIn'
           />

@@ -34,7 +34,7 @@ const Header = () => {
         className='w-max ps-8 md:col-span-1 '
         to='/'>
         <img
-          src='images/logo.png'
+          src='/images/logo.png'
           style={{ width: "100px" }}
           alt='Logo'
         />

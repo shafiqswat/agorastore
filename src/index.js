@@ -6,16 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import ProductContextProvider from "./components/Context/productContext";
+import ProductContextProvider, {
+  ProductProvider,
+} from "./components/Context/productContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ProductContextProvider>
+    <ProductProvider>
+      <BrowserRouter>
         <App />
-      </ProductContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ProductProvider>
   </React.StrictMode>
 );
 

@@ -1,5 +1,7 @@
 /** @format */
 
+/** @format */
+
 const products = [
   {
     id: 1,
@@ -8,6 +10,14 @@ const products = [
     price: "698.00",
     rating: "3.20",
     image: "images/product1.webp",
+    images: [
+      "/images/handbag1.webp",
+      "/images/handbag2.webp",
+      "/images/handbag3.webp",
+      "/images/handbag4.webp",
+      "/images/handbag5.webp",
+      "/images/handbag6.webp",
+    ],
   },
   {
     id: 2,
@@ -16,6 +26,13 @@ const products = [
     price: "$18.00",
     rating: "3.70",
     image: "images/product2.webp",
+    images: [
+      "/images/product2.webp",
+      "/images/product2.webp",
+      "/images/product2.webp",
+      "/images/product2.webp",
+      "/images/product2.webp",
+    ],
   },
   {
     id: 3,
@@ -24,23 +41,23 @@ const products = [
     price: "$17.45",
     rating: "3.85",
     image: "images/product3.webp",
+    images: [
+      "/images/product3.webp",
+      "/images/product3.webp",
+      "/images/product3.webp",
+      "/images/product3.webp",
+      "/images/product3.webp",
+    ],
   },
-  {
-    id: 20,
-    name: "Sugar Lips",
-    description: `Kyrie Puff Sleeve Short Dress | White Multi
-Kyrie Puff Sleeve Short Dress |`,
-    price: "$97.00",
-    rating: "4.20",
-    image: "images/product4.webp",
-  },
+
   {
     id: 4,
     name: "Juliska",
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product5.webp",
+    image: "images/product4.webp",
+    images: ["/images/product4.webp"],
   },
   {
     id: 5,
@@ -49,6 +66,7 @@ Kyrie Puff Sleeve Short Dress |`,
     price: "36.50",
     rating: "4.30",
     image: "images/product6.webp",
+    images: [],
   },
   {
     id: 6,
@@ -161,6 +179,15 @@ Kyrie Puff Sleeve Short Dress |`,
     price: "36.50",
     rating: "4.30",
     image: "images/product20.webp",
+  },
+  {
+    id: 20,
+    name: "Sugar Lips",
+    description: `Kyrie Puff Sleeve Short Dress | White Multi
+Kyrie Puff Sleeve Short Dress |`,
+    price: "$97.00",
+    rating: "4.20",
+    image: "images/product4.webp",
   },
 ];
 export default products;

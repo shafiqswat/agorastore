@@ -1,15 +1,15 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../components/Header";
 import ProductCard from "../components/Cards/productCard";
 import CustomButton from "../components/customButton";
 import FeaturedCard from "../components/Cards/featuredCard";
-import items from "../components/assets/Featured";
 import Container from "../components/container";
-import products from "../components/assets/products";
+import { ProductContext } from "../components/Context/productContext";
 
 function Home() {
+  const { products } = useContext(ProductContext);
   return (
     <>
       <Header />
@@ -29,12 +29,12 @@ function Home() {
           <CustomButton BtnText='More Collections' />
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-36'>
-          {items.map((item, index) => (
+          {/* {featuredItems.map((item, index) => (
             <FeaturedCard
               key={index}
               item={item}
             />
-          ))}
+          ))} */}
         </div>
       </Container>
     </>

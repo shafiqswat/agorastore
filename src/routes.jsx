@@ -13,7 +13,8 @@ import Docs from "./pages/Docs";
 import Collections from "./pages/Collections";
 import PopularProducts from "./pages/PopularProducts";
 import StoreCrawler from "./pages/StoreCrawler";
-import ProductDetails from "./pages/productdetails";
+import ProductDetails from "./components/productdetails";
+import FeaturedDetails from "./pages/FeaturedDetails";
 
 const AppRoutes = () => (
   <Routes>
@@ -64,6 +65,10 @@ const AppRoutes = () => (
     <Route
       path='/store-crawler'
       element={<StoreCrawler />}
+    />
+    <Route
+      path='featuredetails'
+      element={<FeaturedDetails />}
     />
   </Routes>
 );

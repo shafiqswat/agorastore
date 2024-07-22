@@ -16,7 +16,7 @@ import { ProductContext } from "../components/Context/productContext";
 function ProductDetails() {
   const { productId } = useParams();
   const { products } = useContext(ProductContext);
-  const product = products.find((p) => p.id === Number(productId));
+  const product = products.find((p) => p.id === productId);
 
   if (!product) {
     return <div>Product not found</div>;
@@ -27,17 +27,17 @@ function ProductDetails() {
       <Header />
       <Container>
         <div className='grid lg:gap-10 lg:grid-cols-2 overflow-hidden'>
-          <ProductSlider />
-          <ProductDetailsCard />
+          <ProductSlider productImages={product.images || []} />
+          <ProductDetailsCard product={product} />
         </div>
         <div className='flex flex-col lg:flex-row justify-between my-20'>
           <div className='flex mb-4 lg:mb-0'>
             <p className='text-lg font-light mr-2 cursor-pointer'>
               0 customer reviews
             </p>
-            <Reviews rating='0.00' />
+            <Reviews rating={product.rating} />
           </div>
-          <CustomButton BtnText='Leave a review ' />
+          <CustomButton BtnText='Leave a review' />
         </div>
         <section>
           <h2 className='text-2xl font-semibold text-center my-10'>

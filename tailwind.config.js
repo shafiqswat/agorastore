@@ -61,6 +61,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        customGray: "#2b2b2b",
         lightbrown: "#b17a50",
         lightgray: "#f5f5f5",
         customblue: "#d2e3fc",

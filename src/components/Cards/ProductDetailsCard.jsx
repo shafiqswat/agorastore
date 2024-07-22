@@ -13,40 +13,26 @@ import CustomButton from "../customButton";
 import Reviews from "../reviews";
 import Hurt from "../Hurt";
 
-export function ProductDetailsCard() {
+export function ProductDetailsCard({ product }) {
   return (
     <div className='mt-48 lg:m-auto lg:mt-0 lg:w-[371px]'>
-      <button className='text-neutral-700 text-sm font-medium px-1.5 py-0.5 rounded bg-neutral-100 w-max'>
-        Mac Duggal
+      <button className='text-neutral-700 text-sm font-medium px-1.5 py-0.5 rounded bg-neutral-100 w-max capitalize'>
+        {product.name}
       </button>
       <div className='flex flex-col space-y-1.5'>
         <div className='flex justify-between items-start'>
-          <h1 className='text-2xl font-semibold lg:max-w-[307px] text-black'>
-            Buckled Maxi Croco Black Leather Tote Bag with Detachable Strap
+          <h1 className='text-2xl font-semibold lg:max-w-[307px] text-black capitalize'>
+            {product.description}
           </h1>
-          <Hurt />
+          <Hurt className='h-8 w-8 stroke-gray-400' />
         </div>
-        <Reviews rating='3.20' />
+        <Reviews rating={product.rating} />
         <div className='prose-p:my-1 prose-ul:my-2 w-full md:max-w-[50ch] my-2 prose-sm prose text-gray-600'>
-          <p>
-            Embrace luxury with our Crocodile Leather Maxi Tote Bag. Crafted
-            from premium leather, its spacious design offers both elegance and
-            practicality, perfect for carrying your everyday essentials in
-            style. Elevate your accessory game with this timeless statement
-            piece.
-          </p>
-          <ul>
-            <li>Mac Duggal</li>
-            <li>Crocodile Embossed Leather Construction</li>
-            <li>Croc-embossed and 24k Gold-plated hardware</li>
-            <li>Two interior pockets</li>
-            <li>Zipper closure</li>
-            <li>Extra Large size: W 13.7 in x H 18.8 in x D 5.5 in</li>
-            <li>Microfibre faille lining, 100% PU</li>
-            <li>Fits up to: iPad, Airpods, Wallet, and Cosmetic bag </li>
-            <li>Available in Black</li>
-            <li>Style #H90020</li>
-          </ul>
+          {/* <ul>
+            {features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul> */}
         </div>
         <form className='grid gap-2'>
           <Label
@@ -56,10 +42,10 @@ export function ProductDetailsCard() {
           </Label>
           <Select>
             <SelectTrigger id='color'>
-              <SelectValue placeholder='Black' />
+              <SelectValue placeholder={product.color} />
             </SelectTrigger>
             <SelectContent position='popper'>
-              <SelectItem value='Black'>Black</SelectItem>
+              <SelectItem value={product.color}>{product.color}</SelectItem>
             </SelectContent>
           </Select>
           <Label
@@ -75,7 +61,7 @@ export function ProductDetailsCard() {
               <SelectItem value='Large'>Large</SelectItem>
             </SelectContent>
           </Select>
-          <p className='font-semibold text-black my-6'>$698.00</p>
+          <p className='font-semibold text-black my-6'>${product.price}</p>
           <div className='w-full relative'>
             <CustomButton
               BtnText='Add to cart'
