@@ -9,7 +9,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product1.webp",
+    image: "/images/product1.webp",
     images: [
       "/images/handbag1.webp",
       "/images/handbag2.webp",
@@ -25,7 +25,7 @@ const products = [
     description: "Peru Norandino",
     price: "$18.00",
     rating: "3.70",
-    image: "images/product2.webp",
+    image: "/images/product2.webp",
     images: [
       "/images/product2.webp",
       "/images/product2.webp",
@@ -40,7 +40,7 @@ const products = [
     description: "Alana Floral Skater Skirt W...",
     price: "$17.45",
     rating: "3.85",
-    image: "images/product3.webp",
+    image: "/images/product3.webp",
     images: [
       "/images/product3.webp",
       "/images/product3.webp",
@@ -56,7 +56,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product4.webp",
+    image: "/images/product4.webp",
     images: ["/images/product4.webp"],
   },
   {
@@ -65,7 +65,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product6.webp",
+    image: "/images/product6.webp",
     images: [],
   },
   {
@@ -74,7 +74,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product7.webp",
+    image: "/images/product7.webp",
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product8.webp",
+    image: "/images/product8.webp",
   },
   {
     id: 8,
@@ -90,7 +90,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product9.webp",
+    image: "/images/product9.webp",
   },
   {
     id: 9,
@@ -98,7 +98,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product10.webp",
+    image: "/images/product10.webp",
   },
   {
     id: 10,
@@ -106,7 +106,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product11.webp",
+    image: "/images/product11.webp",
   },
   {
     id: 11,
@@ -114,7 +114,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product12.webp",
+    image: "/images/product12.webp",
   },
   {
     id: 12,
@@ -122,7 +122,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product13.webp",
+    image: "/images/product13.webp",
   },
   {
     id: 13,
@@ -130,7 +130,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product14.webp",
+    image: "/images/product14.webp",
   },
   {
     id: 14,
@@ -138,7 +138,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product15.webp",
+    image: "/images/product15.webp",
   },
   {
     id: 15,
@@ -146,7 +146,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product16.webp",
+    image: "/images/product16.webp",
   },
   {
     id: 16,
@@ -154,7 +154,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product17.webp",
+    image: "/images/product17.webp",
   },
   {
     id: 17,
@@ -162,7 +162,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product18.webp",
+    image: "/images/product18.webp",
   },
   {
     id: 18,
@@ -170,7 +170,7 @@ const products = [
     description: "Buckled Maxi Croco Black",
     price: "698.00",
     rating: "3.20",
-    image: "images/product19.webp",
+    image: "/images/product19.webp",
   },
   {
     id: 19,
@@ -178,7 +178,7 @@ const products = [
     description: "Bamboo Short",
     price: "36.50",
     rating: "4.30",
-    image: "images/product20.webp",
+    image: "/images/product20.webp",
   },
   {
     id: 20,
@@ -187,7 +187,7 @@ const products = [
 Kyrie Puff Sleeve Short Dress |`,
     price: "$97.00",
     rating: "4.20",
-    image: "images/product4.webp",
+    image: "/images/product4.webp",
   },
 ];
 export default products;

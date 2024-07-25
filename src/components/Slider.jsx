@@ -12,7 +12,6 @@ import {
 } from "./ui/carousel";
 
 function ProductSlider({ productImages = [] }) {
-  // Default to empty array
   const [currentImage, setCurrentImage] = useState(0);
   const [carouselApi, setCarouselApi] = useState(null);
 
@@ -32,7 +31,7 @@ function ProductSlider({ productImages = [] }) {
     if (carouselApi) {
       carouselApi.scrollTo(currentImage);
     }
-  }, [currentImage, carouselApi]);
+  }, [currentImage]);
 
   return (
     <div className='relative pb-20'>

@@ -1,5 +1,5 @@
 /** @format */
 
 import { fetchProducts } from "./product";
-
-export { fetchProducts };
+import { fetchCollection } from "./featured";
+export { fetchProducts, fetchCollection };

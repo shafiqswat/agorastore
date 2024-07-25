@@ -11,12 +11,15 @@ import SimilarProducts from "../components/assets/SimilarProudct";
 import ProductCard from "../components/Cards/productCard";
 import CompareTable from "../components/compareTable";
 import { useParams } from "react-router-dom";
-import { ProductContext } from "../components/Context/productContext";
+import { ProductContext } from "../components/Context/ProductContext";
 
 function ProductDetails() {
   const { productId } = useParams();
   const { products } = useContext(ProductContext);
-  const product = products.find((p) => p.id === productId);
+
+  const numericProductId = Number(productId);
+
+  const product = products.find((p) => p.id === numericProductId);
 
   if (!product) {
     return <div>Product not found</div>;
@@ -44,10 +47,10 @@ function ProductDetails() {
             Similar products
           </h2>
           <div className='grid gap-5 fullSmall:grid-cols-1 extraLarge:grid-cols-5 extraSmall:grid-cols-2 small:grid-cols-3 medium:grid-cols-3 lessMedium:grid-cols-4 large:grid-cols-4'>
-            {SimilarProducts.map((product, i) => (
+            {SimilarProducts.map((similarProduct, i) => (
               <ProductCard
                 key={i}
-                product={product}
+                product={similarProduct}
               />
             ))}
           </div>

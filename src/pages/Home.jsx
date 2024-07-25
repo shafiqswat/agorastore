@@ -4,12 +4,15 @@ import React, { useContext } from "react";
 import Header from "../components/Header";
 import ProductCard from "../components/Cards/productCard";
 import CustomButton from "../components/customButton";
-import FeaturedCard from "../components/Cards/featuredCard";
+// import FeaturedCard from "../components/Cards/featuredCard";
 import Container from "../components/container";
-import { ProductContext } from "../components/Context/productContext";
+import { ProductContext } from "../components/Context/ProductContext";
+import { FeaturedContext } from "../components/Context/FeaturedContext";
+import FeaturedCard from "../components/Cards/featuredCard";
 
 function Home() {
   const { products } = useContext(ProductContext);
+  const { featuredData } = useContext(FeaturedContext);
   return (
     <>
       <Header />
@@ -29,12 +32,12 @@ function Home() {
           <CustomButton BtnText='More Collections' />
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-36'>
-          {/* {featuredItems.map((item, index) => (
+          {featuredData.map((item, index) => (
             <FeaturedCard
               key={index}
               item={item}
             />
-          ))} */}
+          ))}
         </div>
       </Container>
     </>

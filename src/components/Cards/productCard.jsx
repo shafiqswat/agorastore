@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     <>
       <Link
         to={`/product/${product.id}`}
-        onClick={window.scrollTo(0, 0)}>
+        onClick={window.scrollTo({ top: 0, behavior: "smooth" })}>
         <div className='group max-w-[300px] relative rounded-lg'>
           <div className='relative mb-3.5 cursor-pointer'>
             <img
