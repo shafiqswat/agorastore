@@ -2,9 +2,9 @@
 
 import React from "react";
 
-function Reviews({ rating, className, style }) {
+function Reviews({ rating, className, parentStyle }) {
   return (
-    <div className={`flex items-center gap-1 my-1.5 ${style}`}>
+    <div className={`flex items-center gap-1 my-1.5 ${parentStyle}`}>
       <div className='flex items-center'>
         {Array.from({ length: 5 }, (_, index) => {
           const isHalfStar = index < rating && rating < index + 1;

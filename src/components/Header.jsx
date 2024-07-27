@@ -10,6 +10,8 @@ const Header = () => {
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [notification, setNotification] = useState(false);
   const fileInputRef = useRef(null);
 
   const toggleMenu = () => {
@@ -145,27 +147,90 @@ const Header = () => {
       </div>
       <nav className='ml-auto md:col-span-1 lg:pe-10'>
         <ul className='hidden lg:flex items-center gap-3 justify-end'>
+          {isLogin && (
+            <>
+              <li>
+                <CustomButton
+                  BtnText='About'
+                  path='/about'
+                  className='bg-lightgray hover:bg-gray-100 text-black'
+                />
+              </li>
+              <li>
+                <CustomButton
+                  BtnText='Merchants'
+                  path='/merchants'
+                  className='bg-lightgray hover:bg-gray-100 text-black'
+                />
+              </li>
+              <CustomButton
+                className='bg-lightbrown text-white hover:bg-amber-700'
+                BtnText='Log in'
+                onClick={() => setIsModalOpen(true)}
+              />
+            </>
+          )}
           <li>
             <CustomButton
-              BtnText='About'
-              path='/about'
-              className='bg-lightgray hover:bg-gray-100 text-black'
+              BtnText='Lists'
+              className='bg-lightgray text-black hover:bg-gray-100'
             />
           </li>
           <li>
-            <Link to='/merchants'>
-              <CustomButton
-                BtnText='Merchants'
-                path='/merchants'
-                className='bg-lightgray hover:bg-gray-100 text-black'
-              />
+            <CustomButton
+              BtnText='Orders'
+              className='bg-lightgray text-black hover:bg-gray-100'
+            />
+          </li>
+          <li className='w-10 h-10 bg-lightgray flex justify-center items-center rounded-full hover:gray-200'>
+            <Link>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                className='lucide lucide-settings w-5 h-5'>
+                <path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'></path>
+                <circle
+                  cx='12'
+                  cy='12'
+                  r='3'></circle>
+              </svg>
             </Link>
           </li>
-          <CustomButton
-            className='bg-lightbrown text-white hover:bg-amber-700'
-            BtnText='Log in'
-            onClick={() => setIsModalOpen(true)}
-          />
+          <li className='w-10 h-10 bg-lightgray flex justify-center items-center rounded-full relative hover:bg-gray-100'>
+            {notification && (
+              <div className='absolute w-3 h-3 bg-red-500 rounded-full right-0 top-0'></div>
+            )}
+            <Link to='/cart'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                class='lucide lucide-shopping-cart w-5 h-5'>
+                <circle
+                  cx='8'
+                  cy='21'
+                  r='1'></circle>
+                <circle
+                  cx='19'
+                  cy='21'
+                  r='1'></circle>
+                <path d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'></path>
+              </svg>
+            </Link>
+          </li>
         </ul>
         <button
           className='items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 bg-neutral-100 text-neutral-900 h-10 aspect-square flex lg:hidden rounded-full'

@@ -9,9 +9,9 @@ import Reviews from "../components/reviews";
 import CustomButton from "../components/customButton";
 import SimilarProducts from "../components/assets/SimilarProudct";
 import ProductCard from "../components/Cards/productCard";
-import CompareTable from "../components/compareTable";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../components/Context/ProductContext";
+import CompareTable from "../components/Tables/compareTable";
 
 function ProductDetails() {
   const { productId } = useParams();

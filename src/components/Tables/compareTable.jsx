@@ -1,16 +1,10 @@
 /** @format */
 
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "../components/ui/table";
-import items from "./assets/compareProducts";
-import CompareCard from "./Cards/compareCard";
-import Reviews from "./reviews";
+import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
+import items from "../assets/compareProducts";
+import CompareCard from "../Cards/compareCard";
+import Reviews from "../reviews";
 
 const CompareTable = () => {
   return (
@@ -56,7 +50,7 @@ const CompareTable = () => {
               className='border-b border-gray-300 py-3'>
               <Reviews
                 rating={item.agoraScore}
-                style='flex items-center justify-center'
+                parentStyle='flex items-center justify-center'
               />
             </TableCell>
           ))}
@@ -69,7 +63,7 @@ const CompareTable = () => {
               className='py-4'>
               <Reviews
                 rating={item.customerRating}
-                style='flex items-center justify-center'
+                parentStyle='flex items-center justify-center'
               />
             </TableCell>
           ))}
