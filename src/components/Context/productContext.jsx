@@ -1,6 +1,7 @@
 /** @format */
 import { fetchProducts } from "../../api/index";
 import React, { createContext, useState, useEffect } from "react";
+import aproducts from "../assets/products";
 
 export const ProductContext = createContext();
 
@@ -11,18 +12,19 @@ export const ProductProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const productsData = await fetchProducts();
-        setProducts(productsData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getProducts();
+    // const getProducts = async () => {
+    //   try {
+    //     const productsData = await fetchProducts();
+    //     setProducts(productsData);
+    //   } catch (err) {
+    //     setError(err);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+    // getProducts();
+    const getProducts = aproducts;
+    setProducts(getProducts);
   }, []);
 
   return (

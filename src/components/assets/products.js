@@ -2,7 +2,7 @@
 
 /** @format */
 
-const products = [
+const aproducts = [
   {
     id: 1,
     name: "Mac Duggal",
@@ -23,7 +23,7 @@ const products = [
     id: 2,
     name: "Bella Goose Coffee",
     description: "Peru Norandino",
-    price: "$18.00",
+    price: "18.00",
     rating: "3.70",
     image: "/images/product2.webp",
     images: [
@@ -38,7 +38,7 @@ const products = [
     id: 3,
     name: "Modasp3",
     description: "Alana Floral Skater Skirt W...",
-    price: "$17.45",
+    price: "17.45",
     rating: "3.85",
     image: "/images/product3.webp",
     images: [
@@ -185,9 +185,9 @@ const products = [
     name: "Sugar Lips",
     description: `Kyrie Puff Sleeve Short Dress | White Multi
 Kyrie Puff Sleeve Short Dress |`,
-    price: "$97.00",
+    price: "97.00",
     rating: "4.20",
     image: "/images/product4.webp",
   },
 ];
-export default products;
+export default aproducts;

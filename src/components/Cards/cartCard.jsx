@@ -4,7 +4,7 @@ import React from "react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import CustomButton from "../customButton";
 
-const CartCard = ({ headingText, btnText }) => {
+const CartCard = ({ headingText, btnText, onClick }) => {
   return (
     <Card className='shadow-none mb-5'>
       <CardHeader className='border-b'>
@@ -12,6 +12,7 @@ const CartCard = ({ headingText, btnText }) => {
       </CardHeader>
       <CardContent className='px-8 pt-5 pb-10'>
         <CustomButton
+          onClick={onClick}
           BtnText={btnText}
           className='w-fit'
         />

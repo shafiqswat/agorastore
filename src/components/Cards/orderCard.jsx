@@ -1,17 +1,26 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import { Card } from "../ui/card";
 import CustomButton from "../customButton";
+import { CartContext } from "../Context/CartContext";
 
-function OrderCard() {
+const OrderCard = () => {
+  const { cart } = useContext(CartContext);
+
+  const calculateSubtotal = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.count, 0);
+  };
+
+  const subtotal = calculateSubtotal();
+
   return (
     <Card className='p-5'>
       <h2 className='text-2xl font-semibold'>Order summary</h2>
       <div className='pt-7'>
         <div className='flex justify-between'>
           <p>Subtotal:</p>
-          <p>$191.00</p>
+          <p>${subtotal.toFixed(2)}</p>
         </div>
         <div className='flex justify-between'>
           <p>Shipping:</p>
@@ -23,7 +32,7 @@ function OrderCard() {
         </div>
         <div className='flex justify-between'>
           <p className='font-bold'>Total:</p>
-          <p className='font-bold'>$191.00</p>
+          <p className='font-bold'>${subtotal.toFixed(2)}</p>
         </div>
       </div>
       <CustomButton
@@ -32,6 +41,6 @@ function OrderCard() {
       />
     </Card>
   );
-}
+};
 
 export default OrderCard;

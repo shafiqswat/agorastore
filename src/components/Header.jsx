@@ -1,17 +1,19 @@
 /** @format */
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
-import Modal from "./Modal";
+import Modal from "./Modals/SigninModal";
 import CustomButton from "./customButton";
+import { CartContext } from "./Context/CartContext";
 
 const Header = () => {
+  const { cart } = useContext(CartContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const [notification, setNotification] = useState(false);
+  // const [notification, setNotification] = useState(false);
   const fileInputRef = useRef(null);
 
   const toggleMenu = () => {
@@ -204,7 +206,7 @@ const Header = () => {
             </Link>
           </li>
           <li className='w-10 h-10 bg-lightgray flex justify-center items-center rounded-full relative hover:bg-gray-100'>
-            {notification && (
+            {cart.length > 0 && (
               <div className='absolute w-3 h-3 bg-red-500 rounded-full right-0 top-0'></div>
             )}
             <Link to='/cart'>
