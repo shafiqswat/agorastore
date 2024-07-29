@@ -1,8 +1,8 @@
 /** @format */
 
 import React from "react";
-import Reviews from "../reviews";
-import Hurt from "../Hurt";
+import Reviews from "../constant/reviews";
+import Hurt from "../constant/Hurt";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {

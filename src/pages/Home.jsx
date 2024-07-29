@@ -1,14 +1,13 @@
 /** @format */
 
 import React, { useContext } from "react";
-import Header from "../components/Header";
 import ProductCard from "../components/Cards/productCard";
-import CustomButton from "../components/customButton";
-// import FeaturedCard from "../components/Cards/featuredCard";
-import Container from "../components/container";
+import Container from "../components/layout/container";
 import { ProductContext } from "../components/Context/ProductContext";
 import { FeaturedContext } from "../components/Context/FeaturedContext";
 import FeaturedCard from "../components/Cards/featuredCard";
+import Header from "../components/layout/Header";
+import CustomButton from "../components/constant/customButton";
 
 function Home() {
   const { products } = useContext(ProductContext);

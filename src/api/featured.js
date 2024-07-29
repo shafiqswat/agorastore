@@ -1,7 +1,7 @@
 /** @format */
 
 export const fetchCollection = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/photos");
+  const response = await fetch("");
   if (!response.ok) {
     throw new Error("Filed to Collection Data");
   }

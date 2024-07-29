@@ -2,16 +2,16 @@
 
 import React, { useContext } from "react";
 import ProductSlider from "../components/Slider";
-import Header from "../components/Header";
 import { ProductDetailsCard } from "../components/Cards/ProductDetailsCard";
-import Container from "../components/container";
-import Reviews from "../components/reviews";
-import CustomButton from "../components/customButton";
+import Container from "../components/layout/container";
+import Reviews from "../components/constant/reviews";
 import SimilarProducts from "../components/assets/SimilarProudct";
 import ProductCard from "../components/Cards/productCard";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../components/Context/ProductContext";
 import CompareTable from "../components/Tables/compareTable";
+import Header from "../components/layout/Header";
+import CustomButton from "../components/constant/customButton";
 
 function ProductDetails() {
   const { productId } = useParams();

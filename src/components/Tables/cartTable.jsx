@@ -28,7 +28,6 @@ const CartTable = () => {
     const newCart = cart.filter((_, i) => i !== index);
     setCart(newCart);
   };
-
   return (
     <Card className='shadow-none mb-5'>
       <CardHeader className='border-b'>
@@ -100,6 +99,7 @@ const CartTable = () => {
                             x2='14'
                             y1='11'
                             y2='17'></line>
+                          <input type='' />
                         </svg>
                       </div>
                     )}

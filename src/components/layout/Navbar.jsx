@@ -1,7 +1,7 @@
 /** @format */
 import React from "react";
-import CustomButton from "./customButton";
 import { Link } from "react-router-dom";
+import CustomButton from "../constant/customButton";
 
 const Navbar = () => {
   return (

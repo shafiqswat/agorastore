@@ -1,7 +1,6 @@
 /** @format */
-// import { Copy } from "lucide-react";
 
-import CustomButton from "../customButton";
+import CustomButton from "../constant/customButton";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -13,8 +12,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
 
 const PaymentModal = ({ isOpen, onOpenChange }) => {
   return (

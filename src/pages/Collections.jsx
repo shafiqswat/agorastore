@@ -3,12 +3,12 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FeaturedContext } from "../components/Context/FeaturedContext";
-import Header from "../components/Header";
-import Container from "../components/container";
+import Container from "../components/layout/container";
 import { Card } from "../components/ui/card";
-import CustomButton from "../components/customButton";
 import ProductCard from "../components/Cards/productCard";
 import products from "../components/assets/products";
+import Header from "../components/layout/Header";
+import CustomButton from "../components/constant/customButton";
 
 function Collections() {
   const { featuredId } = useParams();

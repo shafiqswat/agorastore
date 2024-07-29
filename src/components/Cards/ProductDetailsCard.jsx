@@ -1,20 +1,14 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { Label } from "../ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
-import CustomButton from "../customButton";
-import Reviews from "../reviews";
-import Hurt from "../Hurt";
+import Reviews from "../constant/reviews";
+import Hurt from "../constant/Hurt";
 import { CartContext } from "../Context/CartContext";
 import { toast, Toaster } from "sonner";
 import { useNavigate } from "react-router-dom";
+import SelectComponent from "../FormItems/select";
+import LabelComponent from "../FormItems/label";
+import CustomButton from "../constant/customButton";
 
 export function ProductDetailsCard({ product }) {
   const { cart, setCart } = useContext(CartContext);
@@ -67,32 +61,26 @@ export function ProductDetailsCard({ product }) {
           </ul> */}
         </div>
         <div className='grid gap-2'>
-          <Label
-            htmlFor='color'
-            className='text-sm font-medium font-sans'>
-            Color
-          </Label>
-          <Select>
-            <SelectTrigger id='color'>
-              <SelectValue placeholder={product.color} />
-            </SelectTrigger>
-            <SelectContent position='popper'>
-              <SelectItem value={product.color}>{product.color}</SelectItem>
-            </SelectContent>
-          </Select>
-          <Label
-            htmlFor='size'
-            className='text-sm font-medium font-sans'>
-            Size
-          </Label>
-          <Select>
-            <SelectTrigger id='size'>
-              <SelectValue placeholder='Size' />
-            </SelectTrigger>
-            <SelectContent position='popper'>
-              <SelectItem value='Large'>Large</SelectItem>
-            </SelectContent>
-          </Select>
+          <LabelComponent text='Color' />
+          <SelectComponent
+            placeholder='Black'
+            options={[
+              {
+                value: "Black",
+                text: "Black",
+              },
+            ]}
+          />
+          <LabelComponent text='size' />
+          <SelectComponent
+            placeholder='Large'
+            options={[
+              {
+                value: "Large",
+                text: "Large",
+              },
+            ]}
+          />
           <p className='font-semibold text-black my-6'>${product.price}</p>
           <div className='w-full relative'>
             <CustomButton

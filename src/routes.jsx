@@ -3,7 +3,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -15,6 +14,7 @@ import PopularProducts from "./pages/PopularProducts";
 import StoreCrawler from "./pages/StoreCrawler";
 import ProductDetails from "./pages/productdetails";
 import Cart from "./pages/Cart";
+import About from "./pages/About";
 
 const AppRoutes = () => (
   <Routes>

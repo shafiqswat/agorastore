@@ -2,9 +2,9 @@
 
 import React, { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
-import Modal from "./Modals/SigninModal";
-import CustomButton from "./customButton";
-import { CartContext } from "./Context/CartContext";
+import Modal from "../Modals/SigninModal";
+import { CartContext } from "../Context/CartContext";
+import CustomButton from "../constant/customButton";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
@@ -13,7 +13,6 @@ const Header = () => {
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  // const [notification, setNotification] = useState(false);
   const fileInputRef = useRef(null);
 
   const toggleMenu = () => {
@@ -193,9 +192,9 @@ const Header = () => {
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 className='lucide lucide-settings w-5 h-5'>
                 <path d='M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z'></path>
                 <circle
@@ -217,10 +216,10 @@ const Header = () => {
                 viewBox='0 0 24 24'
                 fill='none'
                 stroke='currentColor'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                class='lucide lucide-shopping-cart w-5 h-5'>
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='lucide lucide-shopping-cart w-5 h-5'>
                 <circle
                   cx='8'
                   cy='21'
@@ -277,8 +276,8 @@ const Header = () => {
           data-state='open'
           className='min-h-screen pointer-events-auto fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-neutral-950 inset-y-0 right-0   w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm'
           tabindex='-1'>
-          <div class='flex flex-col space-y-2 text-center sm:text-left'>
-            <h2 class='text-lg font-semibold text-left'>Menu</h2>
+          <div className='flex flex-col space-y-2 text-center sm:text-left'>
+            <h2 className='text-lg font-semibold text-left'>Menu</h2>
           </div>
           <div
             data-orientation='horizontal'
@@ -292,7 +291,7 @@ const Header = () => {
             <div className='relative'>
               <ul
                 data-orientation='horizontal'
-                class='group flex-1 list-none justify-center flex flex-col items-start gap-4 space-x-0'
+                className='group flex-1 list-none justify-center flex flex-col items-start gap-4 space-x-0'
                 dir='ltr'>
                 <li>
                   <CustomButton
@@ -328,10 +327,10 @@ const Header = () => {
               viewBox='0 0 24 24'
               fill='none'
               stroke='currentColor'
-              stroke-width='2'
-              stroke-linecap='round'
-              stroke-linejoin='round'
-              class='lucide lucide-x h-4 w-4'>
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              className='lucide lucide-x h-4 w-4'>
               <path d='M18 6 6 18'></path>
               <path d='m6 6 12 12'></path>
             </svg>
