@@ -15,6 +15,7 @@ import StoreCrawler from "./pages/StoreCrawler";
 import ProductDetails from "./pages/productdetails";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
+import Lists from "./pages/Lists";
 
 const AppRoutes = () => (
   <Routes>
@@ -69,6 +70,10 @@ const AppRoutes = () => (
     <Route
       path='/cart'
       element={<Cart />}
+    />
+    <Route
+      path='/lists'
+      element={<Lists />}
     />
   </Routes>
 );

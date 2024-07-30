@@ -32,10 +32,10 @@ function Footer() {
   return (
     <footer className='max-w-7xl relative w-full md:px-8 px-6 mx-auto overflow-visible'>
       <div className='text-neutral-500 md:flex-row flex flex-col items-start gap-10 py-20 mt-20 text-sm border-t'>
-        {/* <FooterLogoSection /> */}
+        <FooterLogoSection />
         <div className='md:ml-auto flex gap-20'>
-          {/* <FooterNav links={navLinks1} /> */}
-          {/* <FooterNav links={navLinks2} /> */}
+          <FooterNav links={navLinks1} />
+          <FooterNav links={navLinks2} />
         </div>
       </div>
     </footer>

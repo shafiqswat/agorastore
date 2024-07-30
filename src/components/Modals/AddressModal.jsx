@@ -78,9 +78,10 @@ const AddressModal = ({ isOpen, onOpenChange }) => {
   return (
     <Dialog
       open={isOpen}
-      onOpenChange={onOpenChange}>
+      onOpenChange={onOpenChange}
+      className='h-screen'>
       <DialogTrigger asChild></DialogTrigger>
-      <DialogContent className='sm:max-w-md h-screen'>
+      <DialogContent className='sm:max-w-md'>
         <DialogHeader>
           <DialogTitle>Add a new shipping address</DialogTitle>
           <DialogDescription>

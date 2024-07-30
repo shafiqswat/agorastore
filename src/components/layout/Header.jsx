@@ -174,6 +174,7 @@ const Header = () => {
           <li>
             <CustomButton
               BtnText='Lists'
+              path='/lists'
               className='bg-lightgray text-black hover:bg-gray-100'
             />
           </li>
