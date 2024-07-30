@@ -17,6 +17,7 @@ const Lists = () => {
     setListName("");
     setOpenModal(false);
   };
+
   const removeItems = (index) => {
     const newList = items.filter((_, i) => i !== index);
     setItems(newList);
@@ -31,7 +32,7 @@ const Lists = () => {
           <ul className='grid grid-cols-4 mt-11 gap-5'>
             {items.map((item, index) => (
               <li
-                className='group col-span-1 group grid-flow-row'
+                className='group col-span-1 grid-flow-row'
                 key={index}>
                 <div className='border h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'></div>
                 <div className='flex justify-between mt-3'>
@@ -50,9 +51,7 @@ const Lists = () => {
                     </svg>
                   </div>
                 </div>
-                <li>
-                  <button onClick={removeItems}>remove</button>
-                </li>
+                <button onClick={() => removeItems(index)}>remove</button>
               </li>
             ))}
             <li>
