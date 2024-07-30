@@ -17,7 +17,7 @@ const Cart = () => {
       <Header />
       <Container>
         <div className='grid gap-5 grid-cols-12'>
-          <div className='col-span-9'>
+          <div className='lg:col-span-9 col-span-12'>
             <CartCard
               btnText='Add payment method'
               headingText='Payment method'
@@ -30,7 +30,7 @@ const Cart = () => {
             />
             <CartTable />
           </div>
-          <div className='col-span-3'>
+          <div className='lg:col-span-3 col-span-12'>
             <OrderCard />
           </div>
         </div>

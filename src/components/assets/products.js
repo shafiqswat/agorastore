@@ -66,7 +66,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product6.webp",
-    images: [],
+    images: ["/images/product6.webp"],
   },
   {
     id: 6,
@@ -75,6 +75,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product7.webp",
+    images: ["/images/product7.webp"],
   },
   {
     id: 7,
@@ -83,6 +84,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product8.webp",
+    images: ["/images/product8.webp"],
   },
   {
     id: 8,
@@ -91,6 +93,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product9.webp",
+    images: ["/images/product9.webp"],
   },
   {
     id: 9,
@@ -99,6 +102,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product10.webp",
+    images: ["/images/product10.webp"],
   },
   {
     id: 10,
@@ -107,6 +111,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product11.webp",
+    images: ["/images/product11.webp"],
   },
   {
     id: 11,
@@ -115,6 +120,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product12.webp",
+    images: ["/images/product12.webp"],
   },
   {
     id: 12,
@@ -123,6 +129,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product13.webp",
+    images: ["/images/product13.webp"],
   },
   {
     id: 13,
@@ -131,6 +138,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product14.webp",
+    images: ["/images/product14.webp"],
   },
   {
     id: 14,
@@ -139,6 +147,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product15.webp",
+    images: ["/images/product15.webp"],
   },
   {
     id: 15,
@@ -147,6 +156,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product16.webp",
+    images: ["/images/product16.webp"],
   },
   {
     id: 16,
@@ -155,6 +165,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product17.webp",
+    images: ["/images/product17.webp"],
   },
   {
     id: 17,
@@ -163,6 +174,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product18.webp",
+    images: ["/images/product17.webp"],
   },
   {
     id: 18,
@@ -171,6 +183,7 @@ const aproducts = [
     price: "698.00",
     rating: "3.20",
     image: "/images/product19.webp",
+    images: ["/images/product19.webp"],
   },
   {
     id: 19,
@@ -179,6 +192,7 @@ const aproducts = [
     price: "36.50",
     rating: "4.30",
     image: "/images/product20.webp",
+    images: ["/images/product20.webp"],
   },
   {
     id: 20,
@@ -188,6 +202,7 @@ Kyrie Puff Sleeve Short Dress |`,
     price: "97.00",
     rating: "4.20",
     image: "/images/product4.webp",
+    images: ["/images/product4.webp"],
   },
 ];
 export default aproducts;
