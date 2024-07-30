@@ -6,10 +6,13 @@ import Container from "../components/layout/container";
 import Header from "../components/layout/Header";
 import { Card } from "../components/ui/card";
 import { ListContext } from "../components/Context/ListContext";
+import { AddIcon } from "../components/constant/SvgIcons";
+import { Combobox } from "../components/Combobox";
 
 const Lists = () => {
   const { listName, setListName, items, setItems } = useContext(ListContext);
   const [openModal, setOpenModal] = useState(false);
+  const [openMap, setOpenMap] = useState({});
 
   const addItem = () => {
     if (listName.trim() === "") return;
@@ -18,9 +21,16 @@ const Lists = () => {
     setOpenModal(false);
   };
 
-  const removeItems = (index) => {
+  const removeItem = (index) => {
     const newList = items.filter((_, i) => i !== index);
     setItems(newList);
+  };
+
+  const handleOpenChange = (index) => {
+    setOpenMap((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
   return (
@@ -29,7 +39,7 @@ const Lists = () => {
       <Container>
         <Card className='p-5'>
           <h2 className='text-2xl font-semibold'>My Lists</h2>
-          <ul className='grid grid-cols-4 mt-11 gap-5'>
+          <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 gap-5'>
             {items.map((item, index) => (
               <li
                 className='group col-span-1 grid-flow-row'
@@ -39,39 +49,20 @@ const Lists = () => {
                   <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
                     {item.listName}
                   </p>
-                  <div className='bg-lightgray p-1 rounded-lg cursor-pointer'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 16 16'
-                      fill='currentColor'
-                      aria-hidden='true'
-                      data-slot='icon'
-                      className='w-4 h-4'>
-                      <path d='M2 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM6.5 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM12.5 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z'></path>
-                    </svg>
-                  </div>
+                  <Combobox
+                    open={!!openMap[index]}
+                    onOpenChange={() => handleOpenChange(index)}
+                    onDelete={removeItem}
+                    id={index}
+                  />
                 </div>
-                <button onClick={() => removeItems(index)}>remove</button>
               </li>
             ))}
             <li>
               <div
                 className='border rounded-xl h-[82px] col-span-1 p-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50'
                 onClick={() => setOpenModal(true)}>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth='1.5'
-                  stroke='currentColor'
-                  aria-hidden='true'
-                  data-slot='icon'
-                  className='w-8 h-8'>
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'></path>
-                </svg>
+                <AddIcon />
                 <h2 className='text-gray-700'>Create new list</h2>
               </div>
             </li>

@@ -58,7 +58,7 @@ function ProductSlider({ productImages = [] }) {
             <div>No images available</div>
           )}
         </CarouselContent>
-        <div className='flex gap-1 items-center mt-4'>
+        <div className='flex gap-1 items-center mt-4 box-border'>
           {productImages.length > 0 ? (
             productImages.map((img, index) => (
               <img

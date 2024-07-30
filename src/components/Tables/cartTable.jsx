@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { Table, TableBody, TableCell, TableRow } from "../ui/table";
 import { Card, CardHeader } from "../ui/card";
 import { CartContext } from "../Context/CartContext";
+import { MinusIcon, PlusIcon, TrashIcon } from "../constant/SvgIcons";
 
 const CartTable = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -28,6 +29,7 @@ const CartTable = () => {
     const newCart = cart.filter((_, i) => i !== index);
     setCart(newCart);
   };
+
   return (
     <Card className='shadow-none mb-5'>
       <CardHeader className='border-b'>
@@ -57,50 +59,13 @@ const CartTable = () => {
                       <div
                         className='w-10 h-10 border rounded-full flex justify-center items-center cursor-pointer bg-white hover:bg-gray-100'
                         onClick={() => handleDecrement(index)}>
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          stroke='currentColor'
-                          strokeWidth='2'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          className='lucide lucide-minus w-4 h-4'>
-                          <path d='M5 12h14'></path>
-                        </svg>
+                        <MinusIcon />
                       </div>
                     ) : (
                       <div
                         className='w-10 h-10 border rounded-full flex justify-center items-center cursor-pointer bg-white hover:bg-gray-100'
                         onClick={() => handleRemove(index)}>
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          stroke='currentColor'
-                          strokeWidth='2'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          className='lucide lucide-trash2 w-4 h-4'>
-                          <path d='M3 6h18'></path>
-                          <path d='M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6'></path>
-                          <path d='M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2'></path>
-                          <line
-                            x1='10'
-                            x2='10'
-                            y1='11'
-                            y2='17'></line>
-                          <line
-                            x1='14'
-                            x2='14'
-                            y1='11'
-                            y2='17'></line>
-                          <input type='' />
-                        </svg>
+                        <TrashIcon />
                       </div>
                     )}
                     <input
@@ -112,20 +77,7 @@ const CartTable = () => {
                     <div
                       className='w-10 h-10 border rounded-full flex justify-center items-center cursor-pointer bg-white hover:bg-gray-100'
                       onClick={() => handleIncrement(index)}>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='24'
-                        height='24'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        className='lucide lucide-plus w-4 h-4'>
-                        <path d='M5 12h14'></path>
-                        <path d='M12 5v14'></path>
-                      </svg>
+                      <PlusIcon />
                     </div>
                   </div>
                 </TableCell>
