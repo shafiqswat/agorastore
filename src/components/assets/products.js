@@ -3,22 +3,22 @@
 /** @format */
 
 const aproducts = [
-  {
-    id: 1,
-    name: "Mac Duggal",
-    description: "Buckled Maxi Croco Black",
-    price: "698.00",
-    rating: "3.20",
-    image: "/images/product1.webp",
-    images: [
-      "/images/handbag1.webp",
-      "/images/handbag2.webp",
-      "/images/handbag3.webp",
-      "/images/handbag4.webp",
-      "/images/handbag5.webp",
-      "/images/handbag6.webp",
-    ],
-  },
+  // {
+  //   id: 1,
+  //   name: "Mac Duggal",
+  //   description: "Buckled Maxi Croco Black",
+  //   price: "698.00",
+  //   rating: "3.20",
+  //   image: "/images/product1.webp",
+  //   images: [
+  //     "/images/handbag1.webp",
+  //     "/images/handbag2.webp",
+  //     "/images/handbag3.webp",
+  //     "/images/handbag4.webp",
+  //     "/images/handbag5.webp",
+  //     "/images/handbag6.webp",
+  //   ],
+  // },
   {
     id: 2,
     name: "Bella Goose Coffee",
