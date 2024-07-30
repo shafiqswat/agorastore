@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/agorastore/static/css/main.ec2fd4e4.css",
+    "main.js": "/agorastore/static/js/main.60269645.js",
+    "static/js/453.9fe1d45d.chunk.js": "/agorastore/static/js/453.9fe1d45d.chunk.js",
+    "index.html": "/agorastore/index.html",
+    "main.ec2fd4e4.css.map": "/agorastore/static/css/main.ec2fd4e4.css.map",
+    "main.60269645.js.map": "/agorastore/static/js/main.60269645.js.map",
+    "453.9fe1d45d.chunk.js.map": "/agorastore/static/js/453.9fe1d45d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec2fd4e4.css",
+    "static/js/main.60269645.js"
+  ]
+}
