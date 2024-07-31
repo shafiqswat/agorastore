@@ -6,15 +6,19 @@ import Hurt from "../constant/Hurt";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <Link
-        to={`/product/${product.id}`}
-        onClick={window.scrollTo({ top: 0, behavior: "smooth" })}>
+        to={`/product/${product._id}`}
+        onClick={handleLinkClick}>
         <div className='group max-w-[300px] relative rounded-lg'>
           <div className='relative mb-3.5 cursor-pointer'>
             <img
-              src={product.image}
+              src={product.imageUrl}
               alt={product.name}
               className='aspect-[5/6] border-neutral-200 object-cover w-full border rounded-lg shadow-sm  bg-transparent'
             />
@@ -23,6 +27,7 @@ const ProductCard = ({ product }) => {
           <div className='flex justify-between'>
             <p className=' font-semibold font-sans text-sm hover:underline'>
               <a href='#'>{product.name}</a>
+              {/* <h2>{product._id}</h2> */}
             </p>
             <Hurt />
           </div>

@@ -24,7 +24,7 @@ export function ProductDetailsCard({ product }) {
       },
     });
     const existingProductIndex = cart.findIndex(
-      (item) => item.id === product.id
+      (item) => item.id === product._id
     );
 
     if (existingProductIndex !== -1) {

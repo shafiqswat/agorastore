@@ -46,7 +46,7 @@ const CartTable = () => {
                 className='border-b'>
                 <TableCell className='px-8 py-5'>
                   <img
-                    src={item.image}
+                    src={item.imageUrl}
                     alt={item.para}
                     className='max-w-24 max-h-24 rounded-lg'
                   />

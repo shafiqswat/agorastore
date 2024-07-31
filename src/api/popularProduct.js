@@ -1,7 +1,7 @@
 /** @format */
 
-export const fetchProducts = async () => {
-  const response = await fetch("/api/v1/products");
+export const fetchPopularProducts = async () => {
+  const response = await fetch("/api/v1/products/popular");
   if (!response.ok) {
     throw new Error("Failed to fetch products");
   }

@@ -2,4 +2,11 @@
 
 import { fetchProducts } from "./product";
 import { fetchCollection } from "./featured";
-export { fetchProducts, fetchCollection };
+import { fetchSimilarProducts } from "./similarProdcts";
+import { fetchPopularProducts } from "./popularProduct";
+export {
+  fetchProducts,
+  fetchCollection,
+  fetchSimilarProducts,
+  fetchPopularProducts,
+};
