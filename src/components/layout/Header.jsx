@@ -140,7 +140,7 @@ const Header = () => {
               />
             </li>
             <li className='w-10 h-10 bg-lightgray flex justify-center items-center rounded-full hover:gray-200'>
-              <Link>
+              <Link to='/settings'>
                 <SettingsIcon />
               </Link>
             </li>

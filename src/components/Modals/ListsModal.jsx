@@ -15,7 +15,16 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 
-const ListsModal = ({ isOpen, onOpenChange, onChange, value, onSave }) => {
+const ListsModal = ({
+  isOpen,
+  onOpenChange,
+  onChange,
+  value,
+  onSave,
+  ModalHeading = "Create a new list",
+  ModalDetails = "Fill in the details to create a new list.",
+  BtnText = "Create list",
+}) => {
   return (
     <Dialog
       open={isOpen}
@@ -23,10 +32,8 @@ const ListsModal = ({ isOpen, onOpenChange, onChange, value, onSave }) => {
       <DialogTrigger asChild></DialogTrigger>
       <DialogContent className='sm:max-w-lg'>
         <DialogHeader>
-          <DialogTitle>Create a new list</DialogTitle>
-          <DialogDescription>
-            Fill in the details to create a new list.
-          </DialogDescription>
+          <DialogTitle>{ModalHeading}</DialogTitle>
+          <DialogDescription>{ModalDetails}</DialogDescription>
         </DialogHeader>
         <div>
           <LabelComponent text='List name' />
@@ -39,7 +46,7 @@ const ListsModal = ({ isOpen, onOpenChange, onChange, value, onSave }) => {
         </div>
         <DialogFooter className='sm:justify-end'>
           <CustomButton
-            BtnText='Create list'
+            BtnText={BtnText}
             onClick={onSave}
           />
           <DialogClose asChild>

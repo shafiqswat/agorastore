@@ -16,6 +16,8 @@ import ProductDetails from "./pages/productdetails";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Lists from "./pages/Lists";
+import Settings from "./pages/Settings";
+import Share from "./components/Share";
 
 const AppRoutes = () => (
   <Routes>
@@ -74,6 +76,14 @@ const AppRoutes = () => (
     <Route
       path='/lists'
       element={<Lists />}
+    />
+    <Route
+      path='/lists/:shareId'
+      element={<Share />}
+    />
+    <Route
+      path='/settings'
+      element={<Settings />}
     />
   </Routes>
 );

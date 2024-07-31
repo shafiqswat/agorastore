@@ -1,5 +1,4 @@
 /** @format */
-
 import React, { useContext, useState } from "react";
 import ListsModal from "../components/Modals/ListsModal";
 import Container from "../components/layout/container";
@@ -8,6 +7,9 @@ import { Card } from "../components/ui/card";
 import { ListContext } from "../components/Context/ListContext";
 import { AddIcon } from "../components/constant/SvgIcons";
 import { Combobox } from "../components/Combobox";
+import { Link } from "react-router-dom";
+
+const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
 
 const Lists = () => {
   const { listName, setListName, items, setItems } = useContext(ListContext);
@@ -16,7 +18,8 @@ const Lists = () => {
 
   const addItem = () => {
     if (listName.trim() === "") return;
-    setItems([...items, { listName }]);
+    const newItem = { id: generateId(), listName };
+    setItems([...items, newItem]);
     setListName("");
     setOpenModal(false);
   };
@@ -24,6 +27,13 @@ const Lists = () => {
   const removeItem = (index) => {
     const newList = items.filter((_, i) => i !== index);
     setItems(newList);
+  };
+
+  const renameItem = (id, newName) => {
+    const updatedItems = items.map((item) =>
+      item.id === id ? { ...item, listName: newName } : item
+    );
+    setItems(updatedItems);
   };
 
   const handleOpenChange = (index) => {
@@ -43,17 +53,23 @@ const Lists = () => {
             {items.map((item, index) => (
               <li
                 className='group col-span-1 grid-flow-row'
-                key={index}>
-                <div className='border h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'></div>
+                key={item.id}>
+                <Link to={`/lists/${item.id}`}>
+                  <div className='border h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'></div>
+                </Link>
                 <div className='flex justify-between mt-3'>
-                  <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
-                    {item.listName}
-                  </p>
+                  <Link to={`/lists/${item.id}`}>
+                    <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
+                      {item.listName}
+                    </p>
+                  </Link>
                   <Combobox
                     open={!!openMap[index]}
                     onOpenChange={() => handleOpenChange(index)}
-                    onDelete={removeItem}
-                    id={index}
+                    onDelete={() => removeItem(index)}
+                    onRename={renameItem}
+                    id={item.id}
+                    listName={item.listName}
                   />
                 </div>
               </li>
