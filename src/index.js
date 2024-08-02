@@ -1,5 +1,6 @@
 /** @format */
 
+// index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -11,8 +12,8 @@ import { FeaturedProvider } from "./components/Context/FeaturedContext";
 import { CartProvider } from "./components/Context/CartContext";
 import { ListProvider } from "./components/Context/ListContext";
 import { SelectedImagesProvider } from "./components/Context/SelectedImagesContext";
-import SimilarProductsProvider from "./components/Context/SimilarProductsContext";
 import { PopularProductProvider } from "./components/Context/PopularProductContext";
+import SimilarProductsProvider from "./components/Context/SimilarProductsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,17 +21,17 @@ root.render(
     <SelectedImagesProvider>
       <ListProvider>
         <PopularProductProvider>
-          <SimilarProductsProvider>
-            <CartProvider>
-              <FeaturedProvider>
-                <ProductProvider>
+          <CartProvider>
+            <FeaturedProvider>
+              <ProductProvider>
+                <SimilarProductsProvider>
                   <BrowserRouter>
                     <App />
                   </BrowserRouter>
-                </ProductProvider>
-              </FeaturedProvider>
-            </CartProvider>
-          </SimilarProductsProvider>
+                </SimilarProductsProvider>
+              </ProductProvider>
+            </FeaturedProvider>
+          </CartProvider>
         </PopularProductProvider>
       </ListProvider>
     </SelectedImagesProvider>

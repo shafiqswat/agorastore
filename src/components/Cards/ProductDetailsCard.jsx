@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useContext } from "react";
-import Reviews from "../constant/reviews";
+import Reviews from "../constant/ProductsReview";
 import Hurt from "../constant/Hurt";
 import { CartContext } from "../Context/CartContext";
 import { toast, Toaster } from "sonner";

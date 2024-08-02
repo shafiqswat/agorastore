@@ -4,7 +4,7 @@ import React from "react";
 import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
 import items from "../assets/compareProducts";
 import CompareCard from "../Cards/compareCard";
-import Reviews from "../constant/reviews";
+import Reviews from "../constant/ProductsReview";
 
 const CompareTable = () => {
   return (

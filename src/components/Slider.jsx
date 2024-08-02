@@ -45,11 +45,13 @@ function ProductSlider({ productImages = [] }) {
               <CarouselItem key={index}>
                 <div className='p-1'>
                   <Card>
-                    <img
-                      src={image}
-                      alt={`Gallery Image ${index + 1}`}
-                      className='mx-auto bg-transparent'
-                    />
+                    <div className='w-full h-[600px] flex justify-center items-center overflow-hidden'>
+                      <img
+                        src={image}
+                        alt={`Gallery Image ${index + 1}`}
+                        className='w-full h-full object-contain'
+                      />
+                    </div>
                   </Card>
                 </div>
               </CarouselItem>

@@ -25,6 +25,7 @@ const Header = () => {
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const fileInputRef = useRef(null);
 
   const toggleMenu = () => {
@@ -42,6 +43,10 @@ const Header = () => {
 
   const handleFileUploadClick = () => {
     fileInputRef.current.click();
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchValue("");
   };
   return (
     <header className='max-w-full mx-auto bg-white/20 backdrop-blur-md grid items-center grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 p-5 md:p-10 py-3 md:py-6 fixed top-0 inset-x-0 z-50'>
@@ -69,17 +74,16 @@ const Header = () => {
             <ChatIcon />
           </div>
         </button>
-        <form
-          method='get'
-          action='/search'
-          className='md:col-span-3 border-neutral-300 focus-within:border-neutral-500 transition-colors group flex items-center flex-grow gap-2 p-1 pr-1.5 bg-white border rounded-full'>
+        <form className='md:col-span-3 border-neutral-300 focus-within:border-neutral-500 transition-colors group flex items-center flex-grow gap-2 p-1 pr-1.5 bg-white border rounded-full'>
           <input
             type='text'
             name='q'
+            value={searchValue}
             className='focus:outline-none focus:ring-0 w-full px-4 bg-transparent border-none rounded-full'
             placeholder={placeholderText}
             autoComplete='off'
             required=''
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <button
             className='items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 h-10 place-items-center aspect-square group-focus-within:bg-neutral-100 group-focus-within:hover:bg-neutral-200 hover:bg-neutral-200 grid p-0 bg-white rounded-full'
@@ -94,8 +98,9 @@ const Header = () => {
             ref={fileInputRef}
           />
           <button
-            className='items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 h-10 place-items-center aspect-square group-focus-within:bg-neutral-100 group-focus-within:hover:bg-neutral-200 hover:bg-neutral-200 grid p-0 bg-white rounded-full'
-            type='submit'>
+            onClick={handleSubmit}
+            type='button'
+            className='items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 h-10 place-items-center aspect-square group-focus-within:bg-neutral-100 group-focus-within:hover:bg-neutral-200 hover:bg-neutral-200 grid p-0 bg-white rounded-full'>
             <ArrowRightIcon />
           </button>
         </form>

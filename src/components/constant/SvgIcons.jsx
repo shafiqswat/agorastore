@@ -368,3 +368,20 @@ export const SelectedIcons = () => {
       clip-rule='evenodd'></path>
   </svg>;
 };
+export const StarIcon = ({ className, filled, onClick, index }) => {
+  return (
+    <svg
+      onClick={() => onClick(index + 1)}
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 20 20'
+      fill='currentColor'
+      className={`w-6 h-6 ${filled ? "text-yellow-500" : "text-neutral-300"} ${className} cursor-pointer`}
+      aria-hidden='true'>
+      <path
+        fillRule='evenodd'
+        d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674 4.914.015c.969.003 1.372 1.241.588 1.81l-3.936 2.85 1.518 4.674c.3.921-.755 1.688-1.539 1.104L10 14.347l-3.914 2.707c-.784.584-1.839-.183-1.539-1.104l1.518-4.674-3.936-2.85c-.784-.57-.381-1.807.588-1.81l4.914-.015L9.049 2.927z'
+        clipRule='evenodd'
+      />
+    </svg>
+  );
+};

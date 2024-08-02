@@ -1,7 +1,7 @@
 /** @format */
-import { fetchProducts } from "../../api/index";
+
+import { fetchProducts } from "../../api/product";
 import React, { createContext, useState, useEffect } from "react";
-import aproducts from "../assets/products";
 
 export const ProductContext = createContext();
 

@@ -15,7 +15,7 @@ const SimilarProductsProvider = ({ children, productId }) => {
       try {
         const productsData = await fetchSimilarProducts(productId);
         setSimilarProducts(productsData);
-        console.log(productsData);
+        console.log(productsData, "Fetched Similar Products Successfully");
       } catch (err) {
         setError(err);
       } finally {
