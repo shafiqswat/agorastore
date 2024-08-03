@@ -2,14 +2,17 @@
 
 import React from "react";
 import { Card, CardContent } from "../ui/card";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FeaturedCard({ item }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/collections/${item.id}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <>
-      <Link
-        to={`/collections/${item.id}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+      <div onClick={handleClick}>
         <div className='group'>
           <Card className='overflow-hidden cursor-pointer'>
             <CardContent className='p-0'>
@@ -41,7 +44,7 @@ function FeaturedCard({ item }) {
             {item.paraText}
           </p>
         </div>
-      </Link>
+      </div>
     </>
   );
 }
