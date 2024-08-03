@@ -3,17 +3,17 @@
 import React from "react";
 import Reviews from "../constant/ProductsReview";
 import Hurt from "../constant/Hurt";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
   const handleLinkClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(`/product/${product._id}`);
   };
 
   return (
-    <Link
-      to={`/product/${product._id}`}
-      onClick={handleLinkClick}>
+    <div onClick={handleLinkClick}>
       <div className='group max-w-[300px] relative rounded-lg'>
         <div className='relative mb-3.5 cursor-pointer'>
           <img
@@ -43,7 +43,7 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
