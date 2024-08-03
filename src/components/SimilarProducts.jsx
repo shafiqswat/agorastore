@@ -10,14 +10,22 @@ const SimilarProduct = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  if (!Array.isArray(similarProducts)) {
+    return <p>Unexpected error: similarProducts is not an array.</p>;
+  }
+
   return (
     <>
-      {similarProducts.map((similarProduct, i) => (
-        <ProductCard
-          key={i}
-          product={similarProduct}
-        />
-      ))}
+      {similarProducts.length > 0 ? (
+        similarProducts.map((similarProduct, i) => (
+          <ProductCard
+            key={i}
+            product={similarProduct}
+          />
+        ))
+      ) : (
+        <p>No similar products found.</p>
+      )}
     </>
   );
 };

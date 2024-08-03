@@ -1,10 +1,19 @@
 /** @format */
+/** @format */
 
 export const fetchSimilarProducts = async (productId) => {
-  const response = await fetch(`/api/v1/products/${productId}/similar`);
+  const response = await fetch(
+    `https://api.allorigins.win/get?url=http://68.183.112.7/api/v1/products/${productId}/similar`
+  );
   if (!response.ok) {
-    throw new Error("Failed to fetch similar products");
+    throw new Error("Failed to fetch products");
   }
-  const data = await response.json();
-  return data;
+  const { contents } = await response.json();
+  const products = JSON.parse(contents);
+
+  if (!Array.isArray(products)) {
+    throw new Error("Fetched data is not an array");
+  }
+
+  return products;
 };

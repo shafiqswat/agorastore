@@ -1,7 +1,8 @@
 /** @format */
+/** @format */
 
-import { fetchSimilarProducts } from "../../../src/api/index";
 import React, { createContext, useState, useEffect } from "react";
+import { fetchSimilarProducts } from "../../../src/api/index";
 
 export const SimilarProductContext = createContext();
 
@@ -14,10 +15,15 @@ const SimilarProductsProvider = ({ children, productId }) => {
     const getProducts = async () => {
       try {
         const productsData = await fetchSimilarProducts(productId);
-        setSimilarProducts(productsData);
+        if (Array.isArray(productsData)) {
+          setSimilarProducts(productsData);
+        } else {
+          throw new Error("Fetched data is not an array");
+        }
         console.log(productsData, "Fetched Similar Products Successfully");
       } catch (err) {
         setError(err);
+        setSimilarProducts([]);
       } finally {
         setLoading(false);
       }
