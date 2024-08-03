@@ -15,11 +15,6 @@ function Collections() {
   const NumericId = Number(featuredId);
   const { featuredData, loading, error } = useContext(FeaturedContext);
 
-  console.log("featuredId:", featuredId);
-  console.log("NumericId:", NumericId);
-  console.log("featuredData:", featuredData);
-  console.log("products:", products);
-
   if (loading) {
     return <div>Loading...</div>;
   }

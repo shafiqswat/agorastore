@@ -2,14 +2,16 @@
 
 import React, { useContext } from "react";
 import { Card } from "../ui/card";
-import { CartContext } from "../Context/CartContext";
 import CustomButton from "../constant/customButton";
+import { CartContext } from "../Context/CartContext";
 
 const OrderCard = () => {
   const { cart } = useContext(CartContext);
 
   const calculateSubtotal = () => {
-    return cart.reduce((acc, item) => acc + item.price * item.count, 0);
+    return Array.isArray(cart)
+      ? cart.reduce((acc, item) => acc + item.price * item.count, 0)
+      : 0;
   };
 
   const subtotal = calculateSubtotal();
