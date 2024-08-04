@@ -18,6 +18,7 @@ import About from "./pages/About";
 import Lists from "./pages/Lists";
 import Settings from "./pages/Settings";
 import Share from "./components/Share";
+import Orders from "./pages/Orders";
 
 const AppRoutes = () => (
   <Routes>
@@ -58,7 +59,7 @@ const AppRoutes = () => (
       element={<Collections />}
     />
     <Route
-      path='/popular-products'
+      path='/popularproducts'
       element={<PopularProducts />}
     />
     <Route
@@ -84,6 +85,10 @@ const AppRoutes = () => (
     <Route
       path='/settings'
       element={<Settings />}
+    />
+    <Route
+      path='/orders'
+      element={<Orders />}
     />
   </Routes>
 );

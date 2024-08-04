@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import AppRoutes from "./routes";
-import Footer from "./components/Footer/Footer ";
+import Footer from "./components/layout/Footer";
 
 const App = () => {
   return (

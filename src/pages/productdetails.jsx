@@ -6,7 +6,6 @@ import ProductSlider from "../components/Slider";
 import { ProductDetailsCard } from "../components/Cards/ProductDetailsCard";
 import Container from "../components/layout/container";
 import Reviews from "../components/constant/ProductsReview";
-import { ProductContext } from "../components/Context/ProductContext";
 import CompareTable from "../components/Tables/compareTable";
 import Header from "../components/layout/Header";
 import CustomButton from "../components/constant/customButton";
@@ -14,6 +13,7 @@ import CustomerReviews from "../components/constant/customerReviews";
 import ReviewsModal from "../components/Modals/ReviewModal";
 import SimilarProduct from "../components/SimilarProducts";
 import SimilarProductsProvider from "../components/Context/SimilarProductsContext";
+import { ProductContext } from "../components/Context/ProductContext";
 
 const ProductDetails = () => {
   const { productId } = useParams();
