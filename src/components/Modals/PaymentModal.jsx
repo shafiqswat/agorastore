@@ -1,6 +1,7 @@
 /** @format */
 
 import CustomButton from "../constant/customButton";
+import CreditCardInput from "../FormItems/CreditCardInput";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -26,6 +27,7 @@ const PaymentModal = ({ isOpen, onOpenChange }) => {
             Fill in the details to add a new payment method
           </DialogDescription>
         </DialogHeader>
+        <CreditCardInput />
         <DialogFooter className='sm:justify-end'>
           <CustomButton BtnText='Add payment method' />
           <DialogClose asChild>

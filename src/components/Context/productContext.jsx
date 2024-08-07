@@ -10,18 +10,19 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const getProducts = async () => {
+    try {
+      const productsData = await fetchProducts();
+      setProducts(productsData);
+      console.log(productsData);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const productsData = await fetchProducts();
-        setProducts(productsData);
-        console.log(productsData);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
     getProducts();
   }, []);
 

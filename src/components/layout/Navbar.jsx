@@ -12,7 +12,7 @@ const Navbar = () => {
           className='hover:opacity-[0.8]'>
           <img
             src='/images/logo1.png'
-            alt='Logo Image'
+            alt='Logo'
             className='max-w-36 h-auto'
           />
         </Link>

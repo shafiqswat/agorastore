@@ -19,6 +19,7 @@ import Lists from "./pages/Lists";
 import Settings from "./pages/Settings";
 import Share from "./components/Share";
 import Orders from "./pages/Orders";
+import Search from "./pages/Search";
 
 const AppRoutes = () => (
   <Routes>
@@ -89,6 +90,10 @@ const AppRoutes = () => (
     <Route
       path='/orders'
       element={<Orders />}
+    />
+    <Route
+      path='/search'
+      element={<Search />}
     />
   </Routes>
 );

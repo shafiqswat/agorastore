@@ -3,11 +3,11 @@
 import React, { useContext } from "react";
 import ProductCard from "../components/Cards/productCard";
 import Container from "../components/layout/container";
-import { ProductContext } from "../components/Context/ProductContext";
 import { FeaturedContext } from "../components/Context/FeaturedContext";
 import FeaturedCard from "../components/Cards/featuredCard";
 import Header from "../components/layout/Header";
 import CustomButton from "../components/constant/customButton";
+import { ProductContext } from "../components/Context/ProductContext";
 
 function Home() {
   const { products } = useContext(ProductContext);

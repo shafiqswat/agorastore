@@ -26,19 +26,18 @@ function ProductSlider({ productImages = [] }) {
       prev === productImages.length - 1 ? 0 : prev + 1
     );
   };
-
   useEffect(() => {
     if (carouselApi) {
       carouselApi.scrollTo(currentImage);
     }
-  }, [currentImage]);
+  }, [carouselApi, currentImage]);
 
   return (
     <div className='relative pb-20'>
       <Carousel
         setApi={setCarouselApi}
         opts={{ loop: true }}
-        className='lg:sticky mx-auto self-start lg:ml-20 m-0 max-w-[575px]'>
+        className='lg:sticky mx-auto self-start lg:ml-20 m-0 max-w-[575px] lessMedium:min-w-full'>
         <CarouselContent>
           {productImages.length > 0 ? (
             productImages.map((image, index) => (
@@ -48,7 +47,7 @@ function ProductSlider({ productImages = [] }) {
                     <div className='w-full h-[600px] flex justify-center items-center overflow-hidden'>
                       <img
                         src={image}
-                        alt={`Gallery Image ${index + 1}`}
+                        alt={`Gallery ${index + 1}`}
                         className='w-full h-full object-contain'
                       />
                     </div>
@@ -66,7 +65,7 @@ function ProductSlider({ productImages = [] }) {
               <img
                 key={index}
                 src={img}
-                alt={`Product Image ${index + 1}`}
+                alt={`Product ${index + 1}`}
                 width={100}
                 height={100}
                 className={`aspect-square cursor-pointer w-10 h-10 md:w-14 md:h-14 object-cover rounded-md border-2 transition-colors ${

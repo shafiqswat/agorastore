@@ -1,6 +1,4 @@
 /** @format */
-
-import { fetchCollection } from "../../../src/api/index";
 import React, { createContext, useEffect, useState } from "react";
 import items from "../assets/Featured";
 
@@ -11,23 +9,24 @@ export const FeaturedProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // const getCollectionData = async () => {
+  //   try {
+  //     const CollectionData = await fetchCollection();
+  //     setFeaturedData(CollectionData);
+  //   } catch (error) {
+  //     setError(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   useEffect(() => {
-    // const getCollectionData = async () => {
-    //   try {
-    //     const CollectionData = await fetchCollection();
-    //     setFeaturedData(CollectionData);
-    //   } catch (error) {
-    //     setError(error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
     // getCollectionData();
     setFeaturedData(items);
   }, []);
 
   return (
-    <FeaturedContext.Provider value={{ featuredData, loading, error }}>
+    <FeaturedContext.Provider
+      value={{ featuredData, loading, error, setError, setLoading }}>
       {children}
     </FeaturedContext.Provider>
   );

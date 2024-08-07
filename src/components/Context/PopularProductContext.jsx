@@ -10,18 +10,17 @@ const PopularProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const loadPopularProducts = async () => {
+    try {
+      const data = await fetchPopularProducts();
+      setPopularProducts(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const loadPopularProducts = async () => {
-      try {
-        const data = await fetchPopularProducts();
-        setPopularProducts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadPopularProducts();
   }, []);
 

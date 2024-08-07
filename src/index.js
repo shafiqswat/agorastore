@@ -14,6 +14,7 @@ import { ListProvider } from "./components/Context/ListContext";
 import { SelectedImagesProvider } from "./components/Context/SelectedImagesContext";
 import { PopularProductProvider } from "./components/Context/PopularProductContext";
 import SimilarProductsProvider from "./components/Context/SimilarProductsContext";
+import SearchContextProvider from "./components/Context/SearchContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,9 +26,11 @@ root.render(
             <FeaturedProvider>
               <ProductProvider>
                 <SimilarProductsProvider>
-                  <BrowserRouter>
-                    <App />
-                  </BrowserRouter>
+                  <SearchContextProvider>
+                    <BrowserRouter>
+                      <App />
+                    </BrowserRouter>
+                  </SearchContextProvider>
                 </SimilarProductsProvider>
               </ProductProvider>
             </FeaturedProvider>

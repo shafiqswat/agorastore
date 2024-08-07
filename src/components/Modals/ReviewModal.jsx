@@ -30,7 +30,7 @@ const ReviewsModal = ({ isOpen, onOpenChange }) => {
               <UserReview />
             </DialogDescription>
           </DialogHeader>
-          <Textarea placeholder='Type your message here.' />
+          <Textarea placeholder='Type your review here.' />
           <DialogFooter className='sm:justify-end'>
             <CustomButton BtnText='Submit review' />
             <DialogClose asChild>

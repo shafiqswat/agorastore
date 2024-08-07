@@ -35,7 +35,7 @@ const ProductDetails = () => {
           <ProductSlider productImages={product.images || []} />
           <ProductDetailsCard product={product} />
         </div>
-        <div className='flex flex-col lg:flex-row justify-between mt-20'>
+        <div className='flex flex-col lg:flex-row items-center justify-between mt-20 px-20 large:px-0'>
           <div className='flex mb-4 lg:mb-0'>
             <p className='text-lg font-light mr-2 cursor-pointer'>
               {reviewsCount} customer reviews
@@ -47,9 +47,12 @@ const ProductDetails = () => {
             onClick={() => setShowModal(true)}
           />
         </div>
-        <div className='grid grid-cols-2 gap-6'>
-          <CustomerReviews />
-          <CustomerReviews />
+        <div className='grid sm:grid-cols-2 grid-cols-1 gap-6 px-20 large:px-0'>
+          <CustomerReviews
+            reviewText='Great socks These socks fit well, are comfortable and the height is great. I love the rainbow unicorns and they support a fabulous cause.Lori W.'
+            userName='shafiq'
+          />
+          <CustomerReviews reviewText="New Favorite Socks! These are my new favorite socks. They're very good quality, they don't slip down through the day, and they're soft without feeling too thin or delicate. Definitely get yourself a pair or 12!Elizabeth" />
         </div>
         <section>
           <h2 className='text-2xl font-semibold text-center my-10'>
@@ -66,10 +69,14 @@ const ProductDetails = () => {
           <CompareTable />
         </section>
       </Container>
-      <div className='w-'>
+      <div className='hidden lessMedium:grid  grid-cols-2 gap-5 w-full p-5 fixed bottom-0 bg-white z-20 shadow-md w-100'>
         <CustomButton
           BtnText='Add to cart'
-          className='fixed bottom-0 w-[95%] mx-auto left-4 block md:hidden sm:right-6 bg-lightbrown hover:bg-amber-700'
+          className='bg-lightbrown hover:bg-amber-700 p-5'
+        />
+        <CustomButton
+          BtnText='Visit store'
+          className='p-5'
         />
       </div>
       <ReviewsModal

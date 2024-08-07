@@ -11,23 +11,23 @@ const SimilarProductsProvider = ({ children, productId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const productsData = await fetchSimilarProducts(productId);
-        if (Array.isArray(productsData)) {
-          setSimilarProducts(productsData);
-        } else {
-          throw new Error("Fetched data is not an array");
-        }
-        console.log(productsData, "Fetched Similar Products Successfully");
-      } catch (err) {
-        setError(err);
-        setSimilarProducts([]);
-      } finally {
-        setLoading(false);
+  const getProducts = async () => {
+    try {
+      const productsData = await fetchSimilarProducts(productId);
+      if (Array.isArray(productsData)) {
+        setSimilarProducts(productsData);
+      } else {
+        throw new Error("Fetched data is not an array");
       }
-    };
+      console.log(productsData, "Fetched Similar Products Successfully");
+    } catch (err) {
+      setError(err);
+      setSimilarProducts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     if (productId) {
       getProducts();
     }

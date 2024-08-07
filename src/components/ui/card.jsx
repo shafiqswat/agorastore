@@ -25,12 +25,13 @@ const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
 ));
 CardHeader.displayName = "CardHeader";
 
-const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
+const CardTitle = React.forwardRef(({ className, children, ...props }, ref) => (
   <h3
     ref={ref}
     className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
+    {...props}>
+    {children || "Default Title"} {/* Ensure there is always content */}
+  </h3>
 ));
 CardTitle.displayName = "CardTitle";
 

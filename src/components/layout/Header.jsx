@@ -18,16 +18,19 @@ import {
   ShoppingCartIcon,
 } from "../constant/SvgIcons";
 import Container from "./container";
+import { SearchContext } from "../Context/SearchContext";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
+  const { searchProducts } = useContext(SearchContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const fileInputRef = useRef(null);
+  const isLogin = false;
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -47,13 +50,13 @@ const Header = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchValue("");
+    searchProducts(searchValue);
   };
   return (
     <Container className='!p-0'>
-      <header className='grid items-center md:grid-cols-4 gap-4 bg-white/20 backdrop-blur-md z-50 fixed top-0 py-5 max-w-[1280px] w-full'>
+      <header className='grid px-5 items-center md:grid-cols-4 gap-4 bg-white/20 backdrop-blur-md z-50 fixed top-0 py-5 max-w-[1280px] w-full'>
         <Link
-          className='w-max ps-8 md:col-span-1 '
+          className='w-max ps-2 md:col-span-1 '
           to='/'>
           <img
             src='/images/logo.png'

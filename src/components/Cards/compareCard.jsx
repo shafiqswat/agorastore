@@ -7,7 +7,7 @@ function CompareCard({ item }) {
     <div className='max-w-[343px] text-center'>
       <img
         src={item.image}
-        alt='Compare Image'
+        alt='Compare Card'
         className='mx-auto w-40 h-40 border border-neutral-200 bg-white rounded-lg cursor-pointer'
       />
       <p className='max-w-[211px] mx-auto mt-2 font-medium text-sm text-gray-500 capitalize'>
