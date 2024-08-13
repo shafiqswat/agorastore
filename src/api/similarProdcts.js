@@ -1,5 +1,4 @@
 /** @format */
-/** @format */
 
 export const fetchSimilarProducts = async (productId) => {
   const response = await fetch(

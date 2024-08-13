@@ -9,11 +9,13 @@ import Reviews from "../components/constant/ProductsReview";
 import CompareTable from "../components/Tables/compareTable";
 import Header from "../components/layout/Header";
 import CustomButton from "../components/constant/customButton";
-import CustomerReviews from "../components/constant/customerReviews";
 import ReviewsModal from "../components/Modals/ReviewModal";
 import SimilarProduct from "../components/SimilarProducts";
 import SimilarProductsProvider from "../components/Context/SimilarProductsContext";
 import { ProductContext } from "../components/Context/ProductContext";
+import HoverCardComponent from "../components/Cards/hoverCard";
+import Review from "../components/Review";
+import ReviewProvider from "../components/Context/ReviewContext";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -36,24 +38,35 @@ const ProductDetails = () => {
           <ProductDetailsCard product={product} />
         </div>
         <div className='flex flex-col lg:flex-row items-center justify-between mt-20 px-20 large:px-0'>
-          <div className='flex mb-4 lg:mb-0'>
-            <p className='text-lg font-light mr-2 cursor-pointer'>
-              {reviewsCount} customer reviews
-            </p>
-            <Reviews rating={product.rating} />
+          <div className='flex items-center  mb-4 lg:mb-0'>
+            <HoverCardComponent text='This is the number of unique customer reviews for this product. We automatically check all reviews for relevancy and accuracy.'>
+              <p className='text-lg font-light mr-2 cursor-pointer'>
+                {reviewsCount} customer reviews
+              </p>
+            </HoverCardComponent>
+            <HoverCardComponent
+              className='w-fit'
+              text='This is the average customer rating out of 5.'>
+              <div className='inline-flex items-center'>
+                <Reviews
+                  className='cursor-pointer'
+                  rating={product.rating}
+                  showRating={false}
+                />
+                <span className='text-[12px] ms-2 text-neutral-500 cursor-pointer'>
+                  4.60
+                </span>
+              </div>
+            </HoverCardComponent>
           </div>
           <CustomButton
             BtnText='Leave a review'
             onClick={() => setShowModal(true)}
           />
         </div>
-        <div className='grid sm:grid-cols-2 grid-cols-1 gap-6 px-20 large:px-0'>
-          <CustomerReviews
-            reviewText='Great socks These socks fit well, are comfortable and the height is great. I love the rainbow unicorns and they support a fabulous cause.Lori W.'
-            userName='shafiq'
-          />
-          <CustomerReviews reviewText="New Favorite Socks! These are my new favorite socks. They're very good quality, they don't slip down through the day, and they're soft without feeling too thin or delicate. Definitely get yourself a pair or 12!Elizabeth" />
-        </div>
+        <ReviewProvider productId={productId}>
+          <Review />
+        </ReviewProvider>
         <section>
           <h2 className='text-2xl font-semibold text-center my-10'>
             Similar products

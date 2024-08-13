@@ -14,7 +14,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-
 const ListsModal = ({
   isOpen,
   onOpenChange,

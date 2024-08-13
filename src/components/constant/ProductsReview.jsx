@@ -1,8 +1,17 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
+import HoverCardComponent from "../Cards/hoverCard";
 
-function Reviews({ rating, className, parentStyle, MouseOver }) {
+function Reviews({
+  rating,
+  className,
+  parentStyle,
+  MouseOver,
+  showRating = true,
+}) {
+  const [showCard, setShowCard] = useState(false);
+
   return (
     <div className={`flex items-center gap-1 my-1.5 ${parentStyle}`}>
       <div className='flex items-center'>
@@ -29,15 +38,22 @@ function Reviews({ rating, className, parentStyle, MouseOver }) {
           );
         })}
       </div>
-      <button
-        className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 rounded-full text-neutral-400 px-2 py-0 h-4'
-        style={{ marginTop: "2px" }}>
-        <span
-          className='text-neutral-600 text-xs'
-          onMouseOver={MouseOver}>
-          {rating.toFixed(2)}
-        </span>
-      </button>
+      <HoverCardComponent
+        text='This is the Agora Product Score. We use a combination of customer reviews, feedback, shipping quality, and AI to determine a score. The higher the score, the more we recommend buying the product.'
+        isOpen={showCard}
+        toggleHoverCard={setShowCard}>
+        {showRating && (
+          <button className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 rounded-full text-neutral-400 px-2 py-0 h-4'>
+            <div>
+              <span
+                className='text-neutral-600 text-xs'
+                onMouseOver={MouseOver}>
+                {rating}
+              </span>
+            </div>
+          </button>
+        )}
+      </HoverCardComponent>
     </div>
   );
 }

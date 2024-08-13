@@ -13,6 +13,7 @@ export const ListProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
+    console.log(items, "listItems or Products");
   }, [items]);
 
   return (

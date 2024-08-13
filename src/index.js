@@ -15,6 +15,8 @@ import { SelectedImagesProvider } from "./components/Context/SelectedImagesConte
 import { PopularProductProvider } from "./components/Context/PopularProductContext";
 import SimilarProductsProvider from "./components/Context/SimilarProductsContext";
 import SearchContextProvider from "./components/Context/SearchContext";
+import ReviewProvider from "./components/Context/ReviewContext";
+import BrandProvider from "./components/Context/BrandContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,9 +29,13 @@ root.render(
               <ProductProvider>
                 <SimilarProductsProvider>
                   <SearchContextProvider>
-                    <BrowserRouter>
-                      <App />
-                    </BrowserRouter>
+                    <ReviewProvider>
+                      <BrandProvider>
+                        <BrowserRouter>
+                          <App />
+                        </BrowserRouter>
+                      </BrandProvider>
+                    </ReviewProvider>
                   </SearchContextProvider>
                 </SimilarProductsProvider>
               </ProductProvider>

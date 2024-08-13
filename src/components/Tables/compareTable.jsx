@@ -49,7 +49,7 @@ const CompareTable = () => {
               key={i}
               className='border-b border-gray-300 py-3'>
               <Reviews
-                rating={item.agoraScore}
+                rating={item.agoraScore.toFixed(2)}
                 parentStyle='flex items-center justify-center'
               />
             </TableCell>

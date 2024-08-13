@@ -7,7 +7,7 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
-    return Array.isArray(savedCart) ? JSON.parse(savedCart) : [];
+    return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {

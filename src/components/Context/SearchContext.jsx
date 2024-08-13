@@ -5,31 +5,35 @@ import { FetchSearchData } from "../../api";
 
 export const SearchContext = createContext();
 
-const SearchContextProvider = ({ children, productName }) => {
+const SearchContextProvider = ({ children }) => {
   const [searchProducts, setSearchProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [value, setValue] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getProducts = async () => {
+  const searchProductsByName = async (productName) => {
     try {
-      setLoading(true);
       const productsData = await FetchSearchData(productName);
       setSearchProducts(productsData);
+      console.log(productsData, "Search Items");
     } catch (err) {
+      console.error("Error fetching search data:", err);
       setError(err);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    if (productName) {
-      getProducts();
-    }
-  }, [productName]);
-
   return (
-    <SearchContext.Provider value={{ searchProducts, loading, error }}>
+    <SearchContext.Provider
+      value={{
+        searchProducts,
+        loading,
+        error,
+        value,
+        setValue,
+        searchProductsByName,
+      }}>
       {children}
     </SearchContext.Provider>
   );

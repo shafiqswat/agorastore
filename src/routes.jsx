@@ -20,6 +20,7 @@ import Settings from "./pages/Settings";
 import Share from "./components/Share";
 import Orders from "./pages/Orders";
 import Search from "./pages/Search";
+import Brand from "./pages/Brand";
 
 const AppRoutes = () => (
   <Routes>
@@ -92,8 +93,12 @@ const AppRoutes = () => (
       element={<Orders />}
     />
     <Route
-      path='/search'
+      path='/search/:productName'
       element={<Search />}
+    />
+    <Route
+      path='/brand/:brandName'
+      element={<Brand />}
     />
   </Routes>
 );

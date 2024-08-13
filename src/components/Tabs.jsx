@@ -18,7 +18,7 @@ export function TabsComponent() {
     <Tabs
       defaultValue='Payment methods'
       className='w-full overflow-visible'>
-      <div className='flex justify-between'>
+      <div className='md:flex justify-between'>
         <TabsList className='w-full md:w-[540px]  flex justify-start rounded-2xl overflow-x-auto'>
           <TabsTrigger
             value='Payment methods'
@@ -48,7 +48,7 @@ export function TabsComponent() {
         </TabsList>
         <CustomButton
           BtnText='Log out'
-          className='w-fit'
+          className='w-fit mt-10 md:mt-0'
         />
       </div>
       <TabsContent

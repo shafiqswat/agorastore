@@ -2,7 +2,7 @@
 
 /** @format */
 
-const aproducts = [
+const products1 = [
   // {
   //   id: 1,
   //   name: "Mac Duggal",
@@ -205,4 +205,4 @@ Kyrie Puff Sleeve Short Dress |`,
     images: ["/images/product4.webp"],
   },
 ];
-export default aproducts;
+export default products1;

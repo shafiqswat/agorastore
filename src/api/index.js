@@ -6,6 +6,8 @@ import { fetchSimilarProducts } from "./similarProdcts";
 import { fetchPopularProducts } from "./popularProduct";
 import { cartProducts } from "./cart";
 import { FetchSearchData } from "./search";
+import { fetchReview } from "./review";
+import { BrandProduct } from "./brand";
 
 export {
   fetchProducts,
@@ -14,4 +16,6 @@ export {
   fetchPopularProducts,
   cartProducts,
   FetchSearchData,
+  fetchReview,
+  BrandProduct,
 };

@@ -1,20 +1,22 @@
 /** @format */
+
 import React, { useContext, useState } from "react";
 import ListsModal from "../components/Modals/ListsModal";
 import Container from "../components/layout/container";
 import Header from "../components/layout/Header";
 import { Card } from "../components/ui/card";
 import { ListContext } from "../components/Context/ListContext";
-import { AddIcon } from "../components/constant/SvgIcons";
 import { Combobox } from "../components/Combobox";
-import { Link } from "react-router-dom";
-
-const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
+import { Link, useNavigate } from "react-router-dom";
+import NewList from "../components/constant/NewList";
 
 const Lists = () => {
+  const route = useNavigate();
   const { listName, setListName, items, setItems } = useContext(ListContext);
   const [openModal, setOpenModal] = useState(false);
   const [openMap, setOpenMap] = useState({});
+
+  const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
 
   const addItem = () => {
     if (listName.trim() === "") return;
@@ -36,6 +38,10 @@ const Lists = () => {
     setItems(updatedItems);
   };
 
+  const handleClick = (id) => {
+    route(`/lists/${id}`);
+  };
+
   const handleOpenChange = (index) => {
     setOpenMap((prev) => ({
       ...prev,
@@ -54,9 +60,26 @@ const Lists = () => {
               <li
                 className='group col-span-1 grid-flow-row'
                 key={item.id}>
-                <Link to={`/lists/${item.id}`}>
-                  <div className='border h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'></div>
-                </Link>
+                <div
+                  className='border grid grid-cols-2 gap-1 h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'
+                  onClick={() => handleClick(item.id)}>
+                  {/* <img
+                    src='/images/product2.webp'
+                    alt='Product'
+                  />
+                  <img
+                    src='/images/product2.webp'
+                    alt='Product'
+                  />
+                  <img
+                    src='/images/product2.webp'
+                    alt='Product'
+                  />
+                  <img
+                    src='/images/product2.webp'
+                    alt='Product'
+                  /> */}
+                </div>
                 <div className='flex justify-between mt-3'>
                   <Link to={`/lists/${item.id}`}>
                     <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
@@ -75,12 +98,7 @@ const Lists = () => {
               </li>
             ))}
             <li>
-              <div
-                className='border rounded-xl h-[82px] col-span-1 p-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50'
-                onClick={() => setOpenModal(true)}>
-                <AddIcon />
-                <h2 className='text-gray-700'>Create new list</h2>
-              </div>
+              <NewList setOpenModal={setOpenModal} />
             </li>
           </ul>
         </Card>
