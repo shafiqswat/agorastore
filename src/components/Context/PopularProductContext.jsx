@@ -1,9 +1,8 @@
 /** @format */
-
 import { fetchPopularProducts } from "../../api/index";
 import React, { createContext, useState, useEffect } from "react";
 
-const PopularProductContext = createContext();
+export const PopularProductContext = createContext();
 
 const PopularProductProvider = ({ children }) => {
   const [popularProducts, setPopularProducts] = useState([]);
@@ -20,6 +19,7 @@ const PopularProductProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     loadPopularProducts();
   }, []);
@@ -31,4 +31,4 @@ const PopularProductProvider = ({ children }) => {
   );
 };
 
-export { PopularProductProvider, PopularProductContext };
+export default PopularProductProvider;

@@ -1,21 +1,21 @@
 /** @format */
+import { fetchData } from "../components/Helper/fetchHelper";
+import { postData } from "../components/Helper/postHelper";
 
-import { fetchProducts } from "./product";
-import { fetchCollection } from "./featured";
-import { fetchSimilarProducts } from "./similarProdcts";
-import { fetchPopularProducts } from "./popularProduct";
-import { cartProducts } from "./cart";
-import { FetchSearchData } from "./search";
-import { fetchReview } from "./review";
-import { BrandProduct } from "./brand";
+export const fetchProducts = () => fetchData("/products");
 
-export {
-  fetchProducts,
-  fetchCollection,
-  fetchSimilarProducts,
-  fetchPopularProducts,
-  cartProducts,
-  FetchSearchData,
-  fetchReview,
-  BrandProduct,
+export const fetchPopularProducts = () => fetchData("/products/popular");
+
+export const fetchReview = (productId) => fetchData(`/reviews/${productId}`);
+
+export const FetchSearchData = (productName) => {
+  const encodedProductName = encodeURIComponent(productName);
+  return fetchData(`/products/search?q=${encodedProductName}`);
 };
+
+export const fetchSimilarProducts = (productId) =>
+  fetchData(`/products/${productId}/similar`);
+
+export const BrandProduct = (brandName) => fetchData(`/brand/${brandName}`);
+
+export const postReview = (reviewData) => postData("/reviews", reviewData);

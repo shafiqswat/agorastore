@@ -1,7 +1,6 @@
 /** @format */
-
-import React, { createContext, useEffect, useState } from "react";
-import { FetchSearchData } from "../../api";
+import React, { createContext, useState } from "react";
+import { FetchSearchData } from "../../api/index";
 
 export const SearchContext = createContext();
 

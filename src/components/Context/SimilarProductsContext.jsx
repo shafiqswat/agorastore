@@ -1,8 +1,6 @@
 /** @format */
-/** @format */
-
 import React, { createContext, useState, useEffect } from "react";
-import { fetchSimilarProducts } from "../../../src/api/index";
+import { fetchSimilarProducts } from "../../api/index";
 
 export const SimilarProductContext = createContext();
 
@@ -27,6 +25,7 @@ const SimilarProductsProvider = ({ children, productId }) => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     if (productId) {
       getProducts();

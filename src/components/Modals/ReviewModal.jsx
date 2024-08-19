@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useContext } from "react";
 import CustomButton from "../constant/customButton";
 import UserReview from "../constant/userReview";
 import { Button } from "../ui/button";
@@ -15,10 +15,25 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
+import { PostReviewContext } from "../Context/PostReviewContext";
 
 const ReviewsModal = ({ isOpen, onOpenChange }) => {
+  const [reviewText, setReviewText] = useState("");
+  const { handlePostReview, loading, error } = useContext(PostReviewContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await handlePostReview({ comment: reviewText });
+      setReviewText("");
+      onOpenChange(false);
+    } catch (err) {
+      console.error("Error submitting review:", err);
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Dialog
         open={isOpen}
         onOpenChange={onOpenChange}>
@@ -30,18 +45,29 @@ const ReviewsModal = ({ isOpen, onOpenChange }) => {
               <UserReview />
             </DialogDescription>
           </DialogHeader>
-          <Textarea placeholder='Type your review here.' />
+          <Textarea
+            placeholder='Type your review here.'
+            value={reviewText}
+            onChange={(e) => setReviewText(e.target.value)}
+          />
           <DialogFooter className='sm:justify-end'>
-            <CustomButton BtnText='Submit review' />
+            <CustomButton
+              BtnText='Submit review'
+              type='submit'
+              disabled={loading}
+              className='my-2'
+              onClick={() => onOpenChange(false)}
+            />
             <DialogClose asChild>
               <Button
                 type='button'
                 variant='secondary'
-                className='rounded-full'>
+                className='rounded-full my-2'>
                 Cancel
               </Button>
             </DialogClose>
           </DialogFooter>
+          {error && <p className='text-red-500'>Error: {error}</p>}
         </DialogContent>
       </Dialog>
     </form>
