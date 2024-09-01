@@ -1,5 +1,6 @@
 /** @format */
 
+import { useContext } from "react";
 import { GoogleIcon } from "../constant/SvgIcons";
 import {
   Dialog,
@@ -8,15 +9,16 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../ui/dialog";
+import { LoginContext } from "../Context/auth/Login";
 
-const Modal = ({ isOpen, onOpenChange }) => {
+const Modal = ({ isOpen, setIsOpen }) => {
+  const { loginWithGoogle, loading } = useContext(LoginContext);
+
   return (
     <Dialog
       open={isOpen}
-      onOpenChange={onOpenChange}>
-      <DialogTrigger asChild></DialogTrigger>
+      onOpenChange={setIsOpen}>
       <DialogContent className='sm:max-w-[462px]'>
         <DialogHeader>
           <DialogTitle>Welcome to Agora</DialogTitle>
@@ -26,16 +28,19 @@ const Modal = ({ isOpen, onOpenChange }) => {
             privacy policy.
           </DialogDescription>
         </DialogHeader>
-        <div className='w-72 h-9 border mx-auto grid grid-cols-4 items-center rounded-sm cursor-pointer hover:bg-customblue'>
+        <div
+          className='w-72 h-9 border mx-auto grid grid-cols-4 items-center rounded-sm cursor-pointer hover:bg-customblue'
+          onClick={loginWithGoogle}>
           <GoogleIcon />
           <span className='col-span-3 font-sans text-sm font-medium'>
-            Sign in with Google
+            {loading ? "Loading..." : "Sign in with Google"}
           </span>
         </div>
         <DialogFooter>
           <button
             className='bg-lightgray px-4 py-2 rounded-3xl font-sans text-sm font-medium'
-            onClick={() => onOpenChange(false)}>
+            onClick={() => setIsOpen(false)}
+            disabled={loading}>
             Cancel
           </button>
         </DialogFooter>

@@ -12,12 +12,7 @@ const ReviewProvider = ({ children, productId }) => {
   const getReviewData = async (productId) => {
     try {
       const data = await fetchReview(productId);
-      if (Array.isArray(data)) {
-        setReviewData(data);
-        console.log(data, "Get All Review Successfully");
-      } else {
-        throw new Error("Fetched data is not an array");
-      }
+      setReviewData(data);
     } catch (err) {
       setError(err);
       setReviewData([]);

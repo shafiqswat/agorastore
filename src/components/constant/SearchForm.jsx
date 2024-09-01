@@ -9,9 +9,11 @@ import {
   SearchIcon,
 } from "../constant/SvgIcons";
 import { useNavigate } from "react-router-dom";
+import { ChatContext } from "../Context/ChatContext";
 
 const SearchForm = () => {
   const { value, setValue, searchProductsByName } = useContext(SearchContext);
+  const { setChatValue } = useContext(ChatContext);
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const fileInputRef = useRef(null);
@@ -32,10 +34,13 @@ const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value) {
+    if (placeholderText === "Search for products" && value) {
       searchProductsByName(value);
       navigate(`/search/${encodeURIComponent(value)}`);
       setValue("");
+    } else if (placeholderText === "Chat With Athena") {
+      setChatValue(value);
+      navigate("/search/athena");
     }
   };
 

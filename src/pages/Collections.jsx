@@ -5,30 +5,20 @@ import { useParams } from "react-router-dom";
 import { FeaturedContext } from "../components/Context/FeaturedContext";
 import Container from "../components/layout/container";
 import { Card } from "../components/ui/card";
-import ProductCard from "../components/Cards/productCard";
-import products from "../components/assets/products";
 import Header from "../components/layout/Header";
 import CustomButton from "../components/constant/customButton";
+import CollectionList from "../components/CollectionList";
+import { CollectionProvider } from "../components/Context/SingleCollection";
 
 function Collections() {
-  const { featuredId } = useParams();
-  const NumericId = Number(featuredId);
+  const { collectionId } = useParams();
   const { featuredData, loading, error } = useContext(FeaturedContext);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  const product = featuredData.find((p) => p.id === NumericId);
-  console.log("product:", product);
-
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+  const product = featuredData.find((p) => p._id === collectionId);
+  if (!product) return <div>Product not found</div>;
 
   return (
     <>
@@ -36,18 +26,13 @@ function Collections() {
       <Container>
         <Card>
           <div className='flex justify-between items-center p-6'>
-            <div>{product.title}</div>
-            <h2 className='text-2xl font-semibold'>Fun in the sun</h2>
+            <div></div>
+            <h2 className='text-2xl font-semibold'>{product.title}</h2>
             <CustomButton BtnText='Share collection' />
           </div>
-          <div className='grid grid-cols-5 p-5 gap-7'>
-            {products.map((item, index) => (
-              <ProductCard
-                key={index}
-                product={item}
-              />
-            ))}
-          </div>
+          <CollectionProvider>
+            <CollectionList />
+          </CollectionProvider>
         </Card>
       </Container>
     </>

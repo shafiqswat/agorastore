@@ -1,32 +1,34 @@
 /** @format */
+
+/** @format */
+import { useParams } from "react-router-dom";
 import { BrandProduct } from "../../api/index";
-import React, { createContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const BrandContext = createContext();
 
-const BrandProvider = ({ children, brandName }) => {
+const BrandProvider = ({ children }) => {
+  const { brandName } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [brand, setBrand] = useState(brandName);
 
-  const fetchProducts = useCallback(async () => {
+  const fetchProducts = async () => {
     try {
       const ProductsData = await BrandProduct(brandName);
-      setProducts(Array.isArray(ProductsData) ? ProductsData : []);
+      setProducts(ProductsData);
     } catch (error) {
       console.error("Error fetching brand products:", error);
     } finally {
       setLoading(false);
     }
-  }, [brandName]);
+  };
 
   useEffect(() => {
-    setBrand(brandName);
     fetchProducts();
-  }, [brandName, fetchProducts]);
+  }, [brandName]);
 
   return (
-    <BrandContext.Provider value={{ products, brand, loading }}>
+    <BrandContext.Provider value={{ products, loading }}>
       {children}
     </BrandContext.Provider>
   );

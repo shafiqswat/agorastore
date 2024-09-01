@@ -12,12 +12,7 @@ const SimilarProductsProvider = ({ children, productId }) => {
   const getProducts = async () => {
     try {
       const productsData = await fetchSimilarProducts(productId);
-      if (Array.isArray(productsData)) {
-        setSimilarProducts(productsData);
-      } else {
-        throw new Error("Fetched data is not an array");
-      }
-      console.log(productsData, "Fetched Similar Products Successfully");
+      setSimilarProducts(productsData);
     } catch (err) {
       setError(err);
       setSimilarProducts([]);

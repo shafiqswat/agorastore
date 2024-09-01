@@ -1,8 +1,6 @@
-/**
- * @format
- * @type {import('tailwindcss').Config}
- */
+/** @format */
 
+// tailwind.config.js
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -18,6 +16,13 @@ module.exports = {
       padding: "2rem",
     },
     extend: {
+      boxShadow: {
+        "custom-light": "0 2px 5px #0003",
+      },
+      fontFamily: {
+        Lexend: ["Lexend", "sans-serif"],
+        Righteous: ["Righteous", "sans-serif"],
+      },
       screens: {
         extraLarge: { min: "1160px" },
         large: { max: "1160px" },
@@ -65,6 +70,7 @@ module.exports = {
         lightbrown: "#b17a50",
         lightgray: "#f5f5f5",
         customblue: "#d2e3fc",
+        lightBlue: "#EFF6FF",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -82,7 +82,7 @@ const Footer = () => {
           <ul>
             <li className='text-neutral-500 text-sm mb-2'>
               <Link
-                to='/merchants'
+                to='/merchant'
                 onClick={handleClick}>
                 Merchants
               </Link>

@@ -1,19 +1,21 @@
 /** @format */
+
+import axios from "axios";
+
+/** @format */
 const BASE_API_URL = "http://68.183.112.7/api/v1";
 
-export const postData = async (endpoint, data) => {
-  const response = await fetch(`${BASE_API_URL}${endpoint}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  console.log(response, "Check the Data is added");
+export const postData = async (endpoint) => {
+  const response = await axios.post(
+    `https://api.allorigins.win/get?url=${encodeURIComponent(
+      `${BASE_API_URL}${endpoint}`
+    )}`
+  );
 
   if (!response.ok) {
-    throw new Error(`Failed to post data to ${endpoint}`);
+    throw new Error(`Failed to fetch data from ${endpoint}`);
   }
 
-  return await response.json();
+  const { contents } = await response.json();
+  return JSON.parse(contents);
 };

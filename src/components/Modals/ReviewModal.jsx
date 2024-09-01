@@ -19,16 +19,45 @@ import { PostReviewContext } from "../Context/PostReviewContext";
 
 const ReviewsModal = ({ isOpen, onOpenChange }) => {
   const [reviewText, setReviewText] = useState("");
-  const { handlePostReview, loading, error } = useContext(PostReviewContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const productId = "669240a250c87789853e0c2f";
+  const userId = "6698b737b26955d47b65d58f";
+  const rating = 3.3333;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+
     try {
-      await handlePostReview({ comment: reviewText });
+      const response = await fetch("", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId,
+          userId,
+          rating,
+          comment: reviewText,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to post review");
+      }
+
+      const data = await response.json();
+      console.log("Review posted successfully:", data);
+
       setReviewText("");
       onOpenChange(false);
     } catch (err) {
-      console.error("Error submitting review:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,7 +85,6 @@ const ReviewsModal = ({ isOpen, onOpenChange }) => {
               type='submit'
               disabled={loading}
               className='my-2'
-              onClick={() => onOpenChange(false)}
             />
             <DialogClose asChild>
               <Button

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { SelectedIcons } from "../constant/SvgIcons";
 import CustomButton from "../constant/customButton";
 import { toast } from "sonner";

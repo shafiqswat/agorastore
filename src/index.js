@@ -18,6 +18,9 @@ import ReviewProvider from "./components/Context/ReviewContext";
 import BrandProvider from "./components/Context/BrandContext";
 import PopularProductProvider from "./components/Context/PopularProductContext";
 import { PostReviewProvider } from "./components/Context/PostReviewContext";
+import ChatProvider from "./components/Context/ChatContext";
+import { LoginProvider } from "./components/Context/auth/Login";
+import { CollectionProvider } from "./components/Context/SingleCollection";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,15 +33,21 @@ root.render(
               <ProductProvider>
                 <SimilarProductsProvider>
                   <SearchContextProvider>
-                    <ReviewProvider>
-                      <PostReviewProvider>
-                        <BrandProvider>
-                          <BrowserRouter>
-                            <App />
-                          </BrowserRouter>
-                        </BrandProvider>
-                      </PostReviewProvider>
-                    </ReviewProvider>
+                    <ChatProvider>
+                      <ReviewProvider>
+                        <PostReviewProvider>
+                          <BrandProvider>
+                            <BrowserRouter>
+                              <LoginProvider>
+                                <CollectionProvider>
+                                  <App />
+                                </CollectionProvider>
+                              </LoginProvider>
+                            </BrowserRouter>
+                          </BrandProvider>
+                        </PostReviewProvider>
+                      </ReviewProvider>
+                    </ChatProvider>
                   </SearchContextProvider>
                 </SimilarProductsProvider>
               </ProductProvider>

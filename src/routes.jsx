@@ -21,6 +21,7 @@ import Share from "./components/Share";
 import Orders from "./pages/Orders";
 import Search from "./pages/Search";
 import Brand from "./pages/Brand";
+import Athena from "./pages/Athena";
 
 const AppRoutes = () => (
   <Routes>
@@ -57,7 +58,7 @@ const AppRoutes = () => (
       element={<Docs />}
     />
     <Route
-      path='/collections/:featuredId'
+      path='/collections/:collectionId'
       element={<Collections />}
     />
     <Route
@@ -99,6 +100,10 @@ const AppRoutes = () => (
     <Route
       path='/brand/:brandName'
       element={<Brand />}
+    />
+    <Route
+      path='/search/athena'
+      element={<Athena />}
     />
   </Routes>
 );
