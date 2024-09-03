@@ -6,18 +6,48 @@ import Container from "../components/layout/container";
 import { ChatContext } from "../components/Context/ChatContext";
 
 const Athena = () => {
-  const { chatValue } = useContext(ChatContext);
+  const { chats, value, setValue, chatInput, loading, error } =
+    useContext(ChatContext);
+
+  const handleSend = () => {
+    if (value.trim()) {
+      chatInput(value);
+      setValue("");
+    }
+  };
+
   return (
     <>
       <Header />
-      <Container className='h-screen'>
-        <div className='w-6/12 mx-auto p-5 flex flex-col gap-5'>
-          <div className='border border-blue-200 rounded-tr-sm  w-fit py-3 px-5 ml-auto rounded-2xl bg-blue-50'>
-            {chatValue}
-          </div>
-          <div className='bg-lightgray border p-3 rounded-2xl rounded-tl-sm'>
-            {chatValue}! How can I assist you today? Are you looking for any
-            specific product recommendations?
+      <Container>
+        <div className='w-full md:w-6/12  mx-auto p-5 flex flex-col gap-5'>
+          {/* Chat display */}
+          {chats.map((chat, index) => (
+            <div
+              key={index}
+              className={`border border-blue-200 rounded-tr-sm w-fit py-3 px-5 ${chat.isUser ? "ml-auto" : "mr-auto"} rounded-2xl ${chat.isUser ? "bg-blue-50" : "bg-lightgray"}`}>
+              {chat.message}
+            </div>
+          ))}
+
+          {/* Loading and error messages */}
+          {loading && <div>Loading...</div>}
+          {error && <div className='text-red-500'>Error: {error.message}</div>}
+
+          {/* Input section */}
+          <div className='flex'>
+            <input
+              type='text'
+              className='border border-gray-300 p-2 rounded-l-2xl w-full'
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder='Type your message...'
+            />
+            <button
+              className='bg-blue-500 text-white p-2 rounded-r-2xl'
+              onClick={handleSend}>
+              Send
+            </button>
           </div>
         </div>
       </Container>

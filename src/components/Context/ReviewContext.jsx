@@ -1,21 +1,23 @@
 /** @format */
+
 import { fetchReview } from "../../api/index";
 import React, { createContext, useEffect, useState } from "react";
 
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children, productId }) => {
-  const [reviewData, setReviewData] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const getReviewData = async (productId) => {
     try {
-      const data = await fetchReview(productId);
-      setReviewData(data);
+      const { reviews: reviewData } = await fetchReview(productId);
+      setReviews(reviewData);
+      console.log(reviewData, "ReviewData");
     } catch (err) {
       setError(err);
-      setReviewData([]);
+      setReviews([]);
     } finally {
       setLoading(false);
     }
@@ -28,7 +30,7 @@ const ReviewProvider = ({ children, productId }) => {
   }, [productId]);
 
   return (
-    <ReviewContext.Provider value={{ reviewData, loading, error }}>
+    <ReviewContext.Provider value={{ reviews, loading, error }}>
       {children}
     </ReviewContext.Provider>
   );

@@ -11,14 +11,14 @@ import { ReviewContext } from "../Context/ReviewContext";
 
 const ReviewForm = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
-  const { reviewData } = useContext(ReviewContext);
-  const reviewsCount = reviewData.length;
-  const averageReview = reviewData
+  const { reviews } = useContext(ReviewContext);
+  const reviewsCount = reviews.length;
+  const averageReview = reviews
     .reduce((acc, current, _, arr) => {
       return acc + current.rating / arr.length;
     }, 0)
     .toFixed(2);
-  console.log(reviewData, "HOW MUCH REVIEWS THE PRODUCT TAKES");
+  console.log(reviews, "HOW MUCH REVIEWS THE PRODUCT TAKES");
   return (
     <div className='flex flex-col lg:flex-row items-center justify-between mt-20 ps-20 pe-28 large:px-0 '>
       <div className='flex items-center  mb-4 lg:mb-0'>
@@ -33,7 +33,7 @@ const ReviewForm = ({ product }) => {
           <div className='inline-flex items-center'>
             <Reviews
               className='cursor-pointer'
-              rating={product.rating}
+              rating={averageReview}
               showRating={false}
             />
             <span className='text-[12px] ms-2 text-neutral-500 cursor-pointer'>

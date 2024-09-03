@@ -9,11 +9,12 @@ import {
   SearchIcon,
 } from "../constant/SvgIcons";
 import { useNavigate } from "react-router-dom";
+
 import { ChatContext } from "../Context/ChatContext";
 
 const SearchForm = () => {
   const { value, setValue, searchProductsByName } = useContext(SearchContext);
-  const { setChatValue } = useContext(ChatContext);
+  const { chatInput } = useContext(ChatContext);
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const fileInputRef = useRef(null);
@@ -38,9 +39,10 @@ const SearchForm = () => {
       searchProductsByName(value);
       navigate(`/search/${encodeURIComponent(value)}`);
       setValue("");
-    } else if (placeholderText === "Chat With Athena") {
-      setChatValue(value);
+    } else if (placeholderText === "Chat With Athena" && value) {
+      chatInput(value);
       navigate("/search/athena");
+      setValue("");
     }
   };
 
@@ -56,7 +58,7 @@ const SearchForm = () => {
           <SearchIcon />
         </div>
         <div
-          className={`place-items-center aspect-square w-10 h-10 grid p-0 rounded-full col-start-2 row-start-1 z-10 transition-opacity ${isSearchIcon ? "opacity-35" : ""}`}>
+          className={`place-items-center aspect-square w-10 h-10 grid p-0 rounded-full col-start-2 row-start-1 z-10 transition-opacity ${isSearchIcon ? "opacity-35" : "opacity-100"}`}>
           <ChatIcon />
         </div>
       </button>

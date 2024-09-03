@@ -25,6 +25,7 @@ const Merchant = () => {
             src='https://app.arcade.software/2cdXcna2R1rDuzuJOhiP'
             frameBorder='0'
             className='h-full w-full'
+            title='Descriptive Title for Iframe Content'
             allowFullScreen></iframe>
         </div>
         <p className='font-Lexend text-center'>
