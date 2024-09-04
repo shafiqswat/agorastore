@@ -7,7 +7,6 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Merchant from "./pages/Merchant";
-import Login from "./pages/Login";
 import Docs from "./pages/Docs";
 import Collections from "./pages/Collections";
 import PopularProducts from "./pages/PopularProducts";
@@ -22,7 +21,8 @@ import Orders from "./pages/Orders";
 import Search from "./pages/Search";
 import Brand from "./pages/Brand";
 import Athena from "./pages/Athena";
-
+import Login from "./pages/Authentication/Login";
+import SignUp from "./pages/Authentication/SignUp";
 const AppRoutes = () => (
   <Routes>
     <Route
@@ -49,10 +49,7 @@ const AppRoutes = () => (
       path='/merchant'
       element={<Merchant />}
     />
-    <Route
-      path='/login'
-      element={<Login />}
-    />
+
     <Route
       path='/docs'
       element={<Docs />}
@@ -104,6 +101,14 @@ const AppRoutes = () => (
     <Route
       path='/search/athena'
       element={<Athena />}
+    />
+    <Route
+      path='/login'
+      element={<Login />}
+    />
+    <Route
+      path='/signup'
+      element={<SignUp />}
     />
   </Routes>
 );

@@ -96,18 +96,18 @@ export const SettingsIcon = () => (
   </svg>
 );
 
-export const ShoppingCartIcon = () => (
+export const ShoppingCartIcon = ({ className }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='24'
-    height='24'
+    width='200'
+    height='200'
     viewBox='0 0 24 24'
     fill='none'
     stroke='currentColor'
     strokeWidth='2'
     strokeLinecap='round'
     strokeLinejoin='round'
-    className='lucide lucide-shopping-cart w-5 h-5'>
+    className={`lucide lucide-shopping-cart w-5 h-5 ${className}`}>
     <circle
       cx='8'
       cy='21'
@@ -430,7 +430,33 @@ export const CircleFilled = () => {
     </svg>
   );
 };
-
+export const IncreaseCartIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='40'
+      height='40'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='#2b2b2b'
+      strokeWidth='1'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      className='lucide lucide-shopping-cart'>
+      <circle
+        cx='8'
+        cy='21'
+        r='1'
+      />
+      <circle
+        cx='19'
+        cy='21'
+        r='1'
+      />
+      <path d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12' />
+    </svg>
+  );
+};
 export const ShareIcon = () => {
   return (
     <svg
@@ -451,6 +477,68 @@ export const ShareIcon = () => {
         x2='12'
         y1='2'
         y2='15'
+      />
+    </svg>
+  );
+};
+
+export const CommissionIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='40'
+      height='40'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='#2b2b2b'
+      strokeWidth='1'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      className='lucide lucide-circle-percent'>
+      <circle
+        cx='12'
+        cy='12'
+        r='10'
+      />
+      <path d='m15 9-6 6' />
+      <path d='M9 9h.01' />
+      <path d='M15 15h.01' />
+    </svg>
+  );
+};
+export const RefreshIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='40'
+      height='40'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='#2b2b2b'
+      stroke-width='1'
+      stroke-linecap='round'
+      stroke-linejoin='round'
+      class='lucide lucide-refresh-cw'>
+      <path d='M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8' />
+      <path d='M21 3v5h-5' />
+      <path d='M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16' />
+      <path d='M8 16H3v5' />
+    </svg>
+  );
+};
+
+export const RegisterSvgIcon = () => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='22'
+      height='8'
+      viewBox='0 0 22 8'
+      className='inline-block'
+      fill='none'>
+      <path
+        d='M22 4L18 8V5H5.83C5.42 6.17 4.31 7 3 7C2.20435 7 1.44129 6.68393 0.87868 6.12132C0.31607 5.55871 0 4.79565 0 4C0 3.20435 0.31607 2.44129 0.87868 1.87868C1.44129 1.31607 2.20435 1 3 1C4.31 1 5.42 1.83 5.83 3H18V0L22 4Z'
+        fill='white'
       />
     </svg>
   );

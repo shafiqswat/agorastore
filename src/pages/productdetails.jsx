@@ -21,9 +21,9 @@ const ProductDetails = () => {
   const { products } = useContext(ProductContext);
   const product = products.find((p) => p._id === productId);
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+  // if (!product) {
+  //   return <div>Product not found</div>;
+  // }
 
   return (
     <SimilarProductsProvider productId={productId}>

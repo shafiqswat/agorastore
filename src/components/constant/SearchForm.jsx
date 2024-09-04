@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { SearchContext } from "../Context/SearchContext";
 import {
   ArrowRightIcon,
@@ -8,8 +8,7 @@ import {
   ChatIcon,
   SearchIcon,
 } from "../constant/SvgIcons";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { ChatContext } from "../Context/ChatContext";
 
 const SearchForm = () => {
@@ -19,6 +18,17 @@ const SearchForm = () => {
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.includes("athena")) {
+      setIsSearchIcon(false);
+      setPlaceholderText("Chat With Athena");
+    } else {
+      setIsSearchIcon(true);
+      setPlaceholderText("Search for products");
+    }
+  }, [location.pathname]);
 
   const toggleIcon = () => {
     setIsSearchIcon(!isSearchIcon);
