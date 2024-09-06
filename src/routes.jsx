@@ -21,8 +21,8 @@ import Orders from "./pages/Orders";
 import Search from "./pages/Search";
 import Brand from "./pages/Brand";
 import Athena from "./pages/Athena";
-import Login from "./pages/Authentication/Login";
-import SignUp from "./pages/Authentication/SignUp";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 const AppRoutes = () => (
   <Routes>
     <Route

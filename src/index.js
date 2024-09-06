@@ -19,8 +19,9 @@ import BrandProvider from "./components/Context/BrandContext";
 import PopularProductProvider from "./components/Context/PopularProductContext";
 import { PostReviewProvider } from "./components/Context/PostReviewContext";
 import ChatProvider from "./components/Context/ChatContext";
-import { LoginProvider } from "./components/Context/auth/Login";
+import { LoginProvider } from "./components/Context/Login";
 import { CollectionProvider } from "./components/Context/SingleCollection";
+import { AuthProvider } from "./components/Context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -40,7 +41,9 @@ root.render(
                             <BrowserRouter>
                               <LoginProvider>
                                 <CollectionProvider>
-                                  <App />
+                                  <AuthProvider>
+                                    <App />
+                                  </AuthProvider>
                                 </CollectionProvider>
                               </LoginProvider>
                             </BrowserRouter>

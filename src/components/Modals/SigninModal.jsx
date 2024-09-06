@@ -10,8 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { LoginContext } from "../Context/auth/Login";
-import SignUpForm from "../FormItems/SignUpForm";
+import { LoginContext } from "../Context/Login";
+// import SignUpForm from "../FormItems/SignUpForm";
 
 const Modal = ({ isOpen, setIsOpen }) => {
   const { loginWithGoogle, loading } = useContext(LoginContext);
@@ -29,7 +29,7 @@ const Modal = ({ isOpen, setIsOpen }) => {
             privacy policy.
           </DialogDescription>
         </DialogHeader>
-        <SignUpForm />
+        {/* <SignUpForm /> */}
         <div
           className='w-72 h-9 border mx-auto grid grid-cols-4 items-center rounded-sm cursor-pointer hover:bg-customblue'
           onClick={loginWithGoogle}>

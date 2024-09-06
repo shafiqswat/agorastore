@@ -5,18 +5,23 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
 import CompareCard from "../Cards/compareCard";
 import Reviews from "../constant/ProductsReview";
 import { CompareContext } from "../Context/CompareProductContext";
+import Container from "../layout/container";
+import LoadingSkeleton from "../Skeleton";
 
 const CompareTable = () => {
-  const { compareProduct } = useContext(CompareContext);
+  const { compareProduct, loading } = useContext(CompareContext);
 
   const limitedCompareProduct = compareProduct.slice(0, 4);
 
-  if (compareProduct.length === 0) {
-    return null;
-  }
-
   return (
     <>
+      <>
+        {loading && (
+          <Container>
+            <LoadingSkeleton count={5} />
+          </Container>
+        )}
+      </>
       <h2 className='text-2xl font-semibold text-center mb-10 mt-32'>
         Compare products
       </h2>

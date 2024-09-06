@@ -1,23 +1,54 @@
 /** @format */
-
 import React, { useState } from "react";
 import LoginInput from "./LoginInput";
 import { useNavigate } from "react-router-dom";
 import { RegisterSvgIcon } from "../constant/SvgIcons";
+import axios from "axios";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/login");
-  };
+
+  // Form states
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  // Signup API request
+  const postSignUpData = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `http://68.183.112.7/api/v1/user/signup`,
+        {
+          firstname: firstName,
+          lastname: lastName,
+          email,
+          password,
+        }
+      );
+
+      if (response.status === 201) {
+        // Successfully registered
+        console.log("Registration successful:", response.data);
+        navigate("/login"); // Redirect to login page
+      }
+    } catch (err) {
+      console.error("Error during signup:", err);
+      setError("Failed to sign up. Please check your details and try again.");
+    }
+  };
+
   return (
     <div className='flex justify-center items-center border w-full'>
-      <form className='p-3 md:max-w-[600px] w-full px-6'>
+      <form
+        className='p-3 md:max-w-[600px] w-full px-6'
+        onSubmit={postSignUpData}>
         <p className='text-center font-sans text-xl mb-4'>Sign Up</p>
+        {error && <p className='text-red-500 text-center'>{error}</p>}{" "}
+        {/* Error message */}
         <div className='grid w-full md:grid-cols-2 gap-x-6 gap-y-2'>
           <LoginInput
             placeholder='First name'
@@ -33,7 +64,7 @@ const SignUpForm = () => {
           />
           <LoginInput
             placeholder='Work Email'
-            type='text'
+            type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -43,13 +74,13 @@ const SignUpForm = () => {
           />
           <LoginInput
             placeholder='Password'
-            type='text'
+            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <LoginInput
             placeholder='Confirm Password'
-            type='text'
+            type='password'
           />
         </div>
         <p className='text-center text-sm mt-20'>
@@ -59,7 +90,7 @@ const SignUpForm = () => {
             onClick={() => navigate("/terms")}>
             {" "}
             Terms{" "}
-          </span>{" "}
+          </span>
           and
           <span
             className='text-blue-400 cursor-pointer'
@@ -72,7 +103,7 @@ const SignUpForm = () => {
           Already have a merchant account?
           <span
             className='text-blue-500 cursor-pointer'
-            onClick={handleClick}>
+            onClick={(e) => navigate("/login")}>
             {" "}
             Log in
           </span>
