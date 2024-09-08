@@ -23,6 +23,7 @@ import Brand from "./pages/Brand";
 import Athena from "./pages/Athena";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import ProtectedRoute from "../src/components/ProtectedRoutes";
 const AppRoutes = () => (
   <Routes>
     <Route
@@ -72,23 +73,44 @@ const AppRoutes = () => (
     />
     <Route
       path='/cart'
-      element={<Cart />}
+      element={
+        <ProtectedRoute>
+          <Cart />
+        </ProtectedRoute>
+      }
     />
     <Route
       path='/lists'
-      element={<Lists />}
+      element={
+        <ProtectedRoute>
+          <Lists />
+        </ProtectedRoute>
+      }
     />
     <Route
       path='/lists/:shareId'
-      element={<Share />}
+      element={
+        <ProtectedRoute>
+          <Share />
+        </ProtectedRoute>
+      }
     />
+
     <Route
       path='/settings'
-      element={<Settings />}
+      element={
+        <ProtectedRoute>
+          <Settings />
+        </ProtectedRoute>
+      }
     />
     <Route
       path='/orders'
-      element={<Orders />}
+      element={
+        <ProtectedRoute>
+          <Orders />
+        </ProtectedRoute>
+      }
     />
     <Route
       path='/search/:productName'

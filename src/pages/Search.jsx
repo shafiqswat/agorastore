@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { SearchContext } from "../components/Context/SearchContext";
 import ProductCard from "../components/Cards/productCard";
 import Header from "../components/layout/Header";
@@ -8,14 +8,7 @@ import Container from "../components/layout/container";
 import LoadingSkeleton from "../components/Skeleton";
 
 const Search = () => {
-  const { searchProducts, loading, error, value, searchProductsByName } =
-    useContext(SearchContext);
-
-  useEffect(() => {
-    if (value) {
-      searchProductsByName(value);
-    }
-  }, [value, searchProductsByName]);
+  const { searchProducts, loading, error } = useContext(SearchContext);
 
   return (
     <>

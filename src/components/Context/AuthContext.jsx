@@ -1,4 +1,5 @@
 /** @format */
+
 import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,24 +10,56 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   // Login User
   const login = async (email, password) => {
+    setLoading(true);
+    setError(null);
     try {
       const { data } = await axios.post(
-        "http://68.183.112.7/api/v1/auth/login",
+        "https://agora.histudio.co/api/v1/user/login",
+        { email, password }
+      );
+
+      localStorage.setItem("token", data.token);
+      setIsAuthenticated(true);
+      setUser(data.user);
+      navigate("/");
+    } catch (error) {
+      setError("Login failed. Please check your credentials.");
+      console.error("Login failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Signup
+  const signup = async (firstName, lastName, email, password) => {
+    setLoading(true);
+    setError(null); // Reset error state
+    try {
+      const { data } = await axios.post(
+        "https://agora.histudio.co/api/v1/user/signup",
         {
+          firstname: firstName,
+          lastname: lastName,
           email,
           password,
         }
       );
+
       localStorage.setItem("token", data.token);
       setIsAuthenticated(true);
       setUser(data.user);
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
-      console.error("Login failed:", error);
+      setError("Signup failed. Please try again.");
+      console.error("Signup failed:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,20 +75,37 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setLoading(true);
       axios
-        .get("http://68.183.112.7/api/v1/user/me", {
+        .get("https://agora.histudio.co/api/v1/user/me", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
           setUser(response.data);
           setIsAuthenticated(true);
         })
-        .catch((error) => console.error("Error fetching user:", error));
+        .catch((error) => {
+          setError("Failed to fetch user data.");
+          console.error("Error fetching user:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        user,
+        loading,
+        setError,
+        error,
+        login,
+        signup,
+        logout,
+      }}>
       {children}
     </AuthContext.Provider>
   );

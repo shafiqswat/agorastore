@@ -1,5 +1,6 @@
 /** @format */
 
+import { useContext } from "react";
 import {
   Tabs,
   TabsContent,
@@ -12,8 +13,13 @@ import Payment from "./SettingElements/Payment";
 import Personalization from "./SettingElements/Personalization";
 import Profile from "./SettingElements/Profile";
 import Shipping from "./SettingElements/Shipping";
+import { AuthContext } from "./Context/AuthContext";
 
 export function TabsComponent() {
+  const { logout } = useContext(AuthContext);
+  const handleClick = () => {
+    logout();
+  };
   return (
     <Tabs
       defaultValue='Payment methods'
@@ -49,6 +55,7 @@ export function TabsComponent() {
         <CustomButton
           BtnText='Log out'
           className='w-fit mt-10 md:mt-0'
+          onClick={handleClick}
         />
       </div>
       <TabsContent
