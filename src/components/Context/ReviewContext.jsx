@@ -17,6 +17,7 @@ const ReviewProvider = ({ children, productId }) => {
       console.log(reviewData, "ReviewData");
     } catch (err) {
       setError(err);
+      console.log(err);
       setReviews([]);
     } finally {
       setLoading(false);

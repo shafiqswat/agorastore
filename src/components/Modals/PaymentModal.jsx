@@ -13,8 +13,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { useContext } from "react";
+import { PaymentContext } from "../Context/PaymentContext";
 
 const PaymentModal = ({ isOpen, onOpenChange }) => {
+  const { addPaymentMethod } = useContext(PaymentContext);
+
+  const handleAddPaymentMethod = async (paymentMethodDetails) => {
+    await addPaymentMethod(paymentMethodDetails);
+    // Add any additional logic for handling the payment method
+  };
+
   return (
     <Dialog
       open={isOpen}
@@ -29,7 +38,10 @@ const PaymentModal = ({ isOpen, onOpenChange }) => {
         </DialogHeader>
         <CreditCardInput />
         <DialogFooter className='sm:justify-end'>
-          <CustomButton BtnText='Add payment method' />
+          <CustomButton
+            BtnText='Add payment method'
+            onClick={handleAddPaymentMethod}
+          />
           <DialogClose asChild>
             <Button
               type='button'
@@ -43,4 +55,5 @@ const PaymentModal = ({ isOpen, onOpenChange }) => {
     </Dialog>
   );
 };
+
 export default PaymentModal;

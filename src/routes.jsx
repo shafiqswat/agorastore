@@ -13,7 +13,6 @@ import PopularProducts from "./pages/PopularProducts";
 import StoreCrawler from "./pages/StoreCrawler";
 import ProductDetails from "./pages/productdetails";
 import Cart from "./pages/Cart";
-import About from "./pages/About";
 import Lists from "./pages/Lists";
 import Settings from "./pages/Settings";
 import Share from "./components/Share";
@@ -24,6 +23,7 @@ import Athena from "./pages/Athena";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProtectedRoute from "../src/components/ProtectedRoutes";
+import About from "./pages/About";
 const AppRoutes = () => (
   <Routes>
     <Route

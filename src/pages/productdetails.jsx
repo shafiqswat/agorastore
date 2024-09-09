@@ -25,9 +25,6 @@ const ProductDetails = () => {
   if (loading) {
     return <Container>{loading && <LoadingSkeleton count={10} />}</Container>;
   }
-  // if (!product) {
-  //   return <p>Product not found!</p>;
-  // }
 
   return (
     <>

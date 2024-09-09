@@ -8,7 +8,7 @@ const CollectionList = () => {
   const { products } = useContext(CollectionContext);
 
   return (
-    <div className='grid grid-cols-5 p-5 gap-7'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-36 mt-5'>
       {products.map((item, index) => (
         <ProductCard
           key={index}

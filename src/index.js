@@ -22,6 +22,7 @@ import ChatProvider from "./components/Context/ChatContext";
 import { LoginProvider } from "./components/Context/Login";
 import { CollectionProvider } from "./components/Context/SingleCollection";
 import { AuthProvider } from "./components/Context/AuthContext";
+import { PaymentProvider } from "./components/Context/PaymentContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -42,7 +43,9 @@ root.render(
                               <LoginProvider>
                                 <CollectionProvider>
                                   <AuthProvider>
-                                    <App />
+                                    <PaymentProvider>
+                                      <App />
+                                    </PaymentProvider>
                                   </AuthProvider>
                                 </CollectionProvider>
                               </LoginProvider>

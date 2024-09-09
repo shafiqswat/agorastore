@@ -28,7 +28,9 @@ export const FetchSearchData = (productName) => {
   const encodedProductName = encodeURIComponent(productName);
   return fetchData(`/products/search?q=${encodedProductName}`);
 };
-
+export const FetchShippingAddress = () => {
+  fetchData("/shipping/addresses");
+};
 export const FetchChat = (chat) => {
   const encodedChat = encodeURIComponent(chat);
   return fetchData(`/ai?q=${encodedChat}`);

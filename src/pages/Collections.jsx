@@ -4,11 +4,10 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FeaturedContext } from "../components/Context/FeaturedContext";
 import Container from "../components/layout/container";
-import { Card } from "../components/ui/card";
 import Header from "../components/layout/Header";
-import CustomButton from "../components/constant/customButton";
 import CollectionList from "../components/CollectionList";
 import { CollectionProvider } from "../components/Context/SingleCollection";
+import CustomButton from "../components/constant/customButton";
 
 function Collections() {
   const { collectionId } = useParams();
@@ -24,16 +23,16 @@ function Collections() {
     <>
       <Header />
       <Container>
-        <Card>
-          <div className='flex justify-between items-center p-6'>
+        <div className='border p-5 rounded-xl'>
+          <div className='flex justify-between items-center'>
             <div></div>
             <h2 className='text-2xl font-semibold'>{product.title}</h2>
-            <CustomButton BtnText='Share collection' />
+            <CustomButton BtnText='Share Collection' />
           </div>
           <CollectionProvider>
             <CollectionList />
           </CollectionProvider>
-        </Card>
+        </div>
       </Container>
     </>
   );

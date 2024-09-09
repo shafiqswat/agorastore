@@ -4,9 +4,11 @@ import React, { useContext } from "react";
 import { Card } from "../ui/card";
 import CustomButton from "../constant/customButton";
 import { CartContext } from "../Context/CartContext";
+import { PaymentContext } from "../Context/PaymentContext";
 
-const OrderCard = () => {
+const OrderCard = ({ onPlaceOrder }) => {
   const { cart } = useContext(CartContext);
+  const { createPaymentIntent, paymentIntent } = useContext(PaymentContext);
 
   const calculateSubtotal = () => {
     return Array.isArray(cart)
@@ -40,6 +42,7 @@ const OrderCard = () => {
       <CustomButton
         BtnText='Place your order'
         className='w-fit mt-4'
+        onClick={onPlaceOrder}
       />
     </Card>
   );
