@@ -12,9 +12,8 @@ const SearchContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const searchProductsByName = async (productName) => {
-    setLoading(true); // Set loading to true before starting the fetch
-    setError(null); // Clear previous errors
-
+    setLoading(true);
+    setError(null);
     try {
       const productsData = await FetchSearchData(productName);
       setSearchProducts(productsData);

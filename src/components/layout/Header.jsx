@@ -19,14 +19,21 @@ import { AuthContext } from "../Context/AuthContext";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, loading } = useContext(AuthContext);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+  if (loading) {
+    return (
+      <Container className='!p-0'>
+        <header></header>
+      </Container>
+    );
+  }
   return (
     <Container className='!p-0'>
       <header className='grid px-5 items-center md:grid-cols-4 gap-4 bg-white/20 backdrop-blur-md z-50 fixed top-0 py-5 max-w-[1280px] w-full'>

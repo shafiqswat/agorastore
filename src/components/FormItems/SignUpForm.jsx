@@ -54,10 +54,10 @@ const SignUpForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <LoginInput
+          {/* <LoginInput
             placeholder='Store Url'
             type='text'
-          />
+          /> */}
           <LoginInput
             placeholder='Password'
             type='password'

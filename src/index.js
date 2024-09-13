@@ -24,6 +24,15 @@ import { CollectionProvider } from "./components/Context/SingleCollection";
 import { AuthProvider } from "./components/Context/AuthContext";
 import { PaymentProvider } from "./components/Context/PaymentContext";
 
+// Import Stripe and Elements
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+// Load Stripe using your publishable key
+const stripePromise = loadStripe(
+  "pk_test_51PigjwRvL6cvp6sn58sYOELKUxWda68Nfp2e62Okqrw701jyiVlE039J6OeC7BWV8hvWmQyt053d5QC4OnTOQ6zo00AWYz40Ub"
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -43,9 +52,12 @@ root.render(
                               <LoginProvider>
                                 <CollectionProvider>
                                   <AuthProvider>
-                                    <PaymentProvider>
-                                      <App />
-                                    </PaymentProvider>
+                                    {/* Add Elements provider wrapping PaymentProvider */}
+                                    <Elements stripe={stripePromise}>
+                                      <PaymentProvider>
+                                        <App />
+                                      </PaymentProvider>
+                                    </Elements>
                                   </AuthProvider>
                                 </CollectionProvider>
                               </LoginProvider>

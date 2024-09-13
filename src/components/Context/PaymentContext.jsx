@@ -1,92 +1,31 @@
 /** @format */
 
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 import axios from "axios";
 
+// Create the context
 export const PaymentContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
-  const [paymentIntent, setPaymentIntent] = useState(null);
-  const [paymentDetails, setPaymentDetails] = useState(null);
-  const [error, setError] = useState(null);
+  const [paymentMethodId, setPaymentMethodId] = useState(null);
 
-  // API base URL
-  const apiBaseUrl = "https://agora.histudio.co/api/v1/stripe";
-
-  // Create Payment Intent
-  const createPaymentIntent = async (amount) => {
-    try {
-      const response = await axios.post(`${apiBaseUrl}/create-payment-intent`, {
-        amount,
-      });
-      setPaymentIntent(response.data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Confirm Payment
-  const confirmPayment = async (paymentIntentId, paymentMethodId) => {
-    try {
-      const response = await axios.post(`${apiBaseUrl}/confirm-payment`, {
-        paymentIntentId,
-        paymentMethodId,
-      });
-      setPaymentDetails(response.data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Fetch Payment Details
-  const fetchPaymentDetails = async (paymentIntentId) => {
-    try {
-      const response = await axios.get(
-        `${apiBaseUrl}/payment-details/${paymentIntentId}`
-      );
-      setPaymentDetails(response.data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Add Payment Method
+  // Function to handle adding payment method
   const addPaymentMethod = async (paymentMethodDetails) => {
     try {
       const response = await axios.post(
-        `${apiBaseUrl}/add-payment-method`,
-        paymentMethodDetails
+        "https://agora.histudio.co/api/v1/stripe/add-payment-method",
+        {
+          paymentIntentId: paymentMethodDetails.paymentIntentId,
+        }
       );
-      setPaymentDetails(response.data);
+      setPaymentMethodId(response.data.paymentIntentId); // or handle as needed
     } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Refund Payment
-  const refundPayment = async (paymentIntentId) => {
-    try {
-      const response = await axios.post(`${apiBaseUrl}/refund`, {
-        paymentIntentId,
-      });
-      setPaymentDetails(response.data);
-    } catch (error) {
-      setError(error.message);
+      console.error("Error adding payment method:", error);
     }
   };
 
   return (
-    <PaymentContext.Provider
-      value={{
-        createPaymentIntent,
-        confirmPayment,
-        fetchPaymentDetails,
-        addPaymentMethod,
-        refundPayment,
-        paymentIntent,
-        paymentDetails,
-        error,
-      }}>
+    <PaymentContext.Provider value={{ addPaymentMethod, paymentMethodId }}>
       {children}
     </PaymentContext.Provider>
   );

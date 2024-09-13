@@ -5,12 +5,19 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "./Context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, loading } = useContext(AuthContext);
 
-  if (!isAuthenticated) {
-    return <Navigate to='/login' />;
+  // Show loading indicator while checking authentication state
+  if (loading) {
+    return <div></div>;
   }
 
+  // If not authenticated, redirect to home page or login page
+  if (!isAuthenticated) {
+    return <Navigate to='/' />;
+  }
+
+  // If authenticated, render the children (protected content)
   return children;
 };
 

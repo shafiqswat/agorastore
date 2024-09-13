@@ -1,5 +1,6 @@
 /** @format */
 
+import { useContext, useState, useRef } from "react";
 import CustomButton from "../constant/customButton";
 import CreditCardInput from "../FormItems/CreditCardInput";
 import { Button } from "../ui/button";
@@ -7,21 +8,29 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogTrigger,
 } from "../ui/dialog";
-import { useContext } from "react";
 import { PaymentContext } from "../Context/PaymentContext";
 
 const PaymentModal = ({ isOpen, onOpenChange }) => {
   const { addPaymentMethod } = useContext(PaymentContext);
+  const [paymentMethodId, setPaymentMethodId] = useState(null);
 
-  const handleAddPaymentMethod = async (paymentMethodDetails) => {
-    await addPaymentMethod(paymentMethodDetails);
-    // Add any additional logic for handling the payment method
+  const creditCardFormRef = useRef(null);
+
+  const handlePaymentMethod = async (id) => {
+    setPaymentMethodId(id);
+    await addPaymentMethod({ paymentIntentId: id });
+  };
+
+  const handleAddPaymentClick = () => {
+    if (creditCardFormRef.current) {
+      creditCardFormRef.current.submit();
+    }
   };
 
   return (
@@ -36,11 +45,14 @@ const PaymentModal = ({ isOpen, onOpenChange }) => {
             Fill in the details to add a new payment method
           </DialogDescription>
         </DialogHeader>
-        <CreditCardInput />
+        <CreditCardInput
+          handlePaymentMethod={handlePaymentMethod}
+          ref={creditCardFormRef}
+        />
         <DialogFooter className='sm:justify-end'>
           <CustomButton
             BtnText='Add payment method'
-            onClick={handleAddPaymentMethod}
+            onClick={handleAddPaymentClick}
           />
           <DialogClose asChild>
             <Button

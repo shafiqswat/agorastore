@@ -74,8 +74,10 @@ const AuthProvider = ({ children }) => {
   // Fetch User Data if Token Exists
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log(token, "My Token");
+    setLoading(true);
+
     if (token) {
-      setLoading(true);
       axios
         .get("https://agora.histudio.co/api/v1/user/me", {
           headers: { Authorization: `Bearer ${token}` },
@@ -85,12 +87,20 @@ const AuthProvider = ({ children }) => {
           setIsAuthenticated(true);
         })
         .catch((error) => {
+          // Assuming a 401 status code means the token is invalid/expired
+          if (error.response && error.response.status === 401) {
+            localStorage.removeItem("token");
+            setIsAuthenticated(false);
+            setUser(null);
+          }
           setError("Failed to fetch user data.");
           console.error("Error fetching user:", error);
         })
         .finally(() => {
           setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, []);
 
