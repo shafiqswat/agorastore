@@ -14,7 +14,8 @@ export const CollectionProvider = ({ children }) => {
 
   const getCollectionData = async (id) => {
     try {
-      const { products: collectionProducts } = await fetchSingleCollection(id);
+      const response = await fetchSingleCollection(id);
+      const collectionProducts = response.data.products;
       setProducts(collectionProducts);
     } catch (error) {
       setError(error);
@@ -22,7 +23,6 @@ export const CollectionProvider = ({ children }) => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     if (collectionId) {
       getCollectionData(collectionId);

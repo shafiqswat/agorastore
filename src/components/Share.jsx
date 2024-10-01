@@ -10,8 +10,8 @@ import CustomButton from "./constant/customButton";
 
 const Share = () => {
   const { shareId } = useParams();
-  const { items } = useContext(ListContext);
-  const item = items.find((s) => s.id === shareId);
+  const { listName } = useContext(ListContext);
+  const item = listName.find((s) => s._id === shareId);
 
   if (!item) {
     return <div>List not found</div>;
@@ -19,8 +19,8 @@ const Share = () => {
 
   const handleShare = () => {
     const shareData = {
-      title: item.listName,
-      text: `Here's a list I created: ${item.listName}`,
+      title: item.name,
+      text: `Here's a list I created: ${item.name}`,
       url: window.location.href,
     };
 
@@ -43,7 +43,7 @@ const Share = () => {
       <Container>
         <Card className='px-5 pt-5 pb-14 flex justify-between items-center shadow-none'>
           <div></div>
-          <h2 className='text-2xl font-semibold'>{item.listName}</h2>
+          <h2 className='text-2xl font-semibold'>{item.name}</h2>
           <CustomButton
             BtnText='Share list'
             onClick={handleShare}

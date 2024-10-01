@@ -1,77 +1,54 @@
 /** @format */
 
-import React, { useState, useContext } from "react";
-import CustomButton from "../constant/customButton";
-import UserReview from "../constant/userReview";
+import React, { useContext, useState } from "react";
+import { usePostReview } from "../Context/PostReviewContext";
 import { Button } from "../ui/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
+  DialogFooter,
   DialogTrigger,
 } from "../ui/dialog";
 import { Textarea } from "../ui/textarea";
-import { PostReviewContext } from "../Context/PostReviewContext";
+import UserReview from "../constant/userReview";
+import { AuthContext } from "../Context/AuthContext";
+import { ReviewContext } from "../Context/ReviewContext";
 
-const ReviewsModal = ({ isOpen, onOpenChange }) => {
+const ReviewsModal = ({ isOpen, onOpenChange, productId }) => {
+  const { loading, error, postReview } = usePostReview();
   const [reviewText, setReviewText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const productId = "669240a250c87789853e0c2f";
-  const userId = "6698b737b26955d47b65d58f";
-  const rating = 3.3333;
+  const [rating, setRating] = useState(0);
+  const { user } = useContext(AuthContext);
+  const { handleNewReview } = useContext(ReviewContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch("", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          productId,
-          userId,
-          rating,
-          comment: reviewText,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to post review");
-      }
-
-      const data = await response.json();
-      console.log("Review posted successfully:", data);
-
-      setReviewText("");
-      onOpenChange(false);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    // const userId = user._id; // Correctly obtain user ID from context
+    await postReview(productId, rating, reviewText);
+    setReviewText("");
+    handleNewReview();
+    setRating(0);
+    onOpenChange(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Dialog
-        open={isOpen}
-        onOpenChange={onOpenChange}>
-        <DialogTrigger asChild></DialogTrigger>
-        <DialogContent className='w-[512px]'>
+    <Dialog
+      open={isOpen}
+      onOpenChange={onOpenChange}>
+      <DialogTrigger asChild></DialogTrigger>
+      <DialogContent className='w-[512px]'>
+        <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Leave a review</DialogTitle>
             <DialogDescription className='flex justify-center'>
-              <UserReview />
+              <UserReview
+                rating={rating}
+                onRatingChange={setRating}
+              />
             </DialogDescription>
           </DialogHeader>
           <Textarea
@@ -79,13 +56,15 @@ const ReviewsModal = ({ isOpen, onOpenChange }) => {
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
           />
+          {error && <p className='text-red-500'>{error}</p>}{" "}
+          {/* Show error message */}
           <DialogFooter className='sm:justify-end'>
-            <CustomButton
-              BtnText='Submit review'
+            <Button
+              className='rounded-full my-2'
               type='submit'
-              disabled={loading}
-              className='my-2'
-            />
+              disabled={loading}>
+              {loading ? "Submitting..." : "Submit review"}
+            </Button>
             <DialogClose asChild>
               <Button
                 type='button'
@@ -95,10 +74,9 @@ const ReviewsModal = ({ isOpen, onOpenChange }) => {
               </Button>
             </DialogClose>
           </DialogFooter>
-          {error && <p className='text-red-500'>Error: {error}</p>}
-        </DialogContent>
-      </Dialog>
-    </form>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
 

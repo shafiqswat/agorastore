@@ -6,7 +6,7 @@ import AuthenticationSidebar from "../components/layout/AuthenticationSidebar";
 
 const Login = () => {
   return (
-    <div className='md:flex'>
+    <div className='md:flex h-screen'>
       <AuthenticationSidebar />
       <LoginForm />
     </div>

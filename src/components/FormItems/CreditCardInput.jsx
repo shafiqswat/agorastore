@@ -1,8 +1,8 @@
 /** @format */
-
 import React, { forwardRef, useImperativeHandle } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 
+// CreditCardInput.js
 const CreditCardInput = forwardRef(({ handlePaymentMethod }, ref) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -26,7 +26,8 @@ const CreditCardInput = forwardRef(({ handlePaymentMethod }, ref) => {
       console.error("Stripe Error:", error.message);
     } else {
       console.log("Payment Method created successfully:", paymentMethod.id);
-      handlePaymentMethod(paymentMethod.id);
+      // Pass the correct key "paymentMethodId" to the handler
+      handlePaymentMethod({ paymentMethodId: paymentMethod.id });
     }
   };
 

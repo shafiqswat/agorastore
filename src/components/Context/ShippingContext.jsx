@@ -1,66 +1,100 @@
 /** @format */
 
-// /** @format */
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
-// import { FetchShippingAddress } from "../../api/index";
-// import React, { createContext, useEffect, useState } from "react";
+// Create ShippingContext
+export const ShippingContext = createContext();
 
-// export const ShippingContext = createContext();
+export const ShippingProvider = ({ children }) => {
+  const [addresses, setAddresses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-// const ShippingProvider = ({ children }) => {
-//   const [address, setAddress] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
+  const getToken = () => localStorage.getItem("token");
 
-//   const GetShippingAddress = async () => {
-//     try {
-//       // Retrieve the token from localStorage
-//       const token = localStorage.getItem("authToken");
+  const apiRequest = async (method, url, data = {}) => {
+    const token = getToken();
+    if (!token) throw new Error("User is not authenticated");
 
-//       // Perform the fetch request with the Authorization header
-//       const response = await fetch("/api/shipping-address", {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${token}`, // Include token in the Authorization header
-//         },
-//       });
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+    const response = await axios({ method, url, data, ...config });
+    return response.data;
+  };
 
-//       // Log the response status for debugging
-//       console.log();
-//       console.log(`Response status: ${response.status}`);
+  // Fetch all shipping addresses
+  const fetchShippingAddresses = async () => {
+    try {
+      const data = await apiRequest(
+        "get",
+        "https://agora.histudio.co/api/v1/shipping/address"
+      );
+      setAddresses(data.data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-//       // Check if the response is ok (status code 2xx)
-//       if (!response.ok) {
-//         // Handle error responses (e.g., 401 Unauthorized, 404 Not Found)
-//         throw new Error(`Error: ${response.statusText}`);
-//       }
+  // Add a new shipping address
+  const addShippingAddress = async (newAddress) => {
+    try {
+      await apiRequest(
+        "post",
+        "https://agora.histudio.co/api/v1/shipping/address",
+        newAddress
+      );
+      fetchShippingAddresses(); // Refresh the list after adding
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-//       // Check if the response is JSON before parsing
-//       const contentType = response.headers.get("Content-Type");
-//       if (contentType && contentType.includes("application/json")) {
-//         const data = await response.json();
-//         setAddress(data); // Set the address state with the fetched data
-//       } else {
-//         throw new Error("Received non-JSON response");
-//       }
-//     } catch (error) {
-//       console.error("Failed to fetch shipping address:", error); // Log the error
-//       setError(error); // Set the error state
-//     } finally {
-//       setLoading(false); // Stop loading state after the request completes
-//     }
-//   };
+  // Update an existing shipping address
+  const updateShippingAddress = async (id, updatedAddress) => {
+    try {
+      await apiRequest(
+        "put",
+        `https://agora.histudio.co/api/v1/shipping/address/${id}`,
+        updatedAddress
+      );
+      fetchShippingAddresses(); // Refresh the list after updating
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-//   useEffect(() => {
-//     GetShippingAddress();
-//   }, []);
+  // Remove a shipping address
+  const removeShippingAddress = async (id) => {
+    try {
+      await apiRequest(
+        "delete",
+        `https://agora.histudio.co/api/v1/shipping/address/${id}`
+      );
+      fetchShippingAddresses(); // Refresh the list after deleting
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-//   return (
-//     <ShippingContext.Provider value={{ address, loading, error }}>
-//       {children}
-//     </ShippingContext.Provider>
-//   );
-// };
+  // Fetch addresses on component mount
+  useEffect(() => {
+    fetchShippingAddresses();
+  }, []);
 
-// export default ShippingProvider;
+  const value = {
+    addresses,
+    loading,
+    error,
+    addShippingAddress,
+    updateShippingAddress,
+    removeShippingAddress,
+  };
+
+  return (
+    <ShippingContext.Provider value={value}>
+      {children}
+    </ShippingContext.Provider>
+  );
+};

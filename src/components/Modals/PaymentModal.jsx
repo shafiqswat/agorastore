@@ -1,6 +1,5 @@
 /** @format */
-
-import { useContext, useState, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import CustomButton from "../constant/customButton";
 import CreditCardInput from "../FormItems/CreditCardInput";
 import { Button } from "../ui/button";
@@ -17,14 +16,11 @@ import {
 import { PaymentContext } from "../Context/PaymentContext";
 
 const PaymentModal = ({ isOpen, onOpenChange }) => {
-  const { addPaymentMethod } = useContext(PaymentContext);
-  const [paymentMethodId, setPaymentMethodId] = useState(null);
-
+  const { addPaymentMethod, paymentMethodId } = useContext(PaymentContext);
   const creditCardFormRef = useRef(null);
 
-  const handlePaymentMethod = async (id) => {
-    setPaymentMethodId(id);
-    await addPaymentMethod({ paymentIntentId: id });
+  const handlePaymentMethod = async ({ paymentMethodId }) => {
+    await addPaymentMethod({ paymentMethodId }); // Pass the paymentMethodId
   };
 
   const handleAddPaymentClick = () => {
@@ -32,6 +28,14 @@ const PaymentModal = ({ isOpen, onOpenChange }) => {
       creditCardFormRef.current.submit();
     }
   };
+
+  // Show success message or close modal after adding the payment method
+  useEffect(() => {
+    if (paymentMethodId) {
+      alert("Payment method added successfully!");
+      onOpenChange(false); // Close the modal on success
+    }
+  }, [paymentMethodId, onOpenChange]);
 
   return (
     <Dialog

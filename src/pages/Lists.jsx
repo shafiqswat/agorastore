@@ -12,30 +12,19 @@ import NewList from "../components/constant/NewList";
 
 const Lists = () => {
   const route = useNavigate();
-  const { listName, setListName, items, setItems } = useContext(ListContext);
+  const { listName, deleteList, createList, renameList } =
+    useContext(ListContext);
   const [openModal, setOpenModal] = useState(false);
   const [openMap, setOpenMap] = useState({});
+  const [newListName, setNewListName] = useState(""); // For the new list's name
 
-  const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
+  // Remove generateId and addItem functions since we're using createList from context
 
   const addItem = () => {
-    if (listName.trim() === "") return;
-    const newItem = { id: generateId(), listName };
-    setItems([...items, newItem]);
-    setListName("");
+    if (newListName.trim() === "") return;
+    createList(newListName);
+    setNewListName("");
     setOpenModal(false);
-  };
-
-  const removeItem = (index) => {
-    const newList = items.filter((_, i) => i !== index);
-    setItems(newList);
-  };
-
-  const renameItem = (id, newName) => {
-    const updatedItems = items.map((item) =>
-      item.id === id ? { ...item, listName: newName } : item
-    );
-    setItems(updatedItems);
   };
 
   const handleClick = (id) => {
@@ -49,6 +38,8 @@ const Lists = () => {
     }));
   };
 
+  // Remove removeItem and renameItem functions
+
   return (
     <div>
       <Header />
@@ -56,47 +47,31 @@ const Lists = () => {
         <Card className='p-5'>
           <h2 className='text-2xl font-semibold'>My Lists</h2>
           <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 gap-5'>
-            {items.map((item, index) => (
-              <li
-                className='group col-span-1 grid-flow-row'
-                key={item.id}>
-                <div
-                  className='border grid grid-cols-2 gap-1 h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'
-                  onClick={() => handleClick(item.id)}>
-                  {/* <img
-                    src='/images/product2.webp'
-                    alt='Product'
-                  />
-                  <img
-                    src='/images/product2.webp'
-                    alt='Product'
-                  />
-                  <img
-                    src='/images/product2.webp'
-                    alt='Product'
-                  />
-                  <img
-                    src='/images/product2.webp'
-                    alt='Product'
-                  /> */}
-                </div>
-                <div className='flex justify-between mt-3'>
-                  <Link to={`/lists/${item.id}`}>
-                    <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
-                      {item.listName}
-                    </p>
-                  </Link>
-                  <Combobox
-                    open={!!openMap[index]}
-                    onOpenChange={() => handleOpenChange(index)}
-                    onDelete={() => removeItem(index)}
-                    onRename={renameItem}
-                    id={item.id}
-                    listName={item.listName}
-                  />
-                </div>
-              </li>
-            ))}
+            {Array.isArray(listName) &&
+              listName.map((item, index) => (
+                <li
+                  className='group col-span-1 grid-flow-row'
+                  key={item._id}>
+                  <div
+                    className='border grid grid-cols-2 gap-1 h-[271px] rounded-xl hover:bg-gray-50 cursor-pointer'
+                    onClick={() => handleClick(item._id)}></div>
+                  <div className='flex justify-between mt-3'>
+                    <Link to={`/lists/${item._id}`}>
+                      <p className='group-hover:underline cursor-pointer text-sm font-semibold w-fit'>
+                        {item.name}
+                      </p>
+                    </Link>
+                    <Combobox
+                      open={!!openMap[index]}
+                      onOpenChange={() => handleOpenChange(index)}
+                      onDelete={deleteList}
+                      onRename={renameList}
+                      id={item._id}
+                      listName={item.name}
+                    />
+                  </div>
+                </li>
+              ))}
             <li>
               <NewList setOpenModal={setOpenModal} />
             </li>
@@ -105,13 +80,12 @@ const Lists = () => {
         <ListsModal
           isOpen={openModal}
           onOpenChange={setOpenModal}
-          onChange={(e) => setListName(e.target.value)}
-          value={listName}
+          onChange={(e) => setNewListName(e.target.value)}
+          value={newListName}
           onSave={addItem}
         />
       </Container>
     </div>
   );
 };
-
 export default Lists;

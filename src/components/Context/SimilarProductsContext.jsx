@@ -12,7 +12,7 @@ const SimilarProductsProvider = ({ children, productId }) => {
   const getProducts = async () => {
     try {
       const productsData = await fetchSimilarProducts(productId);
-      setSimilarProducts(productsData);
+      setSimilarProducts(productsData.data);
     } catch (err) {
       setError(err);
       setSimilarProducts([]);

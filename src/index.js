@@ -17,7 +17,6 @@ import SearchContextProvider from "./components/Context/SearchContext";
 import ReviewProvider from "./components/Context/ReviewContext";
 import BrandProvider from "./components/Context/BrandContext";
 import PopularProductProvider from "./components/Context/PopularProductContext";
-import { PostReviewProvider } from "./components/Context/PostReviewContext";
 import ChatProvider from "./components/Context/ChatContext";
 import { LoginProvider } from "./components/Context/Login";
 import { CollectionProvider } from "./components/Context/SingleCollection";
@@ -27,6 +26,8 @@ import { PaymentProvider } from "./components/Context/PaymentContext";
 // Import Stripe and Elements
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { PostReviewProvider } from "./components/Context/PostReviewContext";
+import { ShippingProvider } from "./components/Context/ShippingContext";
 
 // Load Stripe using your publishable key
 const stripePromise = loadStripe(
@@ -52,12 +53,14 @@ root.render(
                               <LoginProvider>
                                 <CollectionProvider>
                                   <AuthProvider>
-                                    {/* Add Elements provider wrapping PaymentProvider */}
-                                    <Elements stripe={stripePromise}>
-                                      <PaymentProvider>
-                                        <App />
-                                      </PaymentProvider>
-                                    </Elements>
+                                    <ShippingProvider>
+                                      {/* Add Elements provider wrapping PaymentProvider */}
+                                      <Elements stripe={stripePromise}>
+                                        <PaymentProvider>
+                                          <App />
+                                        </PaymentProvider>
+                                      </Elements>
+                                    </ShippingProvider>
                                   </AuthProvider>
                                 </CollectionProvider>
                               </LoginProvider>

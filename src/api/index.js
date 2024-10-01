@@ -12,7 +12,7 @@ export const fetchSingleCollection = (collectionId) =>
   fetchData(`/collections/${collectionId}`);
 // Get Similar Products of the Product detail page
 export const fetchSimilarProducts = (productId) =>
-  fetchData(`/products/${productId}/similar`);
+  fetchData(`/products/similar/${productId}`);
 // Get all Reviews of the Product in the Product Detail Page
 export const fetchReview = (productId) => fetchData(`/reviews/${productId}`);
 // Get all Popular Products
@@ -22,6 +22,8 @@ export const compareProduct = (productId) =>
   fetchData(`products/${productId}/compare`);
 // Get Brand product in the Brand Page
 export const BrandProduct = (brandName) => fetchData(`/brand/${brandName}`);
+//Get List
+export const FetchLists = () => fetchData("/lists");
 
 // Implement Search Functionality on the basis of the productName
 export const FetchSearchData = (productName) => {
@@ -36,4 +38,4 @@ export const FetchChat = (chat) => {
   return fetchData(`/ai?q=${encodedChat}`);
 };
 
-export const postReview = (reviewData) => postData("/reviews", reviewData);
+// export const postReview = (reviewData) => postData("/reviews", reviewData);

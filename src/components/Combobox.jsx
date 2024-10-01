@@ -1,4 +1,5 @@
 /** @format */
+
 import React, { useState } from "react";
 import {
   Popover,
@@ -17,11 +18,15 @@ export function Combobox({
   listName,
 }) {
   const [showRenameModal, setShowRenameModal] = useState(false);
-  const [newName, setNewName] = useState(listName);
+  const [newName, setNewName] = useState(listName); // Start with the current list name
 
   const handleRename = () => {
-    onRename(id, newName);
-    setShowRenameModal(false);
+    if (newName.trim() === "") {
+      alert("List name cannot be empty.");
+      return;
+    }
+    onRename(id, newName); // Call the onRename prop function
+    setShowRenameModal(false); // Close the modal after renaming
   };
 
   return (
@@ -42,14 +47,15 @@ export function Combobox({
             <ul className='space-y-1'>
               <li
                 className='flex items-center p-2 cursor-pointer hover:bg-gray-100 rounded'
-                onClick={() => setShowRenameModal(true)}>
+                onClick={() => setShowRenameModal(true)} // Trigger rename modal
+              >
                 Rename
               </li>
               <li
                 className='flex items-center p-2 cursor-pointer hover:bg-gray-100 rounded'
                 onClick={() => {
                   onOpenChange();
-                  onDelete(id);
+                  onDelete(id); // Trigger delete
                 }}>
                 Delete
               </li>
@@ -58,15 +64,16 @@ export function Combobox({
         </PopoverContent>
       </Popover>
 
+      {/* Rename Modal */}
       <ListsModal
         isOpen={showRenameModal}
         onOpenChange={setShowRenameModal}
         ModalHeading='Rename List'
         ModalDetails='Enter a new name for the list.'
         BtnText='Rename'
-        onChange={(e) => setNewName(e.target.value)}
+        onChange={(e) => setNewName(e.target.value)} // Update new name input
         value={newName}
-        onSave={handleRename}
+        onSave={handleRename} // Call handleRename to rename the list
       />
     </>
   );

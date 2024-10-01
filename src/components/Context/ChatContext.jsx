@@ -21,14 +21,13 @@ const ChatContextProvider = ({ children }) => {
     try {
       const response = await FetchChat(chatVal);
       // Assuming the response structure is { message: 'AI response' }
-      const aiMessage = response.message; // Adjust this line based on your API response structure
+      const aiMessage = response.data.message; // Adjust this line based on your API response structure
 
       // Then, push the AI's response to the chats array.
       setChats((prevChats) => [
         ...prevChats,
         { isUser: false, message: aiMessage }, // Assuming AI is not a user
       ]);
-      console.log(aiMessage, "chat Items");
     } catch (err) {
       console.error("Error fetching search data:", err);
       setError(err);

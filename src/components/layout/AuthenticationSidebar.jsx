@@ -10,7 +10,7 @@ import {
 
 const AuthenticationSidebar = () => {
   return (
-    <div className='bg-lightgray md:w-[645px] w-full h-screen'>
+    <div className='bg-lightgray md:w-[645px] w-full h-full'>
       <div className='py-16'>
         <img
           src='/images/logo.png'

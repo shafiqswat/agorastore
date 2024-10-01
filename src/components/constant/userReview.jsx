@@ -1,13 +1,11 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import { StarIcon } from "./SvgIcons";
 
-function UserReview({ initialRating, className, parentStyle }) {
-  const [rating, setRating] = useState(initialRating);
-
+function UserReview({ rating, onRatingChange, className, parentStyle }) {
   const handleStarClick = (newRating) => {
-    setRating(newRating);
+    onRatingChange(newRating); // Call the function passed from the parent to update the rating
   };
 
   return (
@@ -17,8 +15,7 @@ function UserReview({ initialRating, className, parentStyle }) {
           <StarIcon
             key={index}
             filled={index < rating}
-            onClick={handleStarClick}
-            index={index}
+            onClick={() => handleStarClick(index + 1)} // Update rating when star is clicked
             className={className}
           />
         ))}

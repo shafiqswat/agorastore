@@ -12,7 +12,7 @@ const InputComponent = ({ placeholder, className, onChange, value, type }) => {
       placeholder={placeholder}
       onChange={onChange}
       value={value}
-      required
+      required={true}
     />
   );
 };

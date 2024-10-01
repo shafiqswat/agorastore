@@ -12,8 +12,7 @@ export const FeaturedProvider = ({ children }) => {
   const getCollectionData = async () => {
     try {
       const CollectionData = await fetchCollection();
-      setFeaturedData(CollectionData);
-      console.log(CollectionData, "COLLECTION");
+      setFeaturedData(CollectionData.data);
     } catch (error) {
       setError(error);
     } finally {

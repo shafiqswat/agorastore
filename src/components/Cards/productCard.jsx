@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
             {product.name}
           </div>
           <Reviews
-            rating={product.rating.toFixed(2)}
+            rating={product.rating?.toFixed(2)}
             className='w-4 h-4 cursor-pointer'
           />
           <div className='flex justify-between items-center mb-2'>

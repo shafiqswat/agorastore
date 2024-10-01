@@ -9,29 +9,36 @@ const ReviewProvider = ({ children, productId }) => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [trigger, setTrigger] = useState(false);
 
   const getReviewData = async (productId) => {
     try {
-      const { reviews: reviewData } = await fetchReview(productId);
-      setReviews(reviewData);
-      console.log(reviewData, "ReviewData");
+      const response = await fetchReview(productId);
+      const reviewsData = response?.data?.reviews;
+      setReviews(reviewsData);
     } catch (err) {
       setError(err);
-      console.log(err);
+      console.error("Error fetching reviews:", err);
       setReviews([]);
     } finally {
       setLoading(false);
     }
   };
 
+  // Function to be called when a new review is added
+  const handleNewReview = () => {
+    setTrigger((prevTrigger) => !prevTrigger); // Toggle the trigger state
+  };
+
   useEffect(() => {
     if (productId) {
       getReviewData(productId);
     }
-  }, [productId]);
+  }, [productId, trigger]); // Depend on trigger to re-fetch reviews
 
   return (
-    <ReviewContext.Provider value={{ reviews, loading, error }}>
+    <ReviewContext.Provider
+      value={{ reviews, loading, error, handleNewReview }}>
       {children}
     </ReviewContext.Provider>
   );

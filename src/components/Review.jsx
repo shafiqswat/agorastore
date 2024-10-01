@@ -12,7 +12,7 @@ const Review = () => {
 
   return (
     <div className='grid sm:grid-cols-2 grid-cols-1 gap-6 px-20 large:px-0'>
-      {reviews.length > 0 ? (
+      {reviews?.length > 0 ? (
         reviews.map((review, index) => (
           <div
             key={index}

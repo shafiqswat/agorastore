@@ -2,20 +2,26 @@
 
 import axios from "axios";
 
-/** @format */
-const BASE_API_URL = "http://68.183.112.7/api/v1";
+const postDataToAPI = async (url, data, token = null) => {
+  try {
+    // Configure headers, adding Bearer token if available
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    };
 
-export const postData = async (endpoint) => {
-  const response = await axios.post(
-    `https://api.allorigins.win/get?url=${encodeURIComponent(
-      `${BASE_API_URL}${endpoint}`
-    )}`
-  );
+    // Make the POST request
+    const response = await axios.post(url, data, config);
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch data from ${endpoint}`);
+    // Handle success
+    return response.data; // Returns the response from the API
+  } catch (error) {
+    // Handle errors
+    console.error("Error posting data:", error);
+    throw error.response ? error.response.data : error;
   }
-
-  const { contents } = await response.json();
-  return JSON.parse(contents);
 };
+
+export default postDataToAPI;

@@ -12,12 +12,12 @@ import { ReviewContext } from "../Context/ReviewContext";
 const ReviewForm = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
   const { reviews } = useContext(ReviewContext);
-  const reviewsCount = reviews.length;
+  const reviewsCount = reviews?.length;
   const averageReview = reviews
-    .reduce((acc, current, _, arr) => {
-      return acc + current.rating / arr.length;
+    ?.reduce((acc, current, _, arr) => {
+      return acc + current.rating / arr?.length;
     }, 0)
-    .toFixed(2);
+    ?.toFixed(2);
   console.log(reviews, "HOW MUCH REVIEWS THE PRODUCT TAKES");
   return (
     <div className='flex flex-col lg:flex-row items-center justify-between mt-20 ps-20 pe-28 large:px-0 '>
@@ -50,6 +50,7 @@ const ReviewForm = ({ product }) => {
         <ReviewsModal
           isOpen={showModal}
           onOpenChange={setShowModal}
+          productId={product._id}
         />
       </div>
     </div>

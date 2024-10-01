@@ -10,11 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { LoginContext } from "../Context/Login";
-// import SignUpForm from "../FormItems/SignUpForm";
+import { AuthContext } from "../Context/AuthContext";
 
 const Modal = ({ isOpen, setIsOpen }) => {
-  const { loginWithGoogle, loading } = useContext(LoginContext);
+  const { loginWithGoogle, loading } = useContext(AuthContext);
 
   return (
     <Dialog
@@ -29,7 +28,7 @@ const Modal = ({ isOpen, setIsOpen }) => {
             privacy policy.
           </DialogDescription>
         </DialogHeader>
-        {/* <SignUpForm /> */}
+
         <div
           className='w-72 h-9 border mx-auto grid grid-cols-4 items-center rounded-sm cursor-pointer hover:bg-customblue'
           onClick={loginWithGoogle}>
@@ -38,6 +37,7 @@ const Modal = ({ isOpen, setIsOpen }) => {
             {loading ? "Loading..." : "Sign in with Google"}
           </span>
         </div>
+
         <DialogFooter>
           <button
             className='bg-lightgray px-4 py-2 rounded-3xl font-sans text-sm font-medium'

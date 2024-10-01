@@ -12,8 +12,7 @@ const CompareProductProvider = ({ children, productId }) => {
   const getProducts = async () => {
     try {
       const productsData = await fetchSimilarProducts(productId);
-      setCompareProduct(productsData);
-      console.log("compare Products ", productsData);
+      setCompareProduct(productsData.data);
     } catch (err) {
       setError(err);
       setCompareProduct([]);

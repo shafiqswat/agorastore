@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { SearchContext } from "../Context/SearchContext";
+import { ChatContext } from "../Context/ChatContext";
 import {
   ArrowRightIcon,
   CameraIcon,
@@ -9,14 +10,15 @@ import {
   SearchIcon,
 } from "../constant/SvgIcons";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ChatContext } from "../Context/ChatContext";
 
 const SearchForm = () => {
-  const { value, setValue, searchProductsByName } = useContext(SearchContext);
+  const { value, setValue, searchProductsByName, searchProductsByImage } =
+    useContext(SearchContext);
   const { chatInput } = useContext(ChatContext);
   const [isSearchIcon, setIsSearchIcon] = useState(true);
   const [placeholderText, setPlaceholderText] = useState("Search for products");
   const fileInputRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -43,9 +45,26 @@ const SearchForm = () => {
     fileInputRef.current.click();
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file); // Save the selected image to state
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (placeholderText === "Search for products" && value) {
+    console.log("Selected Image:", selectedImage); // Check the selected image
+    console.log("Search Value:", value); // Check the current search value
+
+    if (selectedImage) {
+      searchProductsByImage(selectedImage).then(() => {
+        const searchValue = value || "image-search"; // Use 'image-search' as a fallback if value is undefined or empty
+        navigate(`/search/${encodeURIComponent(searchValue)}`);
+        setSelectedImage(null); // Reset selected image after search
+      });
+    } else if (placeholderText === "Search for products" && value) {
+      // If text search
       searchProductsByName(value);
       navigate(`/search/${encodeURIComponent(value)}`);
       setValue("");
@@ -60,7 +79,7 @@ const SearchForm = () => {
     <div className='flex items-center w-full gap-1.5'>
       <button
         onClick={toggleIcon}
-        className={`items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 bg-neutral-100 border-neutral-100 hover:border-neutral-200 place-items-center grid flex-shrink-0 h-full grid-cols-2 grid-rows-1 p-1 text-black border rounded-full`}>
+        className='items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80 bg-neutral-100 border-neutral-100 hover:border-neutral-200 place-items-center grid flex-shrink-0 h-full grid-cols-2 grid-rows-1 p-1 text-black border rounded-full'>
         <div
           className={`border-neutral-300 w-10 h-10 col-start-1 row-start-1 bg-white border rounded-full shadow transition-transform transform ${isSearchIcon ? "translate-x-0" : "translate-x-full"}`}></div>
         <div
@@ -82,7 +101,7 @@ const SearchForm = () => {
           className='focus:outline-none focus:ring-0 w-full px-4 bg-transparent border-none rounded-full'
           placeholder={placeholderText}
           autoComplete='off'
-          required
+          required={!selectedImage} // Only required when there's no image
           onChange={(e) => setValue(e.target.value)}
         />
         <button
@@ -96,6 +115,7 @@ const SearchForm = () => {
           accept='image/*'
           style={{ display: "none" }}
           ref={fileInputRef}
+          onChange={handleFileChange} // Handle file input change
         />
         <button
           type='submit'

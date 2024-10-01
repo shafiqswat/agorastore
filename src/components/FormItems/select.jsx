@@ -9,16 +9,18 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const SelectComponent = ({ placeholder, options }) => {
+const SelectComponent = ({ placeholder, options, value, onChange }) => {
   return (
-    <Select>
+    <Select
+      value={value}
+      onValueChange={onChange}>
       <SelectTrigger id='color'>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent position='popper'>
-        {options.map((option, index) => (
+        {options.map((option) => (
           <SelectItem
-            key={index}
+            key={option.value}
             value={option.value}>
             {option.text}
           </SelectItem>

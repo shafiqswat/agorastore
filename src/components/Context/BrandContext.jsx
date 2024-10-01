@@ -15,7 +15,7 @@ const BrandProvider = ({ children }) => {
   const fetchProducts = async () => {
     try {
       const ProductsData = await BrandProduct(brandName);
-      setProducts(ProductsData);
+      setProducts(ProductsData.data);
     } catch (error) {
       console.error("Error fetching brand products:", error);
     } finally {

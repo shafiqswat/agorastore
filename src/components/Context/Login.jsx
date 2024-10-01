@@ -13,7 +13,7 @@ const LoginProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const loginWithGoogle = () => {
-    window.location.href = "http://68.183.112.7/api/v1/auth/google"; // Redirect to your backend for Google authentication
+    window.location.href = "https://agora.histudio.co/api/v1/auth/google";
   };
 
   const logout = () => {
@@ -38,18 +38,17 @@ const LoginProvider = ({ children }) => {
 
       navigate("/");
     } else {
-      // Check if there's already a token in local storage
       const storedToken = localStorage.getItem("token");
       if (storedToken) {
         setIsAuthenticated(true);
-        fetchUserDetails(storedToken); // Optionally fetch user details if the token exists
+        fetchUserDetails(storedToken);
       }
     }
   }, [navigate]);
 
   const fetchUserDetails = async (token) => {
     try {
-      const response = await fetch("http://68.183.112.7/api/v1/user/me", {
+      const response = await fetch("https://agora.histudio.co/api/v1/auth/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

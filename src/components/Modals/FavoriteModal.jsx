@@ -23,16 +23,15 @@ const FavoriteModal = ({
   ModalHeading = "Create a new list",
   ModalDetails = "Fill in the details to create a new list.",
 }) => {
-  const [showModal, setShowModal] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-  const { items, listName, setListName, setItems } = useContext(ListContext);
-  const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
+  const { listName, createList } = useContext(ListContext);
+  const [newListName, setNewListName] = useState("");
+  const [openModal, setOpenModal] = useState(false);
   const addItem = () => {
-    if (listName.trim() === "") return;
-    const newItem = { id: generateId(), listName };
-    setItems([...items, newItem]);
-    setListName("");
-    setShowModal(false);
+    if (newListName.trim() === "") return;
+    createList(newListName);
+    setNewListName("");
+    setOpenModal(false);
   };
 
   const handleClick = (item) => {
@@ -54,19 +53,19 @@ const FavoriteModal = ({
           <DialogDescription>{ModalDetails}</DialogDescription>
         </DialogHeader>
         <div>
-          {items.map((item, index) => (
+          {listName.map((item, index) => (
             <ul key={index}>
               <li
                 className='flex justify-between border p-2 ps-5 my-2 rounded-full cursor-pointer hover:bg-lightgray'
                 onClick={() => handleClick(item)}>
-                <p className='font-medium text-sm'>{item.listName}</p>
+                <p className='font-medium text-sm'>{item.name}</p>{" "}
                 <div>
                   {selectedItems.includes(item) ? <CircleFilled /> : <Circle />}
                 </div>
               </li>
             </ul>
           ))}
-          <NewList setOpenModal={setShowModal} />
+          <NewList setOpenModal={setOpenModal} />
         </div>
         <DialogFooter className='sm:justify-end'>
           <DialogClose asChild>
@@ -79,10 +78,10 @@ const FavoriteModal = ({
           </DialogClose>
         </DialogFooter>
         <ListsModal
-          isOpen={showModal}
-          onOpenChange={setShowModal}
-          onChange={(e) => setListName(e.target.value)}
-          value={listName}
+          isOpen={openModal}
+          onOpenChange={setOpenModal}
+          onChange={(e) => setNewListName(e.target.value)}
+          value={newListName}
           onSave={addItem}
         />
       </DialogContent>
