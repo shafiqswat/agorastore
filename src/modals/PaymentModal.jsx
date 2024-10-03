@@ -14,17 +14,20 @@ import {
   DialogTrigger,
 } from "../components/elements/Dialog";
 import { PaymentContext } from "../context/PaymentContext";
+import { useNavigate } from "react-router-dom";
 
 const PaymentModal = ({ isOpen, onOpenChange }) => {
   const { addPaymentMethod, paymentMethodId, loading } =
     useContext(PaymentContext);
   const creditCardFormRef = useRef(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handlePaymentMethod = async ({ paymentMethodId }) => {
     setError(null);
     try {
       await addPaymentMethod({ paymentMethodId });
+      onOpenChange(false);
     } catch (error) {
       setError("Failed to add payment method. Please try again.");
     }

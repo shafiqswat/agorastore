@@ -9,7 +9,7 @@ export const PaymentProvider = ({ children }) => {
   const [paymentMethodId, setPaymentMethodId] = useState(null);
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [paymentIntent, setPaymentIntent] = useState(null); // Store payment intent
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Function to handle adding payment method
@@ -72,11 +72,8 @@ export const PaymentProvider = ({ children }) => {
 
   // Function to get all payment methods
   const getPaymentMethods = async () => {
-    setLoading(true);
-    setError(null);
     try {
       const token = localStorage.getItem("token");
-
       const response = await axios.get(
         "https://agora.histudio.co/api/v1/payment/methods",
         {
@@ -104,7 +101,7 @@ export const PaymentProvider = ({ children }) => {
 
       const response = await axios.post(
         "https://agora.histudio.co/api/v1/payment/confirm",
-        {},  
+        {},
         {
           headers: {
             Authorization: `Bearer ${token}`,
