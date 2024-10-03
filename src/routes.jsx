@@ -8,7 +8,6 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Merchant from "./pages/Merchant";
 import Docs from "./pages/Docs";
-import Collections from "./pages/Collections";
 import PopularProducts from "./pages/PopularProducts";
 import StoreCrawler from "./pages/StoreCrawler";
 import ProductDetails from "./pages/productdetails";
@@ -24,6 +23,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import ProtectedRoute from "../src/components/ProtectedRoutes";
 import About from "./pages/About";
+import CollectionsDetail from "./pages/CollectionsDetail";
+import Collections from "./pages/Collections";
 const AppRoutes = () => (
   <Routes>
     <Route
@@ -56,8 +57,12 @@ const AppRoutes = () => (
       element={<Docs />}
     />
     <Route
-      path='/collections/:collectionId'
+      path='/collections'
       element={<Collections />}
+    />
+    <Route
+      path='/collections/:collectionId'
+      element={<CollectionsDetail />}
     />
     <Route
       path='/popularproducts'

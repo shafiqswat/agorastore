@@ -1,24 +1,34 @@
 /** @format */
 
-import React, { useContext } from "react";
-import Reviews from "../constant/ProductsReview";
-import Hurt from "../constant/Hurt";
-import { CartContext } from "../Context/CartContext";
+import React, { useContext, useState } from "react";
+import Reviews from "../common/ProductsReview";
+import Hurt from "../common/Hurt";
+import { CartContext } from "../../context/CartContext";
 import { toast, Toaster } from "sonner";
 import { useNavigate } from "react-router-dom";
-import SelectComponent from "../FormItems/select";
-import LabelComponent from "../FormItems/label";
-import CustomButton from "../constant/customButton";
+import SelectComponent from "../formItems/Select";
+import LabelComponent from "../formItems/Label";
+import CustomButton from "../common/CustomButton";
+import Modal from "../../modals/SigninModal";
+import { AuthContext } from "../../context/AuthContext"; // Import AuthContext
 
-export function ProductDetailsCard({ product }) {
+const ProductDetailsCard = ({ product }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { isAuthenticated } = useContext(AuthContext); // Access authentication status
   const router = useNavigate();
+  const [showSigninModal, setShowSigninModal] = useState(false);
+
   const handleBrandClick = () => {
     const formattedBrandName = product.brand.trim().replace(/\s+/g, "-");
     router(`/brand/${formattedBrandName}`);
   };
 
   const handleCart = () => {
+    // Check if the user is authenticated
+    if (!isAuthenticated) {
+      setShowSigninModal(true); // Show the SigninModal if not authenticated
+      return;
+    }
     toast("Product added to cart", {
       icon: <i className='fa-solid fa-circle-check'></i>,
       description: product.description,
@@ -46,7 +56,6 @@ export function ProductDetailsCard({ product }) {
     <div className='lg:m-auto lg:mt-0 lg:w-[371px]'>
       <button
         className='text-neutral-700 text-sm font-medium px-1.5 py-0.5 rounded bg-neutral-100 w-max capitalize'
-        o
         onClick={handleBrandClick}>
         {product.brand}
       </button>
@@ -65,22 +74,12 @@ export function ProductDetailsCard({ product }) {
           <LabelComponent text='Color' />
           <SelectComponent
             placeholder='Black'
-            options={[
-              {
-                value: "Black",
-                text: "Black",
-              },
-            ]}
+            options={[{ value: "Black", text: "Black" }]}
           />
           <LabelComponent text='Size' />
           <SelectComponent
             placeholder='Large'
-            options={[
-              {
-                value: "Large",
-                text: "Large",
-              },
-            ]}
+            options={[{ value: "Large", text: "Large" }]}
           />
           <p className='font-semibold text-black my-6'>${product.price}</p>
           <div className='w-full hidden md:grid grid-cols-2 lg:grid-cols-1 items-center justify-center gap-5'>
@@ -93,6 +92,12 @@ export function ProductDetailsCard({ product }) {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showSigninModal}
+        setIsOpen={setShowSigninModal}
+      />
     </div>
   );
-}
+};
+
+export default ProductDetailsCard;

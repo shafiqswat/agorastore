@@ -1,11 +1,11 @@
 /** @format */
 import React from "react";
 import { useParams } from "react-router-dom";
-import Container from "../components/layout/container";
 import Header from "../components/layout/Header";
-import { ShareIcon } from "../components/constant/SvgIcons";
-import BrandProvider from "../components/Context/BrandContext";
+import { ShareIcon } from "../assets/SvgIcons";
+import BrandProvider from "../context/BrandContext";
 import BrandList from "../components/BrandList";
+import MainWrapper from "../components/common/MainWrapper";
 
 const Brand = () => {
   const { brandName } = useParams();
@@ -14,7 +14,7 @@ const Brand = () => {
     <>
       <BrandProvider brandName={brandName}>
         <Header />
-        <Container>
+        <MainWrapper>
           <div className='border p-5 rounded-xl'>
             <div className=' flex justify-between items-center'>
               <div></div>
@@ -25,7 +25,7 @@ const Brand = () => {
             </div>
             <BrandList />
           </div>
-        </Container>
+        </MainWrapper>
       </BrandProvider>
     </>
   );

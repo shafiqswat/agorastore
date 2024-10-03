@@ -2,8 +2,8 @@
 
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../Context/CartContext";
-import CustomButton from "../constant/customButton";
+import { CartContext } from "../../context/CartContext";
+import CustomButton from "../common/CustomButton";
 import {
   MenuIcon,
   ShoppingCartIcon,
@@ -11,11 +11,12 @@ import {
   CrossIcon,
   PackageIcon,
   LayoutGridIcon,
-} from "../constant/SvgIcons";
-import Modal from "../Modals/SigninModal";
-import Container from "./container";
-import SearchForm from "../constant/SearchForm";
-import { AuthContext } from "../Context/AuthContext";
+} from "../../assets/SvgIcons";
+import Modal from "../../modals/SigninModal";
+import Container from "../common/MainWrapper";
+import SearchForm from "../common/SearchForm";
+import { AuthContext } from "../../context/AuthContext";
+import MainWrapper from "../common/MainWrapper";
 
 const Header = () => {
   const { cart } = useContext(CartContext);
@@ -35,7 +36,7 @@ const Header = () => {
     );
   }
   return (
-    <Container className='!p-0'>
+    <MainWrapper className='!p-0'>
       <header className='grid px-5 items-center md:grid-cols-4 gap-4 bg-white/20 backdrop-blur-md z-50 fixed top-0 py-5 max-w-[1280px] w-full'>
         <Link
           className='w-max ps-2 md:col-span-1'
@@ -221,7 +222,7 @@ const Header = () => {
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
       />
-    </Container>
+    </MainWrapper>
   );
 };
 

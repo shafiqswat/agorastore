@@ -1,13 +1,13 @@
 /** @format */
 
 import React from "react";
-import SecondaryHeader from "../components/layout/SecondaryHeader";
-import ProductShowcase from "../components/constant/productShowCase";
+import ProductShowcase from "../components/common/ProductShowCase";
+import SocialHeader from "../components/layout/SocialHeader";
 
 const About = () => {
   return (
     <div>
-      <SecondaryHeader
+      <SocialHeader
         firstNavLink='Merchants'
         FirstTo='/merchant'
         SecondNavLink='Search products'

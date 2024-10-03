@@ -1,21 +1,16 @@
 /** @format */
 
 import { useContext } from "react";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "../components/ui/tabs";
-import CustomButton from "./constant/customButton";
-import Credit from "./SettingElements/Credit";
-import Payment from "./SettingElements/Payment";
-import Personalization from "./SettingElements/Personalization";
-import Profile from "./SettingElements/Profile";
-import Shipping from "./SettingElements/Shipping";
-import { AuthContext } from "./Context/AuthContext";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./elements/Tabs";
+import CustomButton from "./common/CustomButton";
+import Credit from "./settingElements/Credit";
+import Payment from "./settingElements/Payment";
+import Personalization from "./settingElements/Personalization";
+import Profile from "./settingElements/Profile";
+import Shipping from "./settingElements/Shipping";
+import { AuthContext } from "../context/AuthContext";
 
-export function TabsComponent() {
+const TabsComponent = () => {
   const { logout } = useContext(AuthContext);
   const handleClick = () => {
     logout();
@@ -77,4 +72,5 @@ export function TabsComponent() {
       </TabsContent>
     </Tabs>
   );
-}
+};
+export default TabsComponent;

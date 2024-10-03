@@ -1,11 +1,11 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { SearchContext } from "../components/Context/SearchContext";
-import ProductCard from "../components/Cards/productCard";
+import { SearchContext } from "../context/SearchContext";
+import ProductCard from "../components/cards/ProductCard";
 import Header from "../components/layout/Header";
-import Container from "../components/layout/container";
 import LoadingSkeleton from "../components/Skeleton";
+import MainWrapper from "../components/common/MainWrapper";
 
 const Search = () => {
   const { searchProducts, loading, error } = useContext(SearchContext);
@@ -13,7 +13,7 @@ const Search = () => {
   return (
     <>
       <Header />
-      <Container>
+      <MainWrapper>
         {loading ? (
           <LoadingSkeleton count={10} />
         ) : searchProducts.length > 0 ? (
@@ -29,7 +29,7 @@ const Search = () => {
           <p>No products found</p>
         )}
         {error && <p>Error loading products: {error.message}</p>}
-      </Container>
+      </MainWrapper>
     </>
   );
 };

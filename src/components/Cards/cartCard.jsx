@@ -1,8 +1,8 @@
 /** @format */
 
 import React from "react";
-import { Card, CardContent, CardHeader } from "../ui/card";
-import CustomButton from "../constant/customButton";
+import { Card, CardContent, CardHeader } from "../elements/Card";
+import CustomButton from "../common/CustomButton";
 
 const CartCard = ({ headingText, btnText, onClick }) => {
   return (

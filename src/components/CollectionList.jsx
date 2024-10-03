@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { useContext } from "react";
-import ProductCard from "./Cards/productCard";
-import { CollectionContext } from "./Context/SingleCollection";
+import ProductCard from "./cards/ProductCard";
+import { CollectionContext } from "../context/SingleCollection";
 
 const CollectionList = () => {
   const { products } = useContext(CollectionContext);

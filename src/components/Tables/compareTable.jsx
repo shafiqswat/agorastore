@@ -1,11 +1,17 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
-import CompareCard from "../Cards/compareCard";
-import Reviews from "../constant/ProductsReview";
-import { CompareContext } from "../Context/CompareProductContext";
-import Container from "../layout/container";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "../elements/Table";
+import CompareCard from "../cards/CompareCard";
+import Reviews from "../common/ProductsReview";
+import { CompareContext } from "../../context/CompareProductContext";
+import Container from "../common/MainWrapper";
 import LoadingSkeleton from "../Skeleton";
 
 const CompareTable = () => {

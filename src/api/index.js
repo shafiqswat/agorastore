@@ -1,7 +1,7 @@
 /** @format */
 
-import { fetchData } from "../components/Helper/fetchHelper";
-import { postData } from "../components/Helper/postHelper";
+import { fetchData } from "../helper/FetchHelper";
+import { postData } from "../helper/PostHelper";
 
 // Get all Products of the home Page
 export const fetchProducts = () => fetchData("/products");

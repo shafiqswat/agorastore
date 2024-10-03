@@ -1,19 +1,19 @@
 /** @format */
 
 import React from "react";
-import { TabsComponent } from "../components/Tabs";
 import Header from "../components/layout/Header";
-import Container from "../components/layout/container";
+import TabsComponent from "../components/Tabs";
+import MainWrapper from "../components/common/MainWrapper";
 
 const Settings = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <MainWrapper>
         <div className=' justify-between block'>
           <TabsComponent />
         </div>
-      </Container>
+      </MainWrapper>
     </div>
   );
 };

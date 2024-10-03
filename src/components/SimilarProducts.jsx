@@ -1,16 +1,16 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { SimilarProductContext } from "./Context/SimilarProductsContext";
-import ProductCard from "./Cards/productCard";
+import { SimilarProductContext } from "../context/SimilarProductsContext";
+import ProductCard from "./cards/ProductCard";
 import LoadingSkeleton from "./Skeleton";
-import Container from "./layout/container";
+import MainWrapper from "./common/MainWrapper";
 
 // Component to handle loading state
 const LoadingState = () => (
-  <Container>
+  <MainWrapper>
     <LoadingSkeleton count={10} />
-  </Container>
+  </MainWrapper>
 );
 
 // Component to handle error state

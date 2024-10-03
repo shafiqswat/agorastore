@@ -1,15 +1,15 @@
 /** @format */
 
 import React from "react";
-import SecondaryHeader from "../components/layout/SecondaryHeader";
-import ProductShowcase from "../components/constant/productShowCase";
-import SecondaryBtn from "../components/constant/SecondaryBtn";
-import SectionHeading from "../components/constant/SectionHeading";
+import ProductShowcase from "../components/common/ProductShowCase";
+import SocialHeader from "../components/layout/SocialHeader";
+import SocialButton from "../components/common/SocialButton";
+import MainHeading from "../components/common/MainHeading";
 
 const Merchant = () => {
   return (
     <div>
-      <SecondaryHeader
+      <SocialHeader
         firstNavLink='Login'
         FirstTo='/login'
         SecondNavLink='Sign up'
@@ -90,15 +90,15 @@ const Merchant = () => {
             className='w-24 h-12'
           />
         </div>
-        <SecondaryBtn className='border-2 border-black h-16 mx-auto mt-4 sm:mt-0'>
+        <SocialButton className='border-2 border-black h-16 mx-auto mt-4 sm:mt-0'>
           Read Calzuro's case study
-        </SecondaryBtn>
+        </SocialButton>
       </section>
       {/*  */}
       {/*  */}
       {/*  */}
       <section className='my-10 px-10'>
-        <SectionHeading
+        <MainHeading
           headingText='Sponsored products'
           className='sm:text-4xl font-extrabold'
         />
@@ -131,12 +131,12 @@ const Merchant = () => {
             </p>
           </div>
         </div>
-        <SecondaryBtn className='border-2 border-black h-16 mx-auto  my-10'>
+        <SocialButton className='border-2 border-black h-16 mx-auto  my-10'>
           View search data
-        </SecondaryBtn>
+        </SocialButton>
       </section>
       <section className='mt-24'>
-        <SectionHeading
+        <MainHeading
           headingText='Frequently asked questions'
           className='sm:text-4xl font-extrabold'
         />

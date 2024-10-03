@@ -1,10 +1,10 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { PopularProductContext } from "../components/Context/PopularProductContext";
+import { PopularProductContext } from "../context/PopularProductContext";
 import Header from "../components/layout/Header";
-import Container from "../components/layout/container";
-import ProductCard from "../components/Cards/productCard";
+import ProductCard from "../components/cards/ProductCard";
+import MainWrapper from "../components/common/MainWrapper";
 
 const PopularProducts = () => {
   const { popularProducts, loading, error } = useContext(PopularProductContext);
@@ -15,7 +15,7 @@ const PopularProducts = () => {
   return (
     <>
       <Header />
-      <Container>
+      <MainWrapper>
         <div>
           <h2 className='font-bold text-2xl text-center mb-20'>
             Popular products
@@ -29,7 +29,7 @@ const PopularProducts = () => {
             ))}
           </div>
         </div>
-      </Container>
+      </MainWrapper>
     </>
   );
 };

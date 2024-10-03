@@ -2,11 +2,11 @@
 
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ListContext } from "./Context/ListContext";
+import { ListContext } from "../context/ListContext";
 import Header from "./layout/Header";
-import Container from "./layout/container";
-import { Card } from "./ui/card";
-import CustomButton from "./constant/customButton";
+import { Card } from "./elements/Card";
+import CustomButton from "./common/CustomButton";
+import MainWrapper from "./common/MainWrapper";
 
 const Share = () => {
   const { shareId } = useParams();
@@ -40,7 +40,7 @@ const Share = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <MainWrapper>
         <Card className='px-5 pt-5 pb-14 flex justify-between items-center shadow-none'>
           <div></div>
           <h2 className='text-2xl font-semibold'>{item.name}</h2>
@@ -49,7 +49,7 @@ const Share = () => {
             onClick={handleShare}
           />
         </Card>
-      </Container>
+      </MainWrapper>
     </div>
   );
 };

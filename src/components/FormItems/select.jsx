@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "../elements/Select";
 
 const SelectComponent = ({ placeholder, options, value, onChange }) => {
   return (

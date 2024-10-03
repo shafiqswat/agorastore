@@ -1,17 +1,33 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
-import LoginInput from "./LoginInput";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
-import { SpinnerIcon } from "../constant/SvgIcons";
+import { AuthContext } from "../../context/AuthContext";
+import InputComponents from "./Input";
+import {
+  DisplayPasswordIcon,
+  HidePasswordIcon,
+  SpinnerIcon,
+} from "../../assets/SvgIcons";
 
 const LoginForm = () => {
-  const { login, error, loading } = useContext(AuthContext);
+  const { login, error, loading, setError, isAuthenticated } =
+    useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect if the user is already authenticated
+    if (isAuthenticated) {
+      navigate("/");
+    }
+    // Clear error when the component is mounted or form is loaded
+    setError(null);
+  }, [setError, isAuthenticated, navigate]);
+
   const handleClick = () => {
     navigate("/signup");
   };
@@ -21,15 +37,19 @@ const LoginForm = () => {
     await login(email, password);
   };
 
+  // Toggle password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
   return (
-    <div className='flex justify-center items-center border w-full'>
+    <div className='flex justify-center items-center w-full md:mt-0'>
       <form
         className='md:w-80'
         onSubmit={handleSubmit}>
         <p className='text-center font-sans text-xl mb-4'>Log in</p>
 
-        {/* Email Input */}
-        <LoginInput
+        <InputComponents
           placeholder='Email'
           type='email'
           className='my-5'
@@ -37,13 +57,20 @@ const LoginForm = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <LoginInput
-          placeholder='Password'
-          type='password'
-          className='my-5'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className='relative'>
+          <InputComponents
+            placeholder='Password'
+            type={showPassword ? "text" : "password"}
+            className='my-5 pr-10'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span
+            onClick={togglePasswordVisibility}
+            className='absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer'>
+            {showPassword ? <DisplayPasswordIcon /> : <HidePasswordIcon />}
+          </span>
+        </div>
 
         {error && <p className='text-red-500 text-center mb-4'>{error}</p>}
 
@@ -61,14 +88,11 @@ const LoginForm = () => {
             "Go to the Home Page"
           )}
         </button>
-
-        {/* Signup link */}
         <p className='text-center font-sans text-xl my-4'>
           Don't have an account?
           <span
             className='text-blue-500 cursor-pointer'
             onClick={handleClick}>
-            {"   "}
             SignUp
           </span>
         </p>

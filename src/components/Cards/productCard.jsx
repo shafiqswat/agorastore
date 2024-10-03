@@ -1,8 +1,8 @@
 /** @format */
 
 import React from "react";
-import Reviews from "../constant/ProductsReview";
-import Hurt from "../constant/Hurt";
+import Reviews from "../common/ProductsReview";
+import Hurt from "../common/Hurt";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {

@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { BrandContext } from "../components/Context/BrandContext";
-import ProductCard from "./Cards/productCard";
+import { BrandContext } from "../context/BrandContext";
+import ProductCard from "./cards/ProductCard";
 
 const BrandList = () => {
   const { products, loading } = useContext(BrandContext);

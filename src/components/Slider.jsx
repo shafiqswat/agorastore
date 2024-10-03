@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Card } from "./ui/card";
+import { Card } from "./elements/Card";
 import "../App.css";
 import {
   Carousel,
@@ -9,9 +9,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./ui/carousel";
+} from "./elements/Carousel";
 
-function ProductSlider({ productImages = [] }) {
+const ProductSlider = ({ productImages = [] }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [carouselApi, setCarouselApi] = useState(null);
 
@@ -93,6 +93,6 @@ function ProductSlider({ productImages = [] }) {
       </Carousel>
     </div>
   );
-}
+};
 
 export default ProductSlider;

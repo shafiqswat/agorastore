@@ -1,41 +1,36 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { FeaturedContext } from "../components/Context/FeaturedContext";
-import Container from "../components/layout/container";
 import Header from "../components/layout/Header";
-import CollectionList from "../components/CollectionList";
-import { CollectionProvider } from "../components/Context/SingleCollection";
-import CustomButton from "../components/constant/customButton";
+import LoadingSkeleton from "../components/Skeleton";
+import FeaturedCard from "../components/cards/FeaturedCard";
+import { FeaturedContext } from "../context/FeaturedContext";
+import MainWrapper from "../components/common/MainWrapper";
 
-function Collections() {
-  const { collectionId } = useParams();
-  const { featuredData, loading, error } = useContext(FeaturedContext);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
-  const product = featuredData.find((p) => p._id === collectionId);
-  if (!product) return <div>Product not found</div>;
-
+const Collections = () => {
+  const { featuredData, loading } = useContext(FeaturedContext);
   return (
-    <>
+    <div>
       <Header />
-      <Container>
-        <div className='border p-5 rounded-xl'>
-          <div className='flex justify-between items-center'>
-            <div></div>
-            <h2 className='text-2xl font-semibold'>{product.title}</h2>
-            <CustomButton BtnText='Share Collection' />
+      <MainWrapper>
+        <h2 className='font-sans font-semibold text-lg text-center'>
+          Collections
+        </h2>
+        {loading ? (
+          <LoadingSkeleton count={8} />
+        ) : (
+          <div className='mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-36'>
+            {featuredData.map((item, index) => (
+              <FeaturedCard
+                key={index}
+                item={item}
+              />
+            ))}
           </div>
-          <CollectionProvider>
-            <CollectionList />
-          </CollectionProvider>
-        </div>
-      </Container>
-    </>
+        )}
+      </MainWrapper>
+    </div>
   );
-}
+};
 
 export default Collections;

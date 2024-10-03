@@ -1,14 +1,14 @@
 /** @format */
 
 import React, { useState, useContext } from "react";
-import Container from "../components/layout/container";
-import CartCard from "../components/Cards/cartCard";
-import CartTable from "../components/Tables/cartTable";
-import OrderCard from "../components/Cards/orderCard";
-import PaymentModal from "../components/Modals/PaymentModal";
+import CartCard from "../components/cards/CartCard";
+import CartTable from "../components/tables/CartTable";
+import OrderCard from "../components/cards/OrderCard";
+import PaymentModal from "../modals/PaymentModal";
 import Header from "../components/layout/Header";
-import AddressModal from "../components/Modals/AddressModal";
-import { PaymentContext } from "../components/Context/PaymentContext";
+import AddressModal from "../modals/AddressModal";
+import { PaymentContext } from "../context/PaymentContext";
+import MainWrapper from "../components/common/MainWrapper";
 
 const Cart = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -34,7 +34,7 @@ const Cart = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <MainWrapper>
         <div className='grid gap-5 grid-cols-12'>
           <div className='lg:col-span-9 col-span-12'>
             <CartCard
@@ -61,7 +61,7 @@ const Cart = () => {
           isOpen={showModal}
           onOpenChange={setShowModal}
         />
-      </Container>
+      </MainWrapper>
     </div>
   );
 };

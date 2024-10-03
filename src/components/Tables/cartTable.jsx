@@ -95,13 +95,13 @@
 // export default CartTable;
 
 import React, { useContext } from "react";
-import { Table, TableBody, TableCell, TableRow } from "../ui/table";
-import { Card, CardHeader } from "../ui/card";
-import { MinusIcon, PlusIcon, TrashIcon } from "../constant/SvgIcons";
-import { CartContext } from "../Context/CartContext";
+import { Table, TableBody, TableCell, TableRow } from "../elements/Table";
+import { Card, CardHeader } from "../elements/Card";
+import { MinusIcon, PlusIcon, TrashIcon } from "../../assets/SvgIcons";
+import { CartContext } from "../../context/CartContext";
 
 const CartTable = () => {
-  const { cart, updateCartItem, removeCartItem } = useContext(CartContext);
+  const { cart, updateCartItem } = useContext(CartContext);
 
   return (
     <Card className='shadow-none mb-5'>

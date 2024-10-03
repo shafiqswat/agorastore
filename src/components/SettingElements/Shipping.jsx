@@ -1,9 +1,15 @@
 /** @format */
 import React, { useContext, useState } from "react";
-import CustomButton from "../constant/customButton";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "../ui/table";
-import { ShippingContext } from "../Context/ShippingContext";
-import AddressModal from "../Modals/AddressModal";
+import CustomButton from "../common/CustomButton";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "../elements/Table";
+import { ShippingContext } from "../../context/ShippingContext";
+import AddressModal from "../../modals/AddressModal";
 
 // Component for displaying the table headers
 const ShippingTableHeader = () => {

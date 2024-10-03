@@ -1,10 +1,10 @@
 /** @format */
 
 import React from "react";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "../elements/Card";
 import { useNavigate } from "react-router-dom";
 
-function FeaturedCard({ item }) {
+const FeaturedCard = ({ item }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     // const formattedCollectionName = item.title.trim().replace(/\s+/g, "-");
@@ -23,7 +23,7 @@ function FeaturedCard({ item }) {
                   key={index}
                   src={product.imageUrl || product.images[0]}
                   alt={`Featured Card ${index + 1}`}
-                  className='w-full h-auto'
+                  className='w-[9rem] h-[9rem]'
                 />
               ))}
             </div>
@@ -35,6 +35,6 @@ function FeaturedCard({ item }) {
       </div>
     </div>
   );
-}
+};
 
 export default FeaturedCard;

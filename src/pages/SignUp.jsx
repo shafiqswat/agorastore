@@ -1,7 +1,7 @@
 /** @format */
 
-import SignUpForm from "../components/FormItems/SignUpForm";
-import AuthenticationSidebar from "../components/layout/AuthenticationSidebar";
+import SignUpForm from "../components/formItems/SignUpForm";
+import AuthenticationSidebar from "../components/common/AuthSidebar";
 import React from "react";
 
 const SignUp = () => {

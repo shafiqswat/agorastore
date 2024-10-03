@@ -1,9 +1,9 @@
 /** @format */
 
 import React, { useContext } from "react";
-import Container from "./container";
-import { ProductContext } from "../Context/ProductContext";
+import { ProductContext } from "../../context/ProductContext";
 import { Link } from "react-router-dom";
+import MainWrapper from "../common/MainWrapper";
 
 const Footer = () => {
   const { products } = useContext(ProductContext);
@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <Container className='md:pt-0'>
+    <MainWrapper className='md:pt-0'>
       <div className='md:flex justify-between border-t-2 pt-20'>
         <div className='mb-10'>
           <img
@@ -127,7 +127,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </Container>
+    </MainWrapper>
   );
 };
 

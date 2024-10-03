@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import CustomButton from "../constant/customButton";
+import CustomButton from "../common/CustomButton";
 
 const Credit = () => {
   return (

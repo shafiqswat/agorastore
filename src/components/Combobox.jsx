@@ -1,22 +1,11 @@
 /** @format */
 
 import React, { useState } from "react";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "../components/ui/popover";
-import { RemoveIcon } from "./constant/SvgIcons";
-import ListsModal from "./Modals/ListsModal";
+import { Popover, PopoverTrigger, PopoverContent } from "./elements/Popover";
+import { RemoveIcon } from "../assets/SvgIcons";
+import ListsModal from "../modals/ListsModal";
 
-export function Combobox({
-  open,
-  onOpenChange,
-  onRename,
-  onDelete,
-  id,
-  listName,
-}) {
+const Combobox = ({ open, onOpenChange, onRename, onDelete, id, listName }) => {
   const [showRenameModal, setShowRenameModal] = useState(false);
   const [newName, setNewName] = useState(listName); // Start with the current list name
 
@@ -77,4 +66,6 @@ export function Combobox({
       />
     </>
   );
-}
+};
+
+export default Combobox;

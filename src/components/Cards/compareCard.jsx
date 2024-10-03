@@ -3,7 +3,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function CompareCard({ item }) {
+const CompareCard = ({ item }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/product/${item._id}`);
@@ -21,6 +21,6 @@ function CompareCard({ item }) {
       </p>
     </div>
   );
-}
+};
 
 export default CompareCard;

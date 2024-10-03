@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { ReviewContext } from "./Context/ReviewContext";
-import CustomerReviews from "./constant/customerReviews";
+import { ReviewContext } from "../context/ReviewContext";
+import CustomerReviews from "./common/CustomerReviews";
 
 const Review = () => {
   const { reviews, loading, error } = useContext(ReviewContext);

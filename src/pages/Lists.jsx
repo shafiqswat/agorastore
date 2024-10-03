@@ -1,14 +1,14 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
-import ListsModal from "../components/Modals/ListsModal";
-import Container from "../components/layout/container";
+import ListsModal from "../modals/ListsModal";
 import Header from "../components/layout/Header";
-import { Card } from "../components/ui/card";
-import { ListContext } from "../components/Context/ListContext";
-import { Combobox } from "../components/Combobox";
+import { Card } from "../components/elements/Card";
+import { ListContext } from "../context/ListContext";
 import { Link, useNavigate } from "react-router-dom";
-import NewList from "../components/constant/NewList";
+import Combobox from "../components/Combobox";
+import PlusButtonList from "../components/common/PlusButtonList";
+import MainWrapper from "../components/common/MainWrapper";
 
 const Lists = () => {
   const route = useNavigate();
@@ -43,7 +43,7 @@ const Lists = () => {
   return (
     <div>
       <Header />
-      <Container>
+      <MainWrapper>
         <Card className='p-5'>
           <h2 className='text-2xl font-semibold'>My Lists</h2>
           <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 gap-5'>
@@ -73,7 +73,7 @@ const Lists = () => {
                 </li>
               ))}
             <li>
-              <NewList setOpenModal={setOpenModal} />
+              <PlusButtonList setOpenModal={setOpenModal} />
             </li>
           </ul>
         </Card>
@@ -84,7 +84,7 @@ const Lists = () => {
           value={newListName}
           onSave={addItem}
         />
-      </Container>
+      </MainWrapper>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { SelectedIcons } from "../constant/SvgIcons";
-import CustomButton from "../constant/customButton";
+import { SelectedIcons } from "../../assets/SvgIcons";
+import CustomButton from "../common/CustomButton";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { Toaster } from "../ui/sonner";
-import { SelectedImagesContext } from "../Context/SelectedImagesContext";
+import { Toaster } from "../elements/Sonner";
+import { SelectedImagesContext } from "../../context/SelectedImagesContext";
 
 const Personalization = () => {
   const images = [

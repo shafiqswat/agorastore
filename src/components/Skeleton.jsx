@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { Skeleton } from "../components/ui/skeleton";
+import { Skeleton } from "./elements/Skeleton";
 
 const LoadingSkeleton = ({
   height = "h-72",

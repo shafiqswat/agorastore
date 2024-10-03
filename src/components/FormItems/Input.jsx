@@ -1,20 +1,18 @@
 /** @format */
 
 import React from "react";
-import { Input } from "../ui/input";
+import { Input } from "../elements/Input";
 
-const InputComponent = ({ placeholder, className, onChange, value, type }) => {
+const InputComponents = ({ placeholder, type, className, value, onChange }) => {
   return (
     <Input
       type={type}
-      id='text'
-      className={className}
       placeholder={placeholder}
-      onChange={onChange}
+      className={`border-black text-xl h-14 bg-lightgray hover:border-blue-500 focus:outline-none focus:border-none ${className}`}
       value={value}
-      required={true}
+      onChange={onChange}
     />
   );
 };
 
-export default InputComponent;
+export default InputComponents;
