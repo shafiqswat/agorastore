@@ -1,5 +1,4 @@
 /** @format */
-
 import { useContext } from "react";
 import { GoogleIcon } from "../assets/SvgIcons";
 import {
@@ -14,6 +13,10 @@ import { AuthContext } from "../context/AuthContext";
 
 const Modal = ({ isOpen, setIsOpen }) => {
   const { loginWithGoogle, loading } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    loginWithGoogle(); // Trigger Google login
+  };
 
   return (
     <Dialog
@@ -31,7 +34,7 @@ const Modal = ({ isOpen, setIsOpen }) => {
 
         <div
           className='w-72 h-9 border mx-auto grid grid-cols-4 items-center rounded-sm cursor-pointer hover:bg-customblue'
-          onClick={loginWithGoogle}>
+          onClick={handleLogin}>
           <GoogleIcon />
           <span className='col-span-3 font-sans text-sm font-medium'>
             {loading ? "Loading..." : "Sign in with Google"}

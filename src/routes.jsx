@@ -25,6 +25,7 @@ import ProtectedRoute from "../src/components/ProtectedRoutes";
 import About from "./pages/About";
 import CollectionsDetail from "./pages/CollectionsDetail";
 import Collections from "./pages/Collections";
+import GoogleCallback from "./components/GoogleCallback";
 const AppRoutes = () => (
   <Routes>
     <Route
@@ -132,6 +133,10 @@ const AppRoutes = () => (
     <Route
       path='/login'
       element={<Login />}
+    />
+    <Route
+      path='/google-callback'
+      element={<GoogleCallback />}
     />
     <Route
       path='/signup'
